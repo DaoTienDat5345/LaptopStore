@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<!-- Updated controller reference from "controllers" to "com.example.stores.controller" -->
+
+<AnchorPane fx:id="rootPane" prefHeight="600" prefWidth="1000" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stores.controller.CustomerRegisterController">
+    <children>
+        <!-- Background Gradient -->
+        <Rectangle fx:id="backgroundRect" height="600" width="1000">
+            <fill>
+                <LinearGradient endX="1.0" endY="1.0" startX="0.0" startY="0.0">
+                    <stops>
+                        <Stop color="#865DFF" offset="0.0" />
+                        <Stop color="#5CB8E4" offset="0.8" />
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
+        
+        <!-- Header -->
+        <AnchorPane fx:id="headerPane" layoutX="20" layoutY="10" prefHeight="86.0" prefWidth="967.0">
+            <Rectangle fx:id="headerRect" arcHeight="20.0" arcWidth="20.0" fill="white" height="60.0" layoutX="-15.0" layoutY="10.0" stroke="#865DFF" strokeType="INSIDE" strokeWidth="2.0" width="993.0">
+                <effect>
+                    <javafx.scene.effect.DropShadow color="#0000001a" height="10" radius="4.5" width="10" />
+                </effect>
+                <stroke>
+                    <LinearGradient endX="1.0" endY="1.0" startX="0.0" startY="0.0">
+                        <stops>
+                            <Stop color="#865DFF" offset="0.0" />
+                            <Stop color="#5CB8E4" offset="0.8" />
+                        </stops>
+                    </LinearGradient>
+                </stroke>
+            </Rectangle>
+            
+            <Label fx:id="logoLabel" layoutX="359.0" layoutY="-16.0" style="-fx-font-size: 40px; -fx-font-family: 'Arial Black'; -fx-text-fill: #865DFF; -fx-effect: dropshadow(gaussian, #ffffff, 2, 1, 0, 0);" text="CELLCOMP" />
+            <Label fx:id="storeLabel" layoutX="604.0" layoutY="22.0" style="-fx-font-size: 28px; -fx-font-family: 'Arial Black'; -fx-text-fill: #865DFF;" text="STORE">
+                <font>
+                    <Font size="28.0" />
+                </font>
+            </Label>
+            
+            <!-- Create account label -->
+            <HBox fx:id="createAccountBox" alignment="CENTER_LEFT" layoutY="21.0" spacing="10">
+                <ImageView fx:id="userIconView" fitHeight="45.0" fitWidth="50.0">
+                    <image>
+                        <!-- Đường dẫn đã được sửa -->
+                        <Image url="@../images/layout/Logo_Comp.png" />
+                    </image>
+                </ImageView>
+                <Label fx:id="createAccountLabel" prefHeight="43.0" prefWidth="154.0" style="-fx-font-size: 18px; -fx-text-fill: #865DFF;" text="CREATE ACCOUNT" />
+            </HBox>
+            
+            <!-- Flag + Language button - Điều chỉnh vị trí để luôn nằm góc phải -->
+            <AnchorPane layoutX="770" layoutY="20" AnchorPane.rightAnchor="10.0">
+                <ImageView fx:id="languageFlag" fitHeight="27.0" fitWidth="27.0" layoutX="0.0" layoutY="5.0">
+                    <image>
+                        <!-- Đường dẫn đã được sửa -->
+                        <Image url="@../images/layout/Logo_Comp.png" />
+                    </image>
+                </ImageView>
+                <Button fx:id="langButton" layoutX="35.0" layoutY="4.0" onAction="#handleLanguageButtonAction" style="-fx-background-radius: 20; -fx-border-color: #865DFF; -fx-border-radius: 20; -fx-background-color: transparent; -fx-text-fill: #865DFF;" text="Tiếng Việt" />
+            </AnchorPane>
+        </AnchorPane>
+        
+        <!-- Main Form Container - Giảm chiều cao để tạo khoảng cách với viền dưới -->
+        <AnchorPane fx:id="mainFormPane" layoutX="50.0" layoutY="96.0" prefHeight="490.0" prefWidth="900" style="-fx-background-color: white; -fx-background-radius: 30;">
+            <children>
+                <!-- Register Title -->
+                <Label fx:id="registerLabel" layoutX="248.0" layoutY="14.0" style="-fx-font-size: 40px; -fx-font-family: 'Arial'; -fx-text-fill: #47B5FF; -fx-font-weight: bold;" text=" Thông tin tài khoản" />
+                
+                <!-- Left side - Personal Info - UPDATED FOR RESPONSIVE LAYOUT -->
+                <VBox fx:id="personalInfoVBox" layoutX="40" layoutY="80" prefWidth="400" spacing="8">
+                    <HBox spacing="10">
+                        <TextField fx:id="firstNameField" maxWidth="Infinity" promptText="First name" style="-fx-background-color: #f8f8f8; -fx-background-radius: 10;" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="lastNameField" maxWidth="Infinity" promptText="Last name" style="-fx-background-color: #f8f8f8; -fx-background-radius: 10;" HBox.hgrow="ALWAYS" />
+                    </HBox>
+                    
+                    <TextField fx:id="numberField" maxWidth="Infinity" promptText="Your number" style="-fx-background-color: #f8f8f8; -fx-background-radius: 10;" />
+                    <Label fx:id="phoneErrorLabel" style="-fx-text-fill: red; -fx-font-size: 10px; -fx-padding: -5 0 0 0;" />
+                    
+                    <TextField fx:id="emailField" maxWidth="Infinity" promptText="Email" style="-fx-background-color: #f8f8f8; -fx-background-radius: 10;" />
+                    <Label fx:id="emailErrorLabel" style="-fx-text-fill: red; -fx-font-size: 10px; -fx-padding: -5 0 0 0;" />
+                    
+                    <HBox spacing="10">
+                        <ComboBox fx:id="dayCombo" prefHeight="26.0" prefWidth="112.0" promptText="Day" style="-fx-background-color: #f8f8f8; -fx-background-radius: 10;" HBox.hgrow="ALWAYS" />
+                        <ComboBox fx:id="monthCombo" prefHeight="26.0" prefWidth="117.0" promptText="Month" style="-fx-background-color: #f8f8f8; -fx-background-radius: 10;" HBox.hgrow="ALWAYS" />
+                        <ComboBox fx:id="yearCombo" prefHeight="26.0" prefWidth="151.0" promptText="Year" style="-fx-background-color: #f8f8f8; -fx-background-radius: 10;" HBox.hgrow="ALWAYS" />
+                    </HBox>
+                </VBox>
+                
+                <!-- Right side with user avatar and account info -->
+                <VBox fx:id="accountInfoVBox" layoutX="460.0" layoutY="80.0" prefWidth="400" spacing="8">
+                    <!-- User Avatar -->
+                    <HBox alignment="CENTER" prefWidth="400">
+                        <ImageView fx:id="avatarView" fitHeight="86.0" fitWidth="95.0">
+                            <image>
+                                <Image url="@../images/layout/RegisterUser_icon.png" />
+                            </image>
+                        </ImageView>
+                    </HBox>
+                    
+                    <HBox alignment="CENTER" prefWidth="400">
+                        <Button fx:id="resetButton" onAction="#handleResetAction" style="-fx-background-color: #47B5FF; -fx-text-fill: white; -fx-background-radius: 15;" text="Reset" />
+                    </HBox>
+                    
+                    <Separator />
+                    
+                    <!-- Đảm bảo các HBox có cùng độ rộng -->
+                    <HBox alignment="CENTER_LEFT" prefWidth="350" spacing="10">
+                        <ImageView fitHeight="24.0" fitWidth="24.0">
+                            <image>
+                                <Image url="@../images/layout/user_icon.png" />
+                            </image>
+                        </ImageView>
+                        <TextField fx:id="usernameField" prefHeight="26.0" prefWidth="327.0" promptText="Username" style="-fx-background-color: #f8f8f8; -fx-background-radius: 10;" HBox.hgrow="ALWAYS" />
+                    </HBox>
+                    <Label fx:id="usernameErrorLabel" style="-fx-text-fill: red; -fx-font-size: 10px; -fx-padding: -5 0 0 0;" />
+                    
+                    <!-- Đảm bảo mật khẩu và username có độ rộng bằng nhau -->
+                    <HBox alignment="CENTER_LEFT" fillHeight="false" prefWidth="350" spacing="10">
+                        <ImageView fitHeight="24.0" fitWidth="24.0">
+                            <image>
+                                <Image url="@../images/layout/lock_icon.png" />
+                            </image>
+                        </ImageView>
+                        <PasswordField fx:id="passwordField" prefHeight="30.0" prefWidth="286.0" promptText="Password" style="-fx-background-color: #f8f8f8; -fx-background-radius: 10;" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="visiblePasswordField" managed="false" prefHeight="30.0" prefWidth="286.0" promptText="Password" style="-fx-background-color: #f8f8f8; -fx-background-radius: 10;" visible="false" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="eyeButton" maxHeight="30" maxWidth="30" minHeight="30" minWidth="30.0" onAction="#handleEyeButtonAction" style="-fx-background-color: transparent;">
+                            <graphic>
+                                <ImageView fx:id="eyeIconView" fitHeight="20" fitWidth="20">
+                                    <image>
+                                        <Image url="@../images/layout/eye_icon.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </HBox>
+                    <Label fx:id="passwordErrorLabel" style="-fx-text-fill: red; -fx-font-size: 10px; -fx-padding: -5 0 0 0;" />
+                    
+                    <HBox alignment="CENTER_LEFT" fillHeight="false" prefWidth="350" spacing="10">
+                        <ImageView fitHeight="24.0" fitWidth="24.0">
+                            <image>
+                                <Image url="@../images/layout/shield_icon.png" />
+                            </image>
+                        </ImageView>
+                        <PasswordField fx:id="confirmPasswordField" prefHeight="30.0" prefWidth="286.0" promptText="Confirm password" style="-fx-background-color: #f8f8f8; -fx-background-radius: 10;" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="visibleConfirmPasswordField" managed="false" prefHeight="30.0" prefWidth="286.0" promptText="Confirm password" style="-fx-background-color: #f8f8f8; -fx-background-radius: 10;" visible="false" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="confirmEyeButton" maxHeight="30" maxWidth="30" minHeight="30" minWidth="30" onAction="#handleConfirmEyeButtonAction" style="-fx-background-color: transparent;">
+                            <graphic>
+                                <ImageView fx:id="confirmEyeIconView" fitHeight="20" fitWidth="20">
+                                    <image>
+                                        <Image url="@../images/layout/eye_icon.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </HBox>
+                    <Label fx:id="confirmPasswordErrorLabel" style="-fx-text-fill: red; -fx-font-size: 10px; -fx-padding: -5 0 0 0;" />
+                    
+                    <!-- Nút đăng ký ở giữa phần account info -->
+                    <HBox alignment="CENTER" prefWidth="400" spacing="10">
+                        <Button fx:id="registerButton" disable="true" onAction="#handleRegisterAction" prefHeight="40.0" prefWidth="240.0" style="-fx-background-radius: 20; -fx-font-size: 18px; -fx-background-color: linear-gradient(to right, #865DFF, #5CB8E4); -fx-text-fill: white; -fx-font-weight: bold;" text="Register" />
+                    </HBox>
+                </VBox>
+                
+                <!-- Nút quay về đăng nhập - tăng khoảng cách với viền dưới -->
+                <Button fx:id="backToLoginButton" layoutX="735.0" layoutY="434.0" onAction="#handleBackToLogin" prefHeight="18.0" prefWidth="200.0" style="-fx-background-radius: 15; -fx-font-size: 14px; -fx-background-color: #5D87FF; -fx-text-fill: white;" text="Quay về đăng nhập" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.600000000000023" />
+                <TextField fx:id="specificAddressField" layoutX="39.0" layoutY="426.0" maxWidth="Infinity" prefHeight="26.0" prefWidth="399.0" promptText="Specific address" style="-fx-background-color: #f8f8f8; -fx-background-radius: 10;" />
+                <ComboBox fx:id="wardCombo" layoutX="40.0" layoutY="384.0" maxWidth="Infinity" prefHeight="26.0" prefWidth="399.0" promptText="Xã/Phường" style="-fx-background-color: #f8f8f8; -fx-background-radius: 10;" />
+                <ComboBox fx:id="districtCombo" layoutX="39.0" layoutY="336.0" maxWidth="Infinity" prefHeight="26.0" prefWidth="402.0" promptText="Quận/Huyện" style="-fx-background-color: #f8f8f8; -fx-background-radius: 10;" />
+                <ComboBox fx:id="provinceCombo" layoutX="40.0" layoutY="290.0" maxWidth="Infinity" prefHeight="26.0" prefWidth="400.0" promptText="Tỉnh/Thành phố" style="-fx-background-color: #f8f8f8; -fx-background-radius: 10;" />
+                
+                <!-- Đã thêm fx:id="genderBox" để có thể tìm thấy trong code -->
+                <HBox fx:id="genderBox" layoutX="45.0" layoutY="261.0" prefHeight="16.0" prefWidth="400.0" spacing="20">
+                    <Label style="-fx-font-size: 14px;" text="Gender:" />
+                    <RadioButton fx:id="maleRadio" text="Nam">
+                        <toggleGroup>
+                            <ToggleGroup fx:id="genderGroup" />
+                        </toggleGroup>
+                    </RadioButton>
+                    <RadioButton fx:id="femaleRadio" text="Nữ" toggleGroup="$genderGroup" />
+                    <RadioButton fx:id="otherRadio" text="Khác" toggleGroup="$genderGroup" />
+                </HBox>
+                
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

@@ -1,0 +1,186 @@
+/* Base styling from Home.css */
+.top-header {
+    -fx-background-color: linear-gradient(to right, #865DFF, #5CB8E4);
+}
+
+/* Thêm thanh tiêu đề */
+.title-bar {
+    -fx-background-color: #333333;
+    -fx-padding: 10px;
+    -fx-alignment: center;
+}
+
+/* Hover button class */
+.hover-button {
+    -fx-cursor: hand;
+}
+
+/* Nút login gradient với hover effect */
+.login-gradient-btn {
+    -fx-background-color: linear-gradient(to right, #865DFF, #5CB8E4);
+    -fx-background-radius: 20;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-border-radius: 20;
+    -fx-border-color: #000000;
+    -fx-border-width: 1.5px;
+    -fx-padding: 0 18 0 18;
+}
+
+/* Hiệu ứng hover cho nút login gradient */
+.login-gradient-btn:hover {
+    -fx-background-color: linear-gradient(to right, #5CB8E4, #865DFF);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 0);
+}
+
+.header-btn-label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* User menu button styling cải tiến giống Home.fxml */
+.user-menu-btn {
+    -fx-background-radius: 50%;
+    -fx-padding: 0;
+    -fx-mark-color: transparent;
+    -fx-focus-traversable: false;
+    -fx-min-width: 32px;
+    -fx-min-height: 32px;
+    -fx-max-width: 32px;
+    -fx-max-height: 32px;
+    -fx-pref-width: 32px;
+    -fx-pref-height: 32px;
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+}
+
+.user-menu-btn:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.3);
+    -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.3), 8, 0, 0, 0);
+}
+
+/* Menu items styling */
+.menu-item {
+    -fx-padding: 8px 12px;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+.menu-item:hover {
+    -fx-background-color: rgba(134, 93, 255, 0.1);
+    -fx-cursor: hand;
+}
+
+.menu-item:focused {
+    -fx-background-color: rgba(134, 93, 255, 0.2);
+    -fx-cursor: hand;
+}
+
+.menu-item > .graphic {
+    -fx-cursor: hand;
+}
+
+.menu-item > .label {
+    -fx-cursor: hand;
+}
+
+/* Context menu styling */
+.context-menu {
+    -fx-background-color: white;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 4);
+    -fx-padding: 8px 4px;
+}
+
+/* PC Builder specific styles */
+.reset-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 4px;
+    -fx-padding: 8px 15px;
+}
+
+.reset-button:hover {
+    -fx-background-color: #2980b9;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 0);
+}
+
+.component-row {
+    -fx-padding: 10px;
+    -fx-background-color: #f8f9fa;
+    -fx-background-radius: 5px;
+    -fx-border-color: #e9ecef;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+}
+
+.component-label {
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.component-select-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 4px;
+}
+
+.component-select-button:hover {
+    -fx-background-color: #2980b9;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 0);
+}
+
+.selected-component {
+    -fx-padding: 10px;
+    -fx-background-color: #e8f4fd;
+    -fx-background-radius: 5px;
+    -fx-border-color: #bedcf0;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-spacing: 10;
+}
+
+.selected-component-name {
+    -fx-font-weight: bold;
+}
+
+.selected-component-price {
+    -fx-text-fill: #e74c3c;
+    -fx-font-weight: bold;
+}
+
+.remove-component-button {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-background-radius: 4px;
+    -fx-padding: 4px 8px;
+    -fx-font-size: 11px;
+    -fx-cursor: hand;
+}
+
+.remove-component-button:hover {
+    -fx-background-color: #c0392b;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 3, 0, 0, 0);
+}
+
+.checkout-button {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 25px;
+}
+
+.checkout-button:hover {
+    -fx-background-color: #c0392b;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 0);
+}
+
+.checkout-button:disabled {
+    -fx-background-color: #e0e0e0;
+    -fx-text-fill: #a0a0a0;
+}

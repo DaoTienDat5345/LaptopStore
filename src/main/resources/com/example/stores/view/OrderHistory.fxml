@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@../css/OrderHistory.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stores.controller.OrderHistoryController">
+    <children>
+        <!-- Header -->
+        <AnchorPane layoutX="-1.0" prefHeight="70.0" prefWidth="1000.0" styleClass="order-header">
+            <children>
+                <!-- Logo hình tròn -->
+                <ImageView fx:id="logoIcon" fitHeight="45.0" fitWidth="45.0" layoutX="14.0" layoutY="13.0" onMouseClicked="#goToHome" styleClass="clickable-logo">
+                    <image>
+                        <Image url="@../images/layout/Logo_Comp.png" />
+                    </image>
+                </ImageView>
+
+                <!-- Logo CELLCOMP -->
+                <Label fx:id="logoLabel" layoutX="70.0" layoutY="-2.0" onMouseClicked="#goToHome" prefHeight="44.0" prefWidth="194.0" style="-fx-font-size: 30px; -fx-font-family: 'Arial Black'; -fx-text-fill: white; -fx-effect: dropshadow(gaussian, #00000033, 1, 0.5, 0, 0);" styleClass="clickable-label" text="CELLCOMP" />
+
+                <!-- Seller Center -->
+                <Label fx:id="sellerCenterLabel" layoutX="72.0" layoutY="33.0" onMouseClicked="#goToHome" prefHeight="30.0" prefWidth="74.0" style="-fx-font-size: 12px; -fx-text-fill: white;" styleClass="clickable-label" text="Seller center" />
+
+                <!-- STORE -->
+                <Label fx:id="storeLabel" layoutX="146.0" layoutY="29.0" onMouseClicked="#goToHome" style="-fx-font-size: 24px; -fx-font-family: 'Arial Black'; -fx-text-fill: white;" styleClass="clickable-label" text="STORE" />
+
+                <Label fx:id="historyTitleHeading" layoutX="400.0" layoutY="20.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;" text="Lịch sử mua hàng">
+                </Label>
+
+                <!-- User Menu Button -->
+                <MenuButton fx:id="userMenuButton" layoutX="929.0" layoutY="8.0" popupSide="BOTTOM" prefHeight="44.0" prefWidth="38.0" style="-fx-padding: 0; -fx-background-color: transparent; -fx-mark-color: transparent;" styleClass="user-menu-btn">
+                    <items>
+                        <MenuItem fx:id="accountInfoMenuItem" onAction="#openCustomerChangeScreen" text="Thông tin tài khoản">
+                            <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0">
+                                    <image>
+                                        <Image url="@../images/layout/user_icon.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </MenuItem>
+                        <MenuItem fx:id="languageSwitchMenuItem" onAction="#switchLanguage" text="Chuyển đổi ngôn ngữ">
+                            <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0">
+                                    <image>
+                                        <Image url="@../images/layout/flag_en.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </MenuItem>
+                        <MenuItem fx:id="customDesignMenuItem" onAction="#openCustomDesignScreen" text="Thiết kế máy tính theo ý bạn">
+                            <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0">
+                                    <image>
+                                        <Image url="@../images/layout/pc_design_icon.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </MenuItem>
+                        <SeparatorMenuItem />
+                        <MenuItem fx:id="logoutMenuItem" onAction="#handleLogout" text="Đăng xuất">
+                            <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0">
+                                    <image>
+                                        <Image url="@../images/layout/logout_icon.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </MenuItem>
+                    </items>
+                </MenuButton>
+                  <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="934.0" layoutY="14.0">
+                      <image>
+                          <Image url="@../images/layout/RegisterUser_icon.png" />
+                      </image>
+                  </ImageView>
+            </children>
+        </AnchorPane>
+
+        <!-- Main Content -->
+        <AnchorPane layoutX="0.0" layoutY="70.0" prefHeight="630.0" prefWidth="1000.0" styleClass="main-content">
+            <children>
+                <!-- Back button -->
+                <HBox fx:id="backButton" alignment="CENTER_LEFT" layoutX="17.0" layoutY="3.0" onMouseClicked="#goBack" prefHeight="45.0" prefWidth="58.0" spacing="5.0" styleClass="back-button">
+                    <children>
+                        <ImageView fitHeight="40.0" fitWidth="43.0">
+                            <image>
+                                <Image url="@../images/layout/logout_icon.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </HBox>
+
+                <!-- History Title with Icon -->
+                <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="60.0" prefHeight="40.0" prefWidth="960.0" spacing="10.0" styleClass="history-title-container">
+                    <children>
+                        <ImageView fitHeight="32.0" fitWidth="32.0">
+                            <image>
+                                <Image url="@../images/layout/history_icon.png" />
+                            </image>
+                        </ImageView>
+                        <Label fx:id="historyTitle" styleClass="history-title" text="LỊCH SỬ MUA HÀNG">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+
+                <!-- Thay ScrollPane + VBox bọc ngoài bằng TableView trực tiếp -->
+                <TableView fx:id="ordersTable" layoutX="20.0" layoutY="120.0" prefHeight="470.0" prefWidth="960.0" styleClass="orders-table">
+                    <columns>
+                        <TableColumn fx:id="orderIdColumn" prefWidth="112.0" text="Mã đơn hàng" />
+                        <TableColumn fx:id="orderDateColumn" prefWidth="151.20001220703125" text="Ngày đặt" />
+                        <TableColumn fx:id="totalAmountColumn" prefWidth="140.79998779296875" text="Tổng tiền" />
+                        <TableColumn fx:id="statusColumn" prefWidth="146.4000244140625" text="Trạng thái" />
+                        <TableColumn fx:id="recipientNameColumn" prefWidth="179.199951171875" text="Người nhận" />
+                        <TableColumn fx:id="actionColumn" prefWidth="228.79998779296875" text="Thao tác" />
+                    </columns>
+                    <padding>
+                        <Insets bottom="10.0" />
+                    </padding>
+                </TableView>
+
+                <!-- Thêm khoảng trắng dưới bảng -->
+                <HBox layoutX="20.0" layoutY="600.0" prefHeight="20.0" prefWidth="960.0" />
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

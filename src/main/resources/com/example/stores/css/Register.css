@@ -1,0 +1,28 @@
+.root {
+    -fx-background-color: linear-gradient(to right, #865DFF, #5CB8E4);
+}
+
+.button {
+    -fx-cursor: hand;
+}
+
+.text-field, .password-field, .combo-box {
+    -fx-font-size: 14px;
+}
+
+.register-button-enabled {
+    -fx-background-color: linear-gradient(to right, #865DFF, #5CB8E4);
+    -fx-text-fill: white;
+    -fx-background-radius: 20;
+    -fx-cursor: hand;
+}
+
+.register-button-disabled {
+    -fx-background-color: #cccccc;
+    -fx-text-fill: #888888;
+    -fx-background-radius: 20;
+}
+
+.radio-button {
+    -fx-cursor: hand;
+}

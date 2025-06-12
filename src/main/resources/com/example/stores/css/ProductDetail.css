@@ -1,0 +1,550 @@
+/* Định dạng chung */
+.root {
+    -fx-font-family: 'Segoe UI', sans-serif;
+    -fx-background-color: white;
+}
+
+/* Header styles */
+.top-header {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 2);
+}
+
+.login-gradient-btn {
+    -fx-background-color: linear-gradient(to right, #865DFF, #5CB8E4);
+    -fx-background-radius: 20;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-border-radius: 20;
+    -fx-border-color: #000000;
+    -fx-border-width: 1.5px;
+    -fx-padding: 0 18 0 18;
+}
+
+.header-btn-label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.back-button {
+    -fx-background-color: linear-gradient(to right, #865DFF, #5CB8E4);
+    -fx-background-radius: 20;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-border-radius: 20;
+    -fx-border-color: #000000;
+    -fx-border-width: 1.5px;
+    -fx-padding: 0 18 0 18;
+}
+
+/* Thanh tìm kiếm */
+.header-search-bar {
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-border-color: #000000;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 20;
+}
+
+.search-field {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0 0 0 10;
+}
+
+.search-button {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+/* Product Detail Container */
+.product-detail-scroll {
+    -fx-background: white;
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+}
+
+/* Thêm container cho tiêu đề */
+.product-title-container {
+    -fx-background-color: linear-gradient(to right, #3863F1, #8C52FF);
+    -fx-background-radius: 20;
+    -fx-max-width: 415px; /* Giảm độ rộng theo hình ảnh thứ 2 */
+    -fx-min-width: 415px;
+    -fx-alignment: center;
+}
+
+.product-title {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+    -fx-padding: 10 20 10 20;
+    -fx-alignment: center;
+}
+
+.product-image-container {
+    -fx-background-color: white;
+    -fx-border-color: #DDDDDD;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 0);
+}
+
+.product-info-container {
+    -fx-padding: 20;
+    -fx-background-color: white;
+    -fx-border-color: #DDDDDD;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 0);
+}
+
+.product-name {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.product-price {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ff6600;
+}
+
+.product-description {
+    -fx-font-size: 14px;
+    -fx-wrap-text: true;
+    -fx-padding: 10 0 15 0;
+}
+
+/* Action buttons */
+.action-buttons {
+    -fx-padding: 15 0 0 0;
+}
+
+/* Cập nhật nút Add to Cart */
+.add-to-cart-btn {
+    -fx-background-color: #FF3B30; /* Đỏ */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20;
+}
+
+.add-to-cart-btn:hover {
+    -fx-background-color: linear-gradient(to right, #8C52FF, #5CB8E4); /* Gradient tím sang xanh */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);
+}
+
+/* Cập nhật nút Checkout */
+.checkout-btn {
+    -fx-background-color: linear-gradient(to right, #8C52FF, #5CB8E4); /* Gradient tím sang xanh */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20;
+}
+
+.checkout-btn:hover {
+    -fx-background-color: linear-gradient(to right, #5CB8E4, #8C52FF); /* Gradient xanh sang tím */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);
+}
+
+/* Review section */
+.reviews-container {
+    -fx-background-color: white;
+    -fx-border-color: #DDDDDD;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 0);
+}
+
+.section-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-border-color: #DDDDDD;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 0 0 10 0;
+}
+
+.rating-summary {
+    -fx-padding: 10 0 20 0;
+}
+
+.review-item {
+    -fx-padding: 15;
+    -fx-border-color: #EEEEEE;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-background-color: #F9F9F9;
+}
+
+.reviewer-name {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-color: #5CB8E4;
+    -fx-min-width: 35px;
+    -fx-min-height: 35px;
+    -fx-max-width: 35px;
+    -fx-max-height: 35px;
+    -fx-alignment: center;
+    -fx-background-radius: 50%;
+}
+
+.review-date {
+    -fx-text-fill: #777777;
+    -fx-font-size: 12px;
+}
+
+.verified-purchase {
+    -fx-text-fill: #4CAF50;
+    -fx-font-weight: bold;
+}
+
+.review-rating {
+    -fx-padding: 10 0 0 45;
+}
+
+.review-comment {
+    -fx-padding: 0 0 0 10;
+}
+
+/* Style cho thông báo khi không có đánh giá */
+.no-reviews-label {
+    -fx-text-fill: #888888;
+    -fx-font-size: 14px;
+    -fx-padding: 20px 10px;
+    -fx-alignment: center;
+}
+/* Thêm các style từ Home.css cho header */
+
+/* Header styles */
+.top-header {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 2);
+}
+
+.header-menu-btn, .header-price-btn, .header-cart-btn, .header-icon-btn {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-padding: 5 10;
+}
+
+.header-menu-btn:hover, .header-price-btn:hover, .header-cart-btn:hover, .header-icon-btn:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
+
+.header-search-bar {
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+}
+
+.search-field {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 5 10;
+}
+
+.search-button {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-padding: 5 10;
+}
+
+/* Style cho nút giá */
+.header-price-btn {
+    -fx-background-color: linear-gradient(to right, #865DFF, #5CB8E4);
+    -fx-background-radius: 20;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-border-radius: 20;
+    -fx-border-color: #000000;
+    -fx-border-width: 1.5px;
+    -fx-padding: 0 18 0 18;
+    -fx-cursor: hand;
+}
+
+/* Thêm hiệu ứng hover cho nút Giá - đảo chiều gradient */
+.header-price-btn:hover {
+    -fx-background-color: linear-gradient(to right, #5CB8E4, #865DFF);
+}
+
+/* Style cho menu người dùng */
+.user-menu-btn {
+    -fx-background-radius: 50%;
+    -fx-padding: 0;
+    -fx-mark-color: transparent; /* Ẩn mũi tên của MenuButton */
+    -fx-focus-traversable: false;
+    -fx-min-width: 32px;
+    -fx-min-height: 32px;
+    -fx-max-width: 32px;
+    -fx-max-height: 32px;
+    -fx-pref-width: 32px;
+    -fx-pref-height: 32px;
+}
+
+/* Style cho các item trong menu */
+.menu-item {
+    -fx-padding: 8px 12px;
+    -fx-font-size: 14px;
+}
+
+.menu-item:hover {
+    -fx-background-color: rgba(134, 93, 255, 0.1);
+}
+
+.menu-item:focused {
+    -fx-background-color: rgba(134, 93, 255, 0.2);
+}
+
+/* Style cho menu popup */
+.context-menu {
+    -fx-background-color: white;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 4);
+    -fx-padding: 8px 4px;
+}
+
+/* Style cho nút áp dụng */
+.apply-btn {
+    -fx-background-color: linear-gradient(to right, #865DFF, #5CB8E4);
+    -fx-background-radius: 10;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 4 10;
+    -fx-cursor: hand;
+}
+
+.apply-btn:hover {
+    -fx-background-color: linear-gradient(to right, #5CB8E4, #865DFF);
+}
+
+/* Styles cho các phần tử có thể nhấp để quay về trang chủ */
+#logoIcon:hover, #logoLabel:hover, #storeLabel:hover, #sellerCenterLabel:hover {
+    -fx-opacity: 0.8;
+    -fx-effect: dropshadow(gaussian, #00000066, 3, 0.5, 0, 0);
+}
+
+/* Thêm kiểu chữ gạch chân khi hover vào text */
+#logoLabel:hover, #storeLabel:hover, #sellerCenterLabel:hover {
+    -fx-underline: true;
+}
+/* Thiết lập style cho thanh cuộn */
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 16;
+}
+
+.scroll-bar:vertical .track {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-border-color: transparent;
+    -fx-background-radius: 8;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: rgba(255, 255, 255, 0.7);
+    -fx-background-radius: 8;
+}
+
+/* Hiệu ứng hover cho thumb */
+.scroll-bar .thumb:hover,
+.scroll-bar .thumb:pressed {
+    -fx-background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Ẩn các nút increment/decrement */
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-background-color: transparent;
+    -fx-shape: " ";
+    -fx-padding: 0;
+}
+
+/* Làm cho vùng nền của ScrollPane trong danh mục trong suốt */
+.category-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.category-scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.category-scroll-pane > .corner {
+    -fx-background-color: transparent;
+}
+/* Add this at the end of your CSS file */
+
+/* Global cursor settings for interactive elements */
+.button, 
+.menu-button, 
+.toggle-button, 
+.choice-box, 
+.combo-box,
+.check-box,
+.radio-button,
+.hyperlink {
+    -fx-cursor: hand;
+}
+
+/* Make sure all clickable containers have hand cursor */
+.product-card,
+.review-item:hover,
+.search-suggestion-item:hover,
+.menu-item {
+    -fx-cursor: hand;
+}
+
+/* Ensure specific elements have the right cursor */
+#logoIcon, #logoLabel, #storeLabel, #sellerCenterLabel,
+#addToCartButton, #checkoutButton, #searchButton, #menuButton,
+#userMenuButton, #cartButton, #backButton {
+    -fx-cursor: hand;
+}
+
+/* Category buttons cursor */
+.category-btn {
+    -fx-cursor: hand;
+}
+
+/* Apply to all star ratings since they're often clickable */
+.rating-star {
+    -fx-cursor: hand;
+}
+/* Thêm các style này ở cuối file ProductDetail.css */
+/* Style cụ thể cho thanh cuộn của scroll pane danh mục */
+.category-scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 16px;
+}
+
+.category-scroll-pane .scroll-bar:vertical .track {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-border-color: transparent;
+    -fx-background-radius: 8px;
+}
+
+.category-scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: rgba(255, 255, 255, 0.7);
+    -fx-background-radius: 8px;
+}
+
+.category-scroll-pane .scroll-bar:vertical .thumb:hover,
+.category-scroll-pane .scroll-bar:vertical .thumb:pressed {
+    -fx-background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Ẩn các nút tăng/giảm trên thanh cuộn */
+.category-scroll-pane .scroll-bar:vertical .increment-button,
+.category-scroll-pane .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+}
+
+.category-scroll-pane .scroll-bar:vertical .increment-arrow,
+.category-scroll-pane .scroll-bar:vertical .decrement-arrow {
+    -fx-background-color: transparent;
+    -fx-shape: " ";
+    -fx-padding: 0;
+}
+
+/* Làm cho nền ScrollPane và viewport trong suốt */
+.category-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.category-scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.category-scroll-pane > .corner {
+    -fx-background-color: transparent;
+}
+/* Thêm hiệu ứng hover cho nút login-gradient-btn (sử dụng cho cả nút danh mục và giỏ hàng) */
+.login-gradient-btn:hover {
+    -fx-background-color: linear-gradient(to right, #5CB8E4, #865DFF);
+    -fx-border-color: #000000;
+    -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.3), 5, 0, 0, 0);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.login-gradient-btn:pressed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+/* Thêm hiệu ứng transition để có animation mượt mà khi hover */
+.login-gradient-btn {
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+/* Hiệu ứng hover đẹp hơn cho nút danh mục khi đang mở */
+#menuButton:hover {
+    -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.4), 8, 0, 0, 0);
+}
+
+/* Hiệu ứng hover đẹp hơn cho nút giỏ hàng */
+#cartButton:hover {
+    -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.4), 8, 0, 0, 0);
+}
+/* Style cho dialog chọn số lượng */
+.dialog-pane {
+    -fx-background-color: white;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: linear-gradient(to right, #865DFF, #5CB8E4);
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane .button-bar .button {
+    -fx-background-radius: 4px;
+}
+
+.dialog-pane .button-bar .button:default {
+    -fx-background-color: #865DFF;
+    -fx-text-fill: white;
+}
+
+.dialog-pane .button-bar .button:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 6, 0, 0, 0);
+}
+
+/* Style cho spinner số lượng */
+.spinner {
+    -fx-pref-width: 100px;
+    -fx-background-color: #f5f5f5;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+}
+
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-background-color: #e0e0e0;
+}
+
+.spinner .increment-arrow-button:hover,
+.spinner .decrement-arrow-button:hover {
+    -fx-background-color: #d0d0d0;
+}

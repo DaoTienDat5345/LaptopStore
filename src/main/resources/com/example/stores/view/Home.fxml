@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CustomMenuItem?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+
+<!-- Updated controller package reference here -->
+
+<StackPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stores.controller.HomeController">
+    <!-- BorderPane chính -->
+    <BorderPane fx:id="rootPane" prefHeight="650" prefWidth="1000" stylesheets="@../css/Home.css">
+        <!-- Header cố định phía trên -->
+        <top>
+            <AnchorPane fx:id="headerPane" prefHeight="70.0" prefWidth="1000" styleClass="top-header">
+                <!-- Nền header gradient -->
+                <Rectangle fill="linear-gradient(to right, #865DFF, #5CB8E4)" height="70" width="1000" />
+
+                <!-- Logo CELLCOMP -->
+                <Label fx:id="logoLabel" layoutX="70.0" layoutY="-2.0" prefHeight="44.0" prefWidth="194.0" style="-fx-font-size: 30px; -fx-font-family: 'Arial Black'; -fx-text-fill: white; -fx-effect: dropshadow(gaussian, #00000033, 1, 0.5, 0, 0);" text="CELLCOMP" />
+
+                <!-- Seller Center -->
+                <Label fx:id="sellerCenterLabel" layoutX="72.0" layoutY="33.0" prefHeight="30.0" prefWidth="74.0" style="-fx-font-size: 12px; -fx-text-fill: white;" text="Seller center" />
+
+                <!-- STORE -->
+                <Label fx:id="storeLabel" layoutX="146.0" layoutY="29.0" style="-fx-font-size: 24px; -fx-font-family: 'Arial Black'; -fx-text-fill: white;" text="STORE" />
+
+                <!-- Danh mục Button - Thêm onAction để mở thanh danh mục -->
+                <Button fx:id="menuButton" layoutX="257.0" layoutY="16.0" onAction="#toggleCategory" prefHeight="38" prefWidth="143.0" styleClass="login-gradient-btn">
+                    <graphic>
+                        <HBox alignment="CENTER" spacing="5">
+                            <ImageView fitHeight="20" fitWidth="21.0">
+                                <image>
+                                    <Image url="@../images/layout/Menu.png" />
+                                </image>
+                            </ImageView>
+                            <Label prefHeight="22.0" prefWidth="78.0" styleClass="header-btn-label" text="Danh mục" />
+                        </HBox>
+                    </graphic>
+                </Button>
+
+                <!-- Thanh tìm kiếm -->
+                <HBox alignment="CENTER_LEFT" layoutX="410.0" layoutY="17.0" prefHeight="38.0" prefWidth="250.0" spacing="0" styleClass="header-search-bar">
+                    <TextField fx:id="searchField" prefHeight="35" prefWidth="200.0" promptText="Tìm kiếm..." styleClass="search-field" />
+                    <Button onAction="#onSearch" prefWidth="50.0" styleClass="search-button">
+                        <graphic>
+                            <ImageView fitHeight="20" fitWidth="20">
+                                <image>
+                                    <Image url="@../images/layout/glass.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </HBox>
+
+                <MenuButton fx:id="priceButton" layoutX="666.0" layoutY="19.0" minWidth="119.0" prefHeight="41.0" prefWidth="119.0" style="-fx-background-color: linear-gradient(to right, #865DFF, #5CB8E4);            -fx-background-radius: 20;            -fx-font-weight: bold;            -fx-text-fill: white;            -fx-font-size: 15px;            -fx-border-radius: 20;            -fx-border-color: #000000;            -fx-border-width: 1.5px;            -fx-padding: 0 18 0 18;" styleClass="header-price-btn">
+                    <items>
+                        <MenuItem onAction="#sortDescending" text="Sắp xếp theo giá giảm dần" />
+                        <MenuItem onAction="#sortAscending" text="Sắp xếp theo giá tăng dần" />
+                        <SeparatorMenuItem />
+                        <CustomMenuItem hideOnClick="false">
+                            <content>
+                                <VBox alignment="CENTER" spacing="5">
+                                    <padding>
+                                        <Insets bottom="5" left="10" right="10" top="5" />
+                                    </padding>
+                                    <Label style="-fx-font-weight: bold;" text="Khoảng giá" />
+                                    <HBox alignment="CENTER" spacing="5">
+                                        <TextField fx:id="minPriceField" prefWidth="80" promptText="Từ..." />
+                                        <Label text="-" />
+                                        <TextField fx:id="maxPriceField" prefWidth="80" promptText="Đến..." />
+                                    </HBox>
+                                    <Button onAction="#applyPriceFilter" styleClass="apply-btn" text="Áp dụng" />
+                                </VBox>
+                            </content>
+                        </CustomMenuItem>
+                    </items>
+                    <graphic>
+                        <Label style="-fx-font-weight: bold;" text="Giá" textFill="WHITE" />
+                    </graphic>
+                </MenuButton>
+
+                <!-- Giỏ hàng Button -->
+                <Button fx:id="cartButton" layoutX="799.0" layoutY="18.0" onAction="#goToCart" prefHeight="38" prefWidth="134.0" styleClass="login-gradient-btn">
+                    <graphic>
+                        <HBox alignment="CENTER" spacing="5">
+                            <ImageView fitHeight="20" fitWidth="20">
+                                <image>
+                                    <Image url="@../images/layout/Cart.png" />
+                                </image>
+                            </ImageView>
+                            <Label styleClass="header-btn-label" text="Giỏ hàng" />
+                        </HBox>
+                    </graphic>
+                </Button>
+
+                      <!-- User Icon -->
+                <MenuButton fx:id="userMenuButton" layoutX="949.0" layoutY="22.0" popupSide="BOTTOM" style="-fx-padding: 0;            -fx-background-color: transparent;            -fx-mark-color: transparent;" styleClass="icon-feature-btn, user-menu-btn">
+                    <items>
+                        <MenuItem fx:id="accountInfoMenuItem" text="Thông tin tài khoản">
+                            <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0">
+                                    <image>
+                                        <Image url="@../images/layout/user_icon.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </MenuItem>
+                        <MenuItem fx:id="languageSwitchMenuItem" onAction="#switchLanguage" text="Chuyển đổi ngôn ngữ">
+                            <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0">
+                                    <image>
+                                        <Image url="@../images/layout/flag_en.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </MenuItem>
+                        <MenuItem fx:id="customDesignMenuItem" onAction="#openCustomDesignScreen" text="Thiết kế máy tính theo ý bạn">
+                            <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0">
+                                    <image>
+                                        <Image url="@../images/layout/pc_design_icon.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </MenuItem>
+                        <MenuItem fx:id="orderHistoryMenuItem" text="Lịch sử mua hàng">
+                            <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0">
+                                    <image>
+                                        <Image url="@../images/layout/history_icon.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </MenuItem>
+                        <SeparatorMenuItem />
+                        <MenuItem fx:id="logoutMenuItem" onAction="#handleLogout" text="Đăng xuất">
+                            <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0">
+                                    <image>
+                                        <Image url="@../images/layout/logout_icon.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </MenuItem>
+                    </items>
+                </MenuButton>
+
+                      <!-- Logo hình tròn -->
+                <ImageView fx:id="logoIcon" fitHeight="45.0" fitWidth="45.0" layoutX="14.0" layoutY="13.0">
+                    <image>
+                        <Image url="@../images/layout/Logo_Comp.png" />
+                    </image>
+                </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="37.0" layoutX="947.0" layoutY="20.0">
+                      <image>
+                          <Image url="@../images/layout/RegisterUser_icon.png" />
+                      </image>
+                  </ImageView>
+            </AnchorPane>
+        </top>
+
+        <!-- Phần nội dung có thể cuộn -->
+        <center>
+            <!-- Thay thế phần nội dung ScrollPane hiện tại với phiên bản mới -->
+
+            <ScrollPane fx:id="centerScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" pannable="true" style="-fx-background-color: white; -fx-background: white; -fx-border-color: transparent;">
+                <content>
+                    <AnchorPane prefWidth="1000" style="-fx-background-color: white;">
+                        <!-- Banner chính -->
+                        <ImageView fitHeight="273.0" fitWidth="920.0" layoutX="40" layoutY="20">
+                            <image>
+                                <Image url="@../images/layout/Background.jpg" />
+                            </image>
+                        </ImageView>
+
+                        <!-- Facebook và Youtube -->
+                        <HBox layoutX="780.0" layoutY="35.0" spacing="10">
+                            <Button onAction="#openYoutube" styleClass="yt-btn">
+                                <graphic>
+                                    <ImageView fitHeight="35" fitWidth="35">
+                                        <image>
+                                            <Image url="@../images/layout/youtube.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
+                            </Button>
+                            <Button onAction="#openFacebook" styleClass="fb-btn">
+                                <graphic>
+                                    <ImageView fitHeight="35" fitWidth="35">
+                                        <image>
+                                            <Image url="@../images/layout/facebook.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
+                            </Button>
+                        </HBox>
+
+                        <!-- Banner thứ hai -->
+                        <ImageView fitHeight="158.0" fitWidth="920.0" layoutX="40" layoutY="302.0">
+                            <image>
+                                <Image url="@../images/layout/background2.png" />
+                            </image>
+                        </ImageView>
+
+                        <!-- Khu vực sản phẩm nổi bật -->
+                        <VBox layoutX="40.0" layoutY="484.0" prefWidth="920" spacing="15">
+                            <!-- Tiêu đề sản phẩm nổi bật -->
+                            <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Sản phẩm nổi bật" />
+
+                            <!-- Khung đỏ chứa 4 sản phẩm nổi bật -->
+                            <AnchorPane style="-fx-border-color: #E53935; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-color: #FFEBEE; -fx-background-radius: 5;">
+                                <padding>
+                                    <Insets bottom="10" left="10" right="10" top="10" xmlns="http://javafx.com/javafx/23.0.1" />
+                                </padding>
+                                <GridPane fx:id="featuredProductGrid" hgap="20" vgap="20" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                        <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                        <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                        <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                    </columnConstraints>
+                                </GridPane>
+                            </AnchorPane>
+
+                            <!-- Container cho các loại sản phẩm -->
+                            <!-- Thay thế phần VBox categoryProductsContainer hiện tại với các danh mục đầy đủ -->
+                            <!-- Container cho các loại sản phẩm -->
+                            <VBox fx:id="categoryProductsContainer" spacing="30">
+
+                                <!-- Danh mục Laptop -->
+                                <VBox spacing="15">
+                                    <Label styleClass="category-title" text="Laptop" />
+                                    <AnchorPane styleClass="category-product-container">
+                                        <GridPane fx:id="laptopProductGrid" hgap="20" vgap="20" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                            </columnConstraints>
+                                        </GridPane>
+                                    </AnchorPane>
+                                    <!-- Khung chứa các nút điều khiển -->
+                                    <HBox alignment="CENTER" spacing="10">
+                                        <Button fx:id="showMoreLaptopBtn" onAction="#showMoreProducts" styleClass="show-more-btn" text="Hiển thị thêm" userData="Laptop" visible="true" />
+                                        <Button fx:id="showLessLaptopBtn" onAction="#showLessProducts" styleClass="show-less-btn" text="Đóng bớt" userData="Laptop" visible="false" />
+                                    </HBox>
+                                </VBox>
+
+                                <!-- Danh mục PC -->
+                                <VBox spacing="15">
+                                    <Label styleClass="category-title" text="PC" />
+                                    <AnchorPane styleClass="category-product-container">
+                                        <GridPane fx:id="pcProductGrid" hgap="20" vgap="20" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                            </columnConstraints>
+                                        </GridPane>
+                                    </AnchorPane>
+                                    <!-- Khung chứa các nút điều khiển -->
+                                    <HBox alignment="CENTER" spacing="10">
+                                        <Button fx:id="showMorePCBtn" onAction="#showMoreProducts" styleClass="show-more-btn" text="Hiển thị thêm" userData="PC" visible="true" />
+                                        <Button fx:id="showLessPCBtn" onAction="#showLessProducts" styleClass="show-less-btn" text="Đóng bớt" userData="PC" visible="false" />
+                                    </HBox>
+                                </VBox>
+
+                                <!-- Danh mục CPU -->
+                                <VBox spacing="15">
+                                    <Label styleClass="category-title" text="CPU" />
+                                    <AnchorPane styleClass="category-product-container">
+                                        <GridPane fx:id="cpuProductGrid" hgap="20" vgap="20" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                            </columnConstraints>
+                                        </GridPane>
+                                    </AnchorPane>
+                                    <!-- Khung chứa các nút điều khiển -->
+                                    <HBox alignment="CENTER" spacing="10">
+                                        <Button fx:id="showMoreCPUBtn" onAction="#showMoreProducts" styleClass="show-more-btn" text="Hiển thị thêm" userData="CPU" visible="true" />
+                                        <Button fx:id="showLessCPUBtn" onAction="#showLessProducts" styleClass="show-less-btn" text="Đóng bớt" userData="CPU" visible="false" />
+                                    </HBox>
+                                </VBox>
+
+                                <!-- Danh mục MainBoard -->
+                                <VBox spacing="15">
+                                    <Label styleClass="category-title" text="MainBoard" />
+                                    <AnchorPane styleClass="category-product-container">
+                                        <GridPane fx:id="mainboardProductGrid" hgap="20" vgap="20" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                            </columnConstraints>
+                                        </GridPane>
+                                    </AnchorPane>
+                                    <!-- Khung chứa các nút điều khiển -->
+                                    <HBox alignment="CENTER" spacing="10">
+                                        <Button fx:id="showMoreMainboardBtn" onAction="#showMoreProducts" styleClass="show-more-btn" text="Hiển thị thêm" userData="MainBoard" visible="true" />
+                                        <Button fx:id="showLessMainboardBtn" onAction="#showLessProducts" styleClass="show-less-btn" text="Đóng bớt" userData="MainBoard" visible="false" />
+                                    </HBox>
+                                </VBox>
+
+                                <!-- Danh mục RAM -->
+                                <VBox spacing="15">
+                                    <Label styleClass="category-title" text="RAM" />
+                                    <AnchorPane styleClass="category-product-container">
+                                        <GridPane fx:id="ramProductGrid" hgap="20" vgap="20" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                            </columnConstraints>
+                                        </GridPane>
+                                    </AnchorPane>
+                                    <!-- Khung chứa các nút điều khiển -->
+                                    <HBox alignment="CENTER" spacing="10">
+                                        <Button fx:id="showMoreRAMBtn" onAction="#showMoreProducts" styleClass="show-more-btn" text="Hiển thị thêm" userData="RAM" visible="true" />
+                                        <Button fx:id="showLessRAMBtn" onAction="#showLessProducts" styleClass="show-less-btn" text="Đóng bớt" userData="RAM" visible="false" />
+                                    </HBox>
+                                </VBox>
+
+                                <!-- Danh mục HDD -->
+                                <VBox spacing="15">
+                                    <Label styleClass="category-title" text="HDD" />
+                                    <AnchorPane styleClass="category-product-container">
+                                        <GridPane fx:id="hddProductGrid" hgap="20" vgap="20" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                            </columnConstraints>
+                                        </GridPane>
+                                    </AnchorPane>
+                                    <!-- Khung chứa các nút điều khiển -->
+                                    <HBox alignment="CENTER" spacing="10">
+                                        <Button fx:id="showMoreHDDBtn" onAction="#showMoreProducts" styleClass="show-more-btn" text="Hiển thị thêm" userData="HDD" visible="true" />
+                                        <Button fx:id="showLessHDDBtn" onAction="#showLessProducts" styleClass="show-less-btn" text="Đóng bớt" userData="HDD" visible="false" />
+                                    </HBox>
+                                </VBox>
+
+                                <!-- Danh mục SSD -->
+                                <VBox spacing="15">
+                                    <Label styleClass="category-title" text="SSD" />
+                                    <AnchorPane styleClass="category-product-container">
+                                        <GridPane fx:id="ssdProductGrid" hgap="20" vgap="20" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                            </columnConstraints>
+                                        </GridPane>
+                                    </AnchorPane>
+                                    <!-- Khung chứa các nút điều khiển -->
+                                    <HBox alignment="CENTER" spacing="10">
+                                        <Button fx:id="showMoreSSDBtn" onAction="#showMoreProducts" styleClass="show-more-btn" text="Hiển thị thêm" userData="SSD" visible="true" />
+                                        <Button fx:id="showLessSSDBtn" onAction="#showLessProducts" styleClass="show-less-btn" text="Đóng bớt" userData="SSD" visible="false" />
+                                    </HBox>
+                                </VBox>
+
+                                <!-- Danh mục VGA -->
+                                <VBox spacing="15">
+                                    <Label styleClass="category-title" text="VGA" />
+                                    <AnchorPane styleClass="category-product-container">
+                                        <GridPane fx:id="vgaProductGrid" hgap="20" vgap="20" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                            </columnConstraints>
+                                        </GridPane>
+                                    </AnchorPane>
+                                    <!-- Khung chứa các nút điều khiển -->
+                                    <HBox alignment="CENTER" spacing="10">
+                                        <Button fx:id="showMoreVGABtn" onAction="#showMoreProducts" styleClass="show-more-btn" text="Hiển thị thêm" userData="VGA" visible="true" />
+                                        <Button fx:id="showLessVGABtn" onAction="#showLessProducts" styleClass="show-less-btn" text="Đóng bớt" userData="VGA" visible="false" />
+                                    </HBox>
+                                </VBox>
+
+                                <!-- Danh mục Nguồn -->
+                                <VBox spacing="15">
+                                    <Label styleClass="category-title" text="Nguồn" />
+                                    <AnchorPane styleClass="category-product-container">
+                                        <GridPane fx:id="psuProductGrid" hgap="20" vgap="20" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                            </columnConstraints>
+                                        </GridPane>
+                                    </AnchorPane>
+                                    <!-- Khung chứa các nút điều khiển -->
+                                    <HBox alignment="CENTER" spacing="10">
+                                        <Button fx:id="showMorePSUBtn" onAction="#showMoreProducts" styleClass="show-more-btn" text="Hiển thị thêm" userData="Nguồn" visible="true" />
+                                        <Button fx:id="showLessPSUBtn" onAction="#showLessProducts" styleClass="show-less-btn" text="Đóng bớt" userData="Nguồn" visible="false" />
+                                    </HBox>
+                                </VBox>
+
+                                <!-- Danh mục Tản nhiệt -->
+                                <VBox spacing="15">
+                                    <Label styleClass="category-title" text="Tản nhiệt" />
+                                    <AnchorPane styleClass="category-product-container">
+                                        <GridPane fx:id="coolingProductGrid" hgap="20" vgap="20" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                            </columnConstraints>
+                                        </GridPane>
+                                    </AnchorPane>
+                                    <!-- Khung chứa các nút điều khiển -->
+                                    <HBox alignment="CENTER" spacing="10">
+                                        <Button fx:id="showMoreCoolingBtn" onAction="#showMoreProducts" styleClass="show-more-btn" text="Hiển thị thêm" userData="Tản nhiệt" visible="true" />
+                                        <Button fx:id="showLessCoolingBtn" onAction="#showLessProducts" styleClass="show-less-btn" text="Đóng bớt" userData="Tản nhiệt" visible="false" />
+                                    </HBox>
+                                </VBox>
+
+                                <!-- Danh mục Case -->
+                                <VBox spacing="15">
+                                    <Label styleClass="category-title" text="Case" />
+                                    <AnchorPane styleClass="category-product-container">
+                                        <GridPane fx:id="caseProductGrid" hgap="20" vgap="20" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                            </columnConstraints>
+                                        </GridPane>
+                                    </AnchorPane>
+                                    <!-- Khung chứa các nút điều khiển -->
+                                    <HBox alignment="CENTER" spacing="10">
+                                        <Button fx:id="showMoreCaseBtn" onAction="#showMoreProducts" styleClass="show-more-btn" text="Hiển thị thêm" userData="Case" visible="true" />
+                                        <Button fx:id="showLessCaseBtn" onAction="#showLessProducts" styleClass="show-less-btn" text="Đóng bớt" userData="Case" visible="false" />
+                                    </HBox>
+                                </VBox>
+
+                                <!-- Danh mục Màn hình -->
+                                <VBox spacing="15">
+                                    <Label styleClass="category-title" text="Màn hình" />
+                                    <AnchorPane styleClass="category-product-container">
+                                        <GridPane fx:id="monitorProductGrid" hgap="20" vgap="20" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                            </columnConstraints>
+                                        </GridPane>
+                                    </AnchorPane>
+                                    <!-- Khung chứa các nút điều khiển -->
+                                    <HBox alignment="CENTER" spacing="10">
+                                        <Button fx:id="showMoreMonitorBtn" onAction="#showMoreProducts" styleClass="show-more-btn" text="Hiển thị thêm" userData="Màn hình" visible="true" />
+                                        <Button fx:id="showLessMonitorBtn" onAction="#showLessProducts" styleClass="show-less-btn" text="Đóng bớt" userData="Màn hình" visible="false" />
+                                    </HBox>
+                                </VBox>
+
+                                <!-- Danh mục Bàn phím -->
+                                <VBox spacing="15">
+                                    <Label styleClass="category-title" text="Bàn phím" />
+                                    <AnchorPane styleClass="category-product-container">
+                                        <GridPane fx:id="keyboardProductGrid" hgap="20" vgap="20" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                            </columnConstraints>
+                                        </GridPane>
+                                    </AnchorPane>
+                                    <!-- Khung chứa các nút điều khiển -->
+                                    <HBox alignment="CENTER" spacing="10">
+                                        <Button fx:id="showMoreKeyboardBtn" onAction="#showMoreProducts" styleClass="show-more-btn" text="Hiển thị thêm" userData="Bàn phím" visible="true" />
+                                        <Button fx:id="showLessKeyboardBtn" onAction="#showLessProducts" styleClass="show-less-btn" text="Đóng bớt" userData="Bàn phím" visible="false" />
+                                    </HBox>
+                                </VBox>
+
+                                <!-- Danh mục Chuột -->
+                                <VBox spacing="15">
+                                    <Label styleClass="category-title" text="Chuột" />
+                                    <AnchorPane styleClass="category-product-container">
+                                        <GridPane fx:id="mouseProductGrid" hgap="20" vgap="20" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                            </columnConstraints>
+                                        </GridPane>
+                                    </AnchorPane>
+                                    <!-- Khung chứa các nút điều khiển -->
+                                    <HBox alignment="CENTER" spacing="10">
+                                        <Button fx:id="showMoreMouseBtn" onAction="#showMoreProducts" styleClass="show-more-btn" text="Hiển thị thêm" userData="Chuột" visible="true" />
+                                        <Button fx:id="showLessMouseBtn" onAction="#showLessProducts" styleClass="show-less-btn" text="Đóng bớt" userData="Chuột" visible="false" />
+                                    </HBox>
+                                </VBox>
+
+                                <!-- Danh mục Tai nghe -->
+                                <VBox spacing="15">
+                                    <Label styleClass="category-title" text="Tai nghe" />
+                                    <AnchorPane styleClass="category-product-container">
+                                        <GridPane fx:id="headphoneProductGrid" hgap="20" vgap="20" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="25" />
+                                            </columnConstraints>
+                                        </GridPane>
+                                    </AnchorPane>
+                                    <!-- Khung chứa các nút điều khiển -->
+                                    <HBox alignment="CENTER" spacing="10">
+                                        <Button fx:id="showMoreHeadphoneBtn" onAction="#showMoreProducts" styleClass="show-more-btn" text="Hiển thị thêm" userData="Tai nghe" visible="true" />
+                                        <Button fx:id="showLessHeadphoneBtn" onAction="#showLessProducts" styleClass="show-less-btn" text="Đóng bớt" userData="Tai nghe" visible="false" />
+                                    </HBox>
+                                </VBox>
+                            </VBox>
+                        </VBox>
+                    </AnchorPane>
+                </content>
+            </ScrollPane>
+        </center>
+        
+        <!-- Footer - đã giảm chiều cao xuống chỉ bằng dòng chữ -->
+        <bottom>
+            <AnchorPane prefHeight="30" prefWidth="1000" style="-fx-background-color: #333333;">
+                <Label layoutX="400" layoutY="10" style="-fx-text-fill: white;" text="© 2025 CELLCOMP STORE. All rights reserved." />
+            </AnchorPane>
+        </bottom>
+    </BorderPane>
+    
+    <!-- CHỈNH SỬA: CategoryPane với nút X lớn hơn và dịch sang trái -->
+<AnchorPane fx:id="categoryPane" layoutX="30" maxHeight="420" maxWidth="225" minWidth="225" prefWidth="225" style="-fx-background-color: linear-gradient(to right, #865DFF, #5CB8E4);            -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 10, 0.5, 0.0, 0.0);           -fx-padding: 5px 0px 10px 5px; -fx-background-radius: 0 15 15 0; -fx-border-radius: 0 15 15 0;" translateX="-225" translateY="65" visible="false" StackPane.alignment="TOP_LEFT">
+    
+    <!-- Nút đóng X với kích thước lớn hơn và dịch sát góc trái -->
+    <Button fx:id="closeCategoryBtn" layoutX="-5.0" layoutY="0.0" onAction="#toggleCategory" style="-fx-background-color: transparent; -fx-background-radius: 50%;                -fx-min-width: 55px; -fx-min-height: 55px; -fx-max-width: 55px; -fx-max-height: 55px;               -fx-padding: 0 0 0 5px; -fx-cursor: hand;">
+        <graphic>
+            <ImageView fitHeight="50" fitWidth="50">
+                <image>
+                    <Image url="@../images/layout/x.png" />
+                </image>
+            </ImageView>
+        </graphic>
+    </Button>
+    
+    <!-- ScrollPane với thanh cuộn lớn hơn và khoảng cách thu gọn -->
+    <ScrollPane fx:id="categoryScrollPane" fitToWidth="true" hbarPolicy="NEVER" layoutY="55.0" maxWidth="225" prefHeight="335" prefWidth="225" style="-fx-background-color: transparent; -fx-background: transparent;               -fx-border-color: transparent; -fx-padding: 0 0 2 0;               -fx-background-insets: 0; -fx-border-width: 0; -fx-effect: null;" styleClass="category-scroll-pane" vbarPolicy="ALWAYS">
+        <content>
+            <!-- VBox với spacing giảm xuống chỉ còn 4px để các button gần nhau hơn -->
+            <VBox alignment="TOP_CENTER" prefHeight="410" prefWidth="205" spacing="4" style="-fx-padding: 0 0 2 0; -fx-background-color: transparent;">
+                <Button id="category-laptop" onAction="#filterByCategory"
+                        style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 6 5 6 15; -fx-min-width: 180; -fx-alignment: center-left; -fx-cursor: hand; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 10;"
+                        text="Laptop"
+                        onMouseEntered="#handleCategoryMouseEntered"
+                        onMouseExited="#handleCategoryMouseExited" />
+                <Button id="category-pc" onAction="#filterByCategory"
+                        style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 6 5 6 15; -fx-min-width: 180; -fx-alignment: center-left; -fx-cursor: hand; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 10;"
+                        text="PC"
+                        onMouseEntered="#handleCategoryMouseEntered"
+                        onMouseExited="#handleCategoryMouseExited" />
+                <Button id="category-mainboard" onAction="#filterByCategory"
+                        style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 6 5 6 15; -fx-min-width: 180; -fx-alignment: center-left; -fx-cursor: hand; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 10;"
+                        text="Mainboard"
+                        onMouseEntered="#handleCategoryMouseEntered"
+                        onMouseExited="#handleCategoryMouseExited" />
+                <Button id="category-cpu" onAction="#filterByCategory"
+                        style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 6 5 6 15; -fx-min-width: 180; -fx-alignment: center-left; -fx-cursor: hand; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 10;"
+                        text="CPU"
+                        onMouseEntered="#handleCategoryMouseEntered"
+                        onMouseExited="#handleCategoryMouseExited" />
+                <Button id="category-ram" onAction="#filterByCategory"
+                        style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 6 5 6 15; -fx-min-width: 180; -fx-alignment: center-left; -fx-cursor: hand; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 10;"
+                        text="RAM"
+                        onMouseEntered="#handleCategoryMouseEntered"
+                        onMouseExited="#handleCategoryMouseExited" />
+                <Button id="category-hdd" onAction="#filterByCategory"
+                        style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 6 5 6 15; -fx-min-width: 180; -fx-alignment: center-left; -fx-cursor: hand; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 10;"
+                        text="HDD"
+                        onMouseEntered="#handleCategoryMouseEntered"
+                        onMouseExited="#handleCategoryMouseExited" />
+                <Button id="category-ssd" onAction="#filterByCategory"
+                        style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 6 5 6 15; -fx-min-width: 180; -fx-alignment: center-left; -fx-cursor: hand; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 10;"
+                        text="SSD"
+                        onMouseEntered="#handleCategoryMouseEntered"
+                        onMouseExited="#handleCategoryMouseExited" />
+                <Button id="category-vga" onAction="#filterByCategory"
+                        style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 6 5 6 15; -fx-min-width: 180; -fx-alignment: center-left; -fx-cursor: hand; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 10;"
+                        text="VGA"
+                        onMouseEntered="#handleCategoryMouseEntered"
+                        onMouseExited="#handleCategoryMouseExited" />
+                <Button id="category-keyboard" onAction="#filterByCategory"
+                        style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 6 5 6 15; -fx-min-width: 180; -fx-alignment: center-left; -fx-cursor: hand; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 10;"
+                        text="Bàn phím"
+                        onMouseEntered="#handleCategoryMouseEntered"
+                        onMouseExited="#handleCategoryMouseExited" />
+                <Button id="category-mouse" onAction="#filterByCategory"
+                        style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 6 5 6 15; -fx-min-width: 180; -fx-alignment: center-left; -fx-cursor: hand; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 10;"
+                        text="Chuột"
+                        onMouseEntered="#handleCategoryMouseEntered"
+                        onMouseExited="#handleCategoryMouseExited" />
+                <Button id="category-monitor" onAction="#filterByCategory"
+                        style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 6 5 6 15; -fx-min-width: 180; -fx-alignment: center-left; -fx-cursor: hand; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 10;"
+                        text="Màn hình"
+                        onMouseEntered="#handleCategoryMouseEntered"
+                        onMouseExited="#handleCategoryMouseExited" />
+                <Button id="category-cooling" onAction="#filterByCategory"
+                        style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 6 5 6 15; -fx-min-width: 180; -fx-alignment: center-left; -fx-cursor: hand; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 10;"
+                        text="Tản nhiệt"
+                        onMouseEntered="#handleCategoryMouseEntered"
+                        onMouseExited="#handleCategoryMouseExited" />
+                <Button id="category-case" onAction="#filterByCategory"
+                        style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 6 5 6 15; -fx-min-width: 180; -fx-alignment: center-left; -fx-cursor: hand; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 10;"
+                        text="Case"
+                        onMouseEntered="#handleCategoryMouseEntered"
+                        onMouseExited="#handleCategoryMouseExited" />
+                <Button id="category-psu" onAction="#filterByCategory"
+                        style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 6 5 6 15; -fx-min-width: 180; -fx-alignment: center-left; -fx-cursor: hand; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 10;"
+                        text="Nguồn"
+                        onMouseEntered="#handleCategoryMouseEntered"
+                        onMouseExited="#handleCategoryMouseExited" />
+                <Button id="category-headphone" onAction="#filterByCategory"
+                        style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 6 5 6 15; -fx-min-width: 180; -fx-alignment: center-left; -fx-cursor: hand; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 10;"
+                        text="Tai nghe"
+                        onMouseEntered="#handleCategoryMouseEntered"
+                        onMouseExited="#handleCategoryMouseExited" />
+            </VBox>
+        </content>
+    </ScrollPane>
+</AnchorPane>
+</StackPane>

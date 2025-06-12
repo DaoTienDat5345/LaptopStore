@@ -1,0 +1,437 @@
+/* Định dạng chung */
+* {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.root {
+    -fx-background-color: white;
+}
+
+/* Header */
+.cart-header {
+    -fx-background-color: linear-gradient(to right, #7B68EE, #5CB8E4);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);
+}
+
+.store-name {
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.seller-center {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.store-label {
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.cart-title {
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+/* Back button */
+#backButton {
+    -fx-cursor: hand;
+}
+
+#backButton:hover {
+    -fx-opacity: 0.8;
+}
+
+/* Content area */
+.content-area {
+    -fx-background: white;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.content-area > .viewport {
+    -fx-background-color: transparent;
+}
+
+/* Cart table */
+.cart-table {
+    -fx-background-color: white;
+    -fx-table-cell-border-color: #E0E0E0;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 1px;
+}
+
+.cart-table .column-header {
+    -fx-background-color: #F8F8F8;
+    -fx-font-weight: bold;
+    -fx-padding: 8px;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.cart-table .table-cell {
+    -fx-alignment: center;
+    -fx-padding: 10px;
+}
+
+.cart-table .table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.cart-table .table-row-cell:selected {
+    -fx-background-color: rgba(91, 184, 228, 0.1);
+}
+
+.cart-table .table-row-cell:hover {
+    -fx-background-color: rgba(91, 184, 228, 0.1);
+}
+
+/* Delete button in table */
+.delete-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #FF3B30;
+    -fx-cursor: hand;
+}
+
+.delete-button:hover {
+    -fx-underline: true;
+}
+
+/* Quantity spinner */
+.quantity-spinner {
+    -fx-pref-width: 100px;
+    -fx-alignment: center;
+}
+
+/* Order summary */
+.order-summary {
+    -fx-background-color: #F8F8F8;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 1px;
+    -fx-padding: 10px;
+}
+
+.total-price {
+    -fx-text-fill: #FF3B30;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+}
+
+/* Checkout button */
+.checkout-button {
+    -fx-background-color: linear-gradient(to right, #865DFF, #5CB8E4);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-radius: 20px;
+    -fx-cursor: hand;
+}
+
+.checkout-button:hover {
+    -fx-background-color: linear-gradient(to right, #5CB8E4, #865DFF);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 0);
+}
+
+.checkout-button:pressed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+/* Thêm các style mới cho header */
+.login-gradient-btn {
+    -fx-background-color: linear-gradient(to right, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-color: white;
+    -fx-border-width: 1.5px;
+    -fx-cursor: hand;
+}
+
+.login-gradient-btn:hover {
+    -fx-background-color: linear-gradient(to right, rgba(255,255,255,0.3), rgba(255,255,255,0.2));
+}
+
+.header-btn-label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+}
+/* Thêm vào file CSS hiện có */
+
+/* Cart Info Section */
+.cart-info-section {
+    -fx-background-color: #F9F9F9;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
+    -fx-padding: 0 0 10 0;
+}
+
+.cart-info-grid {
+    -fx-background-color: white;
+    -fx-padding: 10px;
+}
+
+.info-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #555555;
+    -fx-font-size: 14px;
+}
+
+.info-value {
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px;
+}
+
+/* Button styles */
+.clear-button {
+    -fx-background-color: #F44336;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-radius: 20px;
+    -fx-cursor: hand;
+}
+
+.clear-button:hover {
+    -fx-background-color: #D32F2F;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 0);
+}
+
+.update-button {
+    -fx-background-color: #2196F3;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-radius: 20px;
+    -fx-cursor: hand;
+}
+
+.update-button:hover {
+    -fx-background-color: #1976D2;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 0);
+}
+
+/* Thêm style cho cột trong bảng */
+.cart-table .column-header {
+    -fx-alignment: center;
+}
+
+.cart-table .table-cell {
+    -fx-alignment: center;
+}
+/* Cải thiện style cho bảng giỏ hàng */
+
+/* Style chung cho bảng */
+.cart-table {
+    -fx-background-color: white;
+    -fx-table-cell-border-color: #E0E0E0;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);
+}
+
+/* Style cho header */
+.cart-table .column-header {
+    -fx-background-color: linear-gradient(to right, #7B68EE, #5CB8E4);
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-padding: 12px 8px;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 0 0 1 0;
+    -fx-font-size: 13px;
+}
+
+.cart-table .column-header .label {
+    -fx-text-fill: white;
+    -fx-alignment: CENTER;
+}
+
+/* Style cho các cell */
+.cart-table .table-cell {
+    -fx-padding: 10px 8px;
+    -fx-alignment: center;
+    -fx-border-color: transparent #E0E0E0 transparent transparent;
+}
+
+/* Style cho các hàng chẵn/lẻ */
+.cart-table .table-row-cell:odd {
+    -fx-background-color: #F8F9FA;
+}
+
+.cart-table .table-row-cell:even {
+    -fx-background-color: white;
+}
+
+/* Style khi hover trên hàng */
+.cart-table .table-row-cell:hover {
+    -fx-background-color: rgba(123, 104, 238, 0.1);
+    -fx-cursor: hand;
+}
+
+/* Style khi hàng được chọn */
+.cart-table .table-row-cell:selected {
+    -fx-background-color: rgba(123, 104, 238, 0.2);
+    -fx-text-fill: #333333;
+}
+
+/* Thêm style cho nút xóa với icon */
+.delete-icon-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 5px;
+    -fx-cursor: hand;
+    -fx-background-radius: 50%;
+}
+
+.delete-icon-button:hover {
+    -fx-background-color: rgba(255, 0, 0, 0.1);
+}
+
+.delete-icon-button:pressed {
+    -fx-background-color: rgba(255, 0, 0, 0.2);
+}
+
+/* Style cho checkbox trong bảng */
+.cart-table .check-box {
+    -fx-alignment: CENTER;
+}
+
+.cart-table .check-box .box {
+    -fx-background-color: white;
+    -fx-border-color: #7B68EE;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+}
+
+.cart-table .check-box:selected .mark {
+    -fx-background-color: white;
+}
+
+.cart-table .check-box:selected .box {
+    -fx-background-color: #7B68EE;
+}
+
+/* Style cho spinner số lượng */
+.quantity-spinner {
+    -fx-pref-width: 80px;
+    -fx-background-color: white;
+    -fx-border-color: #7B68EE;
+    -fx-border-radius: 4px;
+}
+
+.quantity-spinner .increment-arrow-button,
+.quantity-spinner .decrement-arrow-button {
+    -fx-background-color: #7B68EE;
+    -fx-text-fill: white;
+}
+
+.quantity-spinner .increment-arrow,
+.quantity-spinner .decrement-arrow {
+    -fx-background-color: white;
+}
+/* Style cho user menu */
+.user-menu-btn {
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-mark-color: transparent;
+    -fx-focus-traversable: false;
+     -fx-cursor: hand;
+}
+
+.user-menu-btn .label {
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+}
+
+.user-menu-btn:focused,
+.user-menu-btn:hover {
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.3), 5, 0, 0, 0);
+}
+
+/* Style cho các item trong menu */
+.menu-item {
+    -fx-padding: 8px 12px;
+    -fx-font-size: 14px;
+}
+
+.menu-item:hover {
+    -fx-background-color: rgba(134, 93, 255, 0.1);
+}
+
+.menu-item:focused {
+    -fx-background-color: rgba(134, 93, 255, 0.2);
+}
+
+/* Style cho menu popup */
+.context-menu {
+    -fx-background-color: white;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 4);
+    -fx-padding: 8px 4px;
+}
+/* Style cho các phần tử có thể click */
+.clickable-logo, .clickable-label {
+    -fx-cursor: hand;
+}
+
+.clickable-label:hover {
+    -fx-underline: true;
+}
+
+.clickable-logo:hover {
+    -fx-opacity: 0.8;
+}
+/* Cải thiện style cho nút quay lại */
+#backButton {
+    -fx-cursor: hand;
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+#backButton:hover {
+    -fx-opacity: 0.9;
+    -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.4), 8, 0, 0, 0);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+}
+
+#backButton:pressed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+/* Add these rules at the end of the file */
+
+/* Ensure menu items have hand cursor */
+.menu-item {
+    -fx-cursor: hand;
+}
+
+/* Ensure user menu button has hand cursor */
+.user-menu-btn {
+    -fx-cursor: hand;
+}
+
+/* Make sure all items in the menu button show the hand cursor */
+.user-menu-btn .menu-item {
+    -fx-cursor: hand;
+}
+
+/* Ensure consistent cursor styling for clickable elements */
+.clickable-logo, .clickable-label, .button, .menu-button {
+    -fx-cursor: hand;
+}

@@ -1,0 +1,206 @@
+/* Định dạng chung */
+* {
+    -fx-font-family: "Arial";
+}
+
+.root {
+    -fx-background-color: white;
+}
+
+/* Header */
+.order-header {
+    -fx-background-color: linear-gradient(to right, #865DFF, #5CB8E4);
+    -fx-padding: 0;
+}
+
+.clickable-logo, .clickable-label {
+    -fx-cursor: hand;
+}
+
+.clickable-label:hover {
+    -fx-underline: true;
+}
+
+/* User Menu */
+.user-menu-btn {
+    -fx-cursor: hand;
+}
+
+/* Main Content */
+.main-content {
+    -fx-background-color: #f8f9fa;
+}
+
+/* Back Button */
+.back-button {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 4px;
+    -fx-padding: 5px 10px;
+}
+
+.back-button:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.05);
+    -fx-border-color: #aaaaaa;
+}
+
+.back-button-label {
+    -fx-text-fill: #444444;
+    -fx-font-size: 12px;
+}
+
+/* History Title */
+.history-title-container {
+    -fx-background-color: white;
+    -fx-padding: 10 15;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+
+.history-title {
+    -fx-text-fill: #333333;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+/* Orders Table */
+.order-scroll {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.order-scroll > .viewport {
+    -fx-background-color: transparent;
+}
+
+.orders-table {
+    -fx-background-color: white;
+    -fx-table-cell-border-color: transparent;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+
+.orders-table .column-header {
+    -fx-background-color: #865DFF;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10 5;
+}
+
+.orders-table .column-header .label {
+    -fx-text-fill: white;
+}
+
+.orders-table .table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #f0f0f0 transparent;
+    -fx-padding: 5;
+}
+
+.orders-table .table-row-cell:odd {
+    -fx-background-color: #f9f9f9;
+}
+
+.orders-table .table-row-cell:hover {
+    -fx-background-color: rgba(134, 93, 255, 0.1);
+    -fx-cursor: hand;
+}
+
+/* Status Styling */
+.status-confirmed {
+    -fx-text-fill: #28a745;
+    -fx-font-weight: bold;
+}
+
+.status-canceled {
+    -fx-text-fill: #dc3545;
+    -fx-font-weight: bold;
+}
+
+/* Action Buttons */
+.view-button {
+    -fx-background-color: #865DFF;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 15;
+    -fx-cursor: hand;
+}
+
+.view-button:hover {
+    -fx-background-color: #734BE0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 3, 0, 0, 1);
+}
+
+.cancel-button {
+    -fx-background-color: #dc3545;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 15;
+    -fx-cursor: hand;
+}
+
+.cancel-button:hover {
+    -fx-background-color: #c82333;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 3, 0, 0, 1);
+}
+
+/* Style cho menu item */
+.menu-item {
+    -fx-padding: 8px 12px;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+.menu-item:hover {
+    -fx-background-color: rgba(134, 93, 255, 0.1);
+    -fx-cursor: hand;
+}
+
+.menu-item:focused {
+    -fx-background-color: rgba(134, 93, 255, 0.2);
+    -fx-cursor: hand;
+}
+
+/* Đảm bảo cursor hand khi di chuột vào các thành phần của menu item */
+.menu-item > .graphic {
+    -fx-cursor: hand;
+}
+
+.menu-item > .label {
+    -fx-cursor: hand;
+}
+/* Thêm space dưới bảng */
+.orders-table {
+    -fx-background-color: white;
+    -fx-table-cell-border-color: transparent;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);
+    -fx-padding: 0 0 30 0; /* Thêm padding dưới */
+}
+
+/* Cải thiện chiều cao hàng */
+.orders-table .table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #f0f0f0 transparent;
+    -fx-padding: 8; /* Tăng padding của mỗi hàng */
+    -fx-min-height: 40; /* Đảm bảo mỗi hàng đủ cao */
+}
+
+/* Thêm không gian cho main-content */
+.main-content {
+    -fx-background-color: #f8f9fa;
+    -fx-padding: 0 0 20 0; /* Thêm padding phía dưới */
+}
+.orders-table .table-cell {
+    -fx-alignment: CENTER;
+}
+/* Hiệu ứng hover cho nút Back */
+.back-button {
+    -fx-cursor: hand;
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+.back-button:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-background-color: rgba(134, 93, 255, 0.8);
+}

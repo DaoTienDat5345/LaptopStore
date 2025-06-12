@@ -1,0 +1,552 @@
+/* Định dạng chung */
+* {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Định dạng cho các trường nhập liệu */
+.text-field {
+    -fx-background-color: #f8f8f8;
+    -fx-background-radius: 10;
+    -fx-border-color: #E6E6FA;
+    -fx-border-radius: 10;
+    -fx-border-width: 1px;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+}
+
+/* Hiệu ứng hover cho text field */
+.text-field:hover {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #8A2BE2;
+    -fx-effect: dropshadow(three-pass-box, rgba(138, 43, 226, 0.3), 5, 0, 0, 0);
+}
+
+/* Focus cho text field */
+.text-field:focused {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #8A2BE2;
+    -fx-border-width: 2px;
+}
+
+/* Text field readonly */
+.text-field-readonly {
+    -fx-background-color: #f8f8f8;
+    -fx-background-radius: 10;
+    -fx-border-color: #E6E6FA;
+    -fx-border-radius: 10;
+    -fx-text-fill: #666666;
+    -fx-alignment: center;
+}
+
+/* Định dạng cho các dropdown */
+.combo-box {
+    -fx-background-color: #f8f8f8;
+    -fx-background-radius: 10;
+    -fx-border-color: #E6E6FA;
+    -fx-border-radius: 10;
+    -fx-border-width: 1px;
+    -fx-font-size: 14px;
+}
+
+/* Hiệu ứng hover cho combo box */
+.combo-box:hover {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #8A2BE2;
+    -fx-effect: dropshadow(three-pass-box, rgba(138, 43, 226, 0.3), 5, 0, 0, 0);
+}
+
+/* Định dạng cho combo box khi mở */
+.combo-box:showing {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #8A2BE2;
+    -fx-border-width: 2px;
+}
+
+/* Định dạng cho các menu item trong combo box */
+.combo-box .list-cell {
+    -fx-padding: 5px;
+    -fx-text-fill: #333333;
+}
+
+/* Định dạng cho nút ngôn ngữ */
+.lang-button {
+    -fx-background-radius: 20;
+    -fx-border-color: #8A2BE2;
+    -fx-border-radius: 20;
+    -fx-background-color: transparent;
+    -fx-text-fill: #8A2BE2;
+    -fx-cursor: hand;
+}
+
+/* Hiệu ứng hover cho nút ngôn ngữ */
+.lang-button:hover {
+    -fx-background-color: rgba(138, 43, 226, 0.1);
+    -fx-text-fill: #6A1B9A;
+    -fx-effect: dropshadow(three-pass-box, rgba(138, 43, 226, 0.3), 5, 0, 0, 0);
+}
+
+/* Định dạng cho nút thay đổi */
+.change-button {
+    -fx-background-radius: 20;
+    -fx-background-color: linear-gradient(to right, #6A1B9A, #9C27B0);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);
+}
+
+/* Hiệu ứng hover cho nút thay đổi */
+.change-button:hover {
+    -fx-background-color: linear-gradient(to right, #9C27B0, #6A1B9A);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 8, 0, 0, 0);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* Hiệu ứng khi nhấn nút thay đổi */
+.change-button:pressed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+/* Định dạng cho nút đổi mật khẩu */
+.password-button {
+    -fx-background-radius: 20;
+    -fx-background-color: #D81B60;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+/* Hiệu ứng hover cho nút đổi mật khẩu */
+.password-button:hover {
+    -fx-background-color: #C2185B;
+    -fx-effect: dropshadow(three-pass-box, rgba(216, 27, 96, 0.4), 5, 0, 0, 0);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* Hiệu ứng khi nhấn nút đổi mật khẩu */
+.password-button:pressed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+/* Viền avatar */
+#avatarView {
+    -fx-effect: dropshadow(three-pass-box, rgba(138, 43, 226, 0.5), 10, 0, 0, 0);
+}
+
+/* Thay đổi màu background khi di chuột qua form chính */
+#mainFormPane:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(138, 43, 226, 0.4), 15, 0, 0, 0);
+}
+/* Thêm vào cuối file CSS hiện có */
+
+/* Định dạng cho nút áp dụng */
+.apply-button {
+    -fx-background-radius: 20;
+    -fx-background-color: linear-gradient(to right, #4CAF50, #2E7D32);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);
+}
+
+/* Hiệu ứng hover cho nút áp dụng */
+.apply-button:hover {
+    -fx-background-color: linear-gradient(to right, #2E7D32, #4CAF50);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 8, 0, 0, 0);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* Hiệu ứng khi nhấn nút áp dụng */
+.apply-button:pressed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+/* Thêm vào file CSS hiện có */
+
+.display-field {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-style: dashed;
+    -fx-border-color: #cccccc;
+    -fx-alignment: center;
+    -fx-font-size: 16px;
+    -fx-text-fill: #333333;
+    -fx-padding: 5px;
+    -fx-min-width: 300px;
+}
+
+.info-label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #555555;
+    -fx-font-weight: normal;
+}
+/* Định dạng các trường hiển thị */
+.display-field {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-style: solid;
+    -fx-border-color: #cccccc;
+    -fx-text-fill: #333333;
+    -fx-font-size: 16px;
+    -fx-padding: 5px 0;
+}
+
+.info-label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #888888;
+    -fx-font-family: "Arial";
+}
+
+/* Định dạng cho nút ngôn ngữ */
+.lang-button {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-text-fill: #865DFF;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 5px 10px;
+}
+
+.lang-button:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+/* Định dạng cho nút thay đổi */
+.change-button {
+    -fx-background-color: linear-gradient(to right, #1E90FF, #4169E1);
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+}
+
+.change-button:hover {
+    -fx-background-color: linear-gradient(to right, #4169E1, #1E90FF);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0, 0, 0);
+}
+
+/* Định dạng cho nút áp dụng */
+.apply-button {
+    -fx-background-color: linear-gradient(to right, #4CAF50, #2E7D32);
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+}
+
+.apply-button:hover {
+    -fx-background-color: linear-gradient(to right, #2E7D32, #4CAF50);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0, 0, 0);
+}
+
+/* Định dạng cho nút đổi mật khẩu */
+.password-button {
+    -fx-background-color: #D32F2F;
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+.password-button:hover {
+    -fx-background-color: #B71C1C;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0, 0, 0);
+}
+/* Định dạng các trường hiển thị */
+.display-field {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-style: solid;
+    -fx-border-color: #cccccc;
+    -fx-text-fill: #333333;
+    -fx-font-size: 16px;
+    -fx-padding: 5px 0;
+}
+
+.info-label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #888888;
+    -fx-font-family: "Arial";
+}
+
+/* Định dạng cho các trường nhập liệu */
+.text-field {
+    -fx-background-color: #f8f8f8;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px;
+    -fx-font-size: 14px;
+}
+
+/* Định dạng cho các combo box */
+.combo-box {
+    -fx-background-color: #f8f8f8;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 4px;
+    -fx-font-size: 14px;
+}
+
+/* Định dạng cho nút thay đổi */
+.change-button {
+    -fx-background-color: linear-gradient(to right, #1E90FF, #4169E1);
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+}
+
+/* Định dạng cho nút áp dụng */
+.apply-button {
+    -fx-background-color: linear-gradient(to right, #4CAF50, #2E7D32);
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+}
+
+/* Định dạng cho nút đổi mật khẩu */
+.password-button {
+    -fx-background-color: #D32F2F;
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+/* Định dạng cho nút ngôn ngữ */
+.lang-button {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-text-fill: #865DFF;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 5px 10px;
+}
+
+/* Định dạng cho trường chỉ đọc */
+.text-field-readonly {
+    -fx-background-color: #f0f0f0;
+    -fx-opacity: 0.9;
+    -fx-text-fill: #333333;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 3px;
+}
+/* Định dạng cho nút thay đổi - Từ màu xanh đậm thành tím đậm */
+.change-button {
+    -fx-background-color: linear-gradient(to right, #6A1B9A, #9C27B0);
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);
+}
+
+/* Hiệu ứng hover cho nút thay đổi */
+.change-button:hover {
+    -fx-background-color: linear-gradient(to right, #9C27B0, #6A1B9A);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 8, 0, 0, 0);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* Hiệu ứng khi nhấn nút thay đổi */
+.change-button:pressed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+/* Định dạng cho nút đổi mật khẩu - Giữ màu đỏ mặc định */
+.password-button {
+    -fx-background-color: #D32F2F;
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+/* Hiệu ứng hover cho nút đổi mật khẩu - Chuyển sang gradient giống background */
+.password-button:hover {
+    -fx-background-color: linear-gradient(to right, #8A2BE2, #C71585);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0, 0, 0);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* Hiệu ứng khi nhấn nút đổi mật khẩu */
+.password-button:pressed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+/* Định dạng cho nút thay đổi - Từ màu xanh đậm thành tím đậm */
+.change-button {
+    -fx-background-color: linear-gradient(to right, #6A1B9A, #9C27B0);
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);
+}
+
+/* Hiệu ứng hover cho nút thay đổi */
+.change-button:hover {
+    -fx-background-color: linear-gradient(to right, #9C27B0, #6A1B9A);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 8, 0, 0, 0);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* Hiệu ứng khi nhấn nút thay đổi */
+.change-button:pressed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+/* Định dạng cho nút đổi mật khẩu - Giữ màu đỏ mặc định */
+.password-button {
+    -fx-background-color: #D32F2F;
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+/* Hiệu ứng hover cho nút đổi mật khẩu - Chuyển sang gradient giống background */
+.password-button:hover {
+    -fx-background-color: linear-gradient(to right, #8A2BE2, #C71585);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0, 0, 0);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* Hiệu ứng khi nhấn nút đổi mật khẩu */
+.password-button:pressed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+/* Định dạng các trường hiển thị */
+.display-field {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-style: solid;
+    -fx-border-color: #cccccc;
+    -fx-text-fill: #333333;
+    -fx-font-size: 16px;
+    -fx-padding: 5px 0;
+}
+
+.info-label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #888888;
+    -fx-font-family: "Arial";
+}
+
+/* Định dạng cho các trường nhập liệu */
+.text-field {
+    -fx-background-color: #f8f8f8;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px;
+    -fx-font-size: 14px;
+}
+
+/* Định dạng cho các combo box */
+.combo-box {
+    -fx-background-color: #f8f8f8;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 4px;
+    -fx-font-size: 14px;
+}
+
+/* Định dạng cho nút ngôn ngữ */
+.lang-button {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-text-fill: #865DFF;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 5px 10px;
+}
+
+/* Định dạng cho trường chỉ đọc */
+.text-field-readonly {
+    -fx-background-color: #f0f0f0;
+    -fx-opacity: 0.9;
+    -fx-text-fill: #333333;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 3px;
+}
+
+/* Định dạng cho nút áp dụng */
+.apply-button {
+    -fx-background-color: linear-gradient(to right, #4CAF50, #2E7D32);
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+}
+
+.apply-button:hover {
+    -fx-background-color: linear-gradient(to right, #2E7D32, #4CAF50);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0, 0, 0);
+}
+/* Cập nhật định dạng cho nút back */
+/* Cập nhật định dạng cho nút back - Làm cho nó tròn và vừa với icon */
+.back-button {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 2);
+    -fx-cursor: hand;
+    -fx-min-height: 50px;
+    -fx-min-width: 50px;
+    -fx-max-height: 50px;
+    -fx-max-width: 50px;
+    -fx-padding: 5px;
+    -fx-border-color: rgba(134, 93, 255, 0.3);
+    -fx-border-radius: 50%;
+    -fx-border-width: 1px;
+    -fx-content-display: graphic-only; /* Chỉ hiển thị biểu tượng */
+}
+
+.back-button:hover {
+    -fx-background-color: rgba(255,255,255,0.95) !important;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 8, 0, 0, 3);
+    -fx-border-color: #865DFF;
+    -fx-border-width: 2px;
+}
+
+.back-button:pressed {
+    -fx-background-color: rgba(134, 93, 255, 0.1) !important;
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}

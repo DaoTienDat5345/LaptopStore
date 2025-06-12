@@ -1,0 +1,477 @@
+/* Định dạng chung */
+* {
+    -fx-font-family: "Arial";
+}
+
+.root {
+    -fx-background-color: white;
+}
+
+/* Header */
+.order-header {
+    -fx-background-color: linear-gradient(to right, #865DFF, #5CB8E4);
+    -fx-padding: 0;
+}
+
+.clickable-logo, .clickable-label {
+    -fx-cursor: hand;
+}
+
+.clickable-label:hover {
+    -fx-underline: true;
+}
+
+/* Login gradient button */
+.login-gradient-btn {
+    -fx-background-color: linear-gradient(to right, #865DFF, #5CB8E4);
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-color: white;
+    -fx-border-width: 1.5;
+    -fx-cursor: hand;
+}
+
+.login-gradient-btn:hover {
+    -fx-background-color: linear-gradient(to right, #5CB8E4, #865DFF);
+    -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.3), 5, 0, 0, 0);
+}
+
+.header-btn-label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* User Menu */
+.user-menu-btn {
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-mark-color: transparent;
+    -fx-focus-traversable: false;
+    -fx-cursor: hand;
+}
+
+/* Order Info Section */
+.order-info-section {
+    -fx-background-color: #f8f8f8;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.info-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.info-value {
+    -fx-font-size: 14px;
+    -fx-text-fill: #555555;
+}
+
+/* Address Section */
+.address-section {
+    -fx-background-color: #f8f8f8;
+    -fx-padding: 10 20 10 20;
+}
+
+.address-combo, .address-field {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5;
+    -fx-border-width: 1;
+    -fx-padding: 5;
+}
+
+.address-combo:hover, .address-field:hover {
+    -fx-border-color: #5CB8E4;
+}
+
+.address-combo:focused, .address-field:focused {
+    -fx-border-color: #865DFF;
+    -fx-effect: dropshadow(three-pass-box, rgba(134, 93, 255, 0.2), 1, 0, 0, 0);
+}
+
+/* Order Table */
+.order-table {
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.order-table .column-header {
+    -fx-background-color: linear-gradient(to right, #865DFF, #5CB8E4);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.order-table .column-header .label {
+    -fx-text-fill: white;
+    -fx-padding: 8 5 8 5;
+}
+
+.order-table .table-row-cell {
+    -fx-background-color: white;
+}
+
+.order-table .table-row-cell:odd {
+    -fx-background-color: #f8f8f8;
+}
+
+.order-table .table-row-cell:hover {
+    -fx-background-color: #e6e6e6;
+}
+
+/* Order Summary */
+.order-summary {
+    -fx-padding: 10 15 10 15;
+    -fx-background-color: #f8f8f8;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1 0 0 0;
+}
+
+.total-price {
+    -fx-text-fill: #865DFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+}
+
+/* Payment Button */
+.payment-button {
+    -fx-background-color: linear-gradient(to right, #865DFF, #5CB8E4);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 25;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0, 0, 0);
+}
+
+.payment-button:hover {
+    -fx-background-color: linear-gradient(to right, #5CB8E4, #865DFF);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 6, 0, 0, 0);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.payment-button:pressed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+/* ScrollPane customization */
+.content-area {
+    -fx-background-color: white;
+    -fx-background: white;
+    -fx-border-width: 0;
+    -fx-padding: 0;
+}
+
+.content-area > .viewport {
+    -fx-background-color: white;
+}
+
+.content-area > .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 12;
+}
+
+.content-area > .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-pref-height: 12;
+}
+
+.content-area > .scroll-bar > .thumb {
+    -fx-background-color: #5CB8E4;
+    -fx-background-insets: 2;
+    -fx-background-radius: 5;
+}
+
+.content-area > .corner {
+    -fx-background-color: transparent;
+}
+.back-button {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 4px;
+    -fx-padding: 5px 10px;
+}
+
+.back-button:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.05);
+    -fx-border-color: #aaaaaa;
+}
+
+.back-button-label {
+    -fx-text-fill: #444444;
+    -fx-font-size: 12px;
+}
+.clickable-icon {
+    -fx-cursor: hand;
+}
+/* Đảm bảo text trong ComboBox luôn hiển thị đúng */
+.table-cell .combo-box {
+    -fx-text-fill: black;
+    -fx-background-color: white;
+}
+
+.table-cell .combo-box .cell {
+    -fx-text-fill: black;
+}
+
+.table-cell .combo-box-popup .list-view .list-cell {
+    -fx-text-fill: black; 
+}
+
+.table-cell .combo-box-popup .list-view .list-cell:selected {
+    -fx-background-color: #5CB8E4;
+    -fx-text-fill: white;
+}
+/* Đảm bảo text trong tất cả các cell của bảng luôn hiển thị rõ */
+.table-cell {
+    -fx-text-fill: black;
+}
+
+/* Đảm bảo text trong combo box luôn hiển thị rõ */
+.combo-box .list-cell {
+    -fx-text-fill: black;
+}
+
+.combo-box-popup .list-cell {
+    -fx-text-fill: black;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #E8E8E8;
+}
+
+.combo-box-popup .list-cell:selected {
+    -fx-background-color: #5CB8E4;
+    -fx-text-fill: white;
+}
+
+/* Tùy chỉnh style khi cell được chọn */
+.table-row-cell:selected {
+    -fx-background-color: rgba(91, 184, 228, 0.1);
+    -fx-text-fill: black;
+}
+/* Style cho user menu giống Home.css */
+.user-menu-btn {
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-mark-color: transparent;
+    -fx-focus-traversable: false;
+    -fx-cursor: hand;
+    -fx-min-width: 42px;
+    -fx-min-height: 42px;
+    -fx-max-width: 42px;
+    -fx-max-height: 42px;
+    -fx-pref-width: 42px;
+    -fx-pref-height: 42px;
+}
+
+/* Style cho các item trong menu */
+.menu-item {
+    -fx-padding: 8px 12px;
+    -fx-font-size: 14px;
+}
+
+.menu-item:hover {
+    -fx-background-color: rgba(134, 93, 255, 0.1);
+}
+
+.menu-item:focused {
+    -fx-background-color: rgba(134, 93, 255, 0.2);
+}
+
+/* Style cho menu popup */
+.context-menu {
+    -fx-background-color: white;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 4);
+    -fx-padding: 8px 4px;
+}
+/* Thêm vào d:\HK2-nam2\Stores\src\main\resources\com\example\stores\css\Orders.css */
+
+/* Card styles for OrderDetails */
+.card-section {
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 15;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+
+.card-header {
+    -fx-padding: 0 0 10 0;
+    -fx-border-color: transparent transparent #e0e0e0 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.card-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #865DFF;
+}
+
+/* Status styling */
+.status-value {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #28a745;
+    -fx-background-color: rgba(40, 167, 69, 0.1);
+    -fx-background-radius: 4;
+    -fx-padding: 2 8;
+}
+
+.status-value.canceled {
+    -fx-text-fill: #dc3545;
+    -fx-background-color: rgba(220, 53, 69, 0.1);
+}
+
+.status-value.pending {
+    -fx-text-fill: #ffc107;
+    -fx-background-color: rgba(255, 193, 7, 0.1);
+}
+
+.status-value.processing {
+    -fx-text-fill: #17a2b8;
+    -fx-background-color: rgba(23, 162, 184, 0.1);
+}
+
+/* Print button styling */
+.payment-button .text {
+    -fx-fill: white;
+}
+
+.payment-button ImageView {
+    -fx-opacity: 1;
+}
+/* Style cho spinner số lượng */
+.quantity-spinner {
+    -fx-pref-width: 80px;
+    -fx-background-color: white;
+    -fx-border-color: #7B68EE;
+    -fx-border-radius: 4px;
+}
+
+.quantity-spinner .increment-arrow-button,
+.quantity-spinner .decrement-arrow-button {
+    -fx-background-color: #7B68EE;
+    -fx-text-fill: white;
+}
+
+.quantity-spinner .increment-arrow,
+.quantity-spinner .decrement-arrow {
+    -fx-background-color: white;
+}
+
+/* Style cho spinner khi focus */
+.quantity-spinner:focused {
+    -fx-border-color: #5CB8E4;
+    -fx-effect: dropshadow(gaussian, rgba(92, 184, 228, 0.3), 5, 0, 0, 0);
+}
+
+/* Style cho text field trong spinner */
+.quantity-spinner .text-field {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+    -fx-alignment: center;
+}
+.user-menu-btn {
+    -fx-cursor: hand;
+}
+
+.clickable-logo, .clickable-label {
+    -fx-cursor: hand;
+}
+/* Style cho các item trong menu */
+.menu-item {
+    -fx-padding: 8px 12px;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;  /* Thêm cursor hand */
+}
+
+.menu-item:hover {
+    -fx-background-color: rgba(134, 93, 255, 0.1);
+    -fx-cursor: hand;
+}
+
+.menu-item:focused {
+    -fx-background-color: rgba(134, 93, 255, 0.2);
+    -fx-cursor: hand;
+}
+
+/* Đảm bảo cursor hand khi di chuột vào các thành phần của menu item */
+.menu-item > .graphic {
+    -fx-cursor: hand;
+}
+
+.menu-item > .label {
+    -fx-cursor: hand;
+}
+/* Điều chỉnh vị trí trường nhập số điện thoại */
+#phoneField {
+    -fx-translate-y: 5px;  /* Dịch xuống 5px so với vị trí hiện tại */
+}
+
+/* Điều chỉnh vị trí nhãn "Số điện thoại:" để căn chỉnh tương ứng */
+#phoneNumberTitleLabel {
+    -fx-translate-y: 5px;
+}
+/* Style cho thông báo lỗi số điện thoại */
+#phoneErrorLabel {
+    -fx-padding: 6 0 0 0;  /* Thêm khoảng cách 3px phía trên */
+    -fx-translate-y: 2px;  /* Dịch xuống thêm 2px */
+    -fx-text-fill: red;
+    -fx-font-size: 11px;
+}
+/* Thêm vào file Orders.css */
+.payment-button {
+    -fx-background-radius: 5;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 3, 0, 0, 1);
+}
+
+.payment-button:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 5, 0, 0, 2);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+#printButton {
+    -fx-background-color: #4CAF50;
+}
+
+#reviewButton {
+    -fx-background-color: #FFC107;
+}
+
+#cancelOrderButton {
+    -fx-background-color: #f44336;
+}
+.button-footer {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-width: 1px 0 0 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 0, 4, 0, -2);
+}

@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<StackPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stores.controller.CustomPCBuilderController">
+    <BorderPane prefHeight="650" prefWidth="1000" stylesheets="@../css/CustomPCBuilder.css">
+        <top>
+            <!-- Header similar to Home.fxml -->
+            <VBox>
+                <AnchorPane fx:id="headerPane" prefHeight="70.0" prefWidth="1000" styleClass="top-header">
+                    <!-- Nền header gradient -->
+                    <Rectangle fill="linear-gradient(to right, #865DFF, #5CB8E4)" height="70" width="1000" />
+
+                    <!-- Logo CELLCOMP -->
+                    <Label fx:id="logoLabel" layoutX="70.0" layoutY="-2.0" onMouseClicked="#goBackToHome" prefHeight="44.0" prefWidth="194.0" style="-fx-font-size: 30px; -fx-font-family: 'Arial Black'; -fx-text-fill: white;                            -fx-effect: dropshadow(gaussian, #00000033, 1, 0.5, 0, 0); -fx-cursor: hand;" text="CELLCOMP" />
+
+                    <!-- Seller Center -->
+                    <Label fx:id="sellerCenterLabel" layoutX="72.0" layoutY="33.0" onMouseClicked="#goBackToHome" prefHeight="30.0" prefWidth="74.0" style="-fx-font-size: 12px; -fx-text-fill: white; -fx-cursor: hand;" text="Seller center" />
+
+                    <!-- STORE -->
+                    <Label fx:id="storeLabel" layoutX="146.0" layoutY="29.0" onMouseClicked="#goBackToHome" style="-fx-font-size: 24px; -fx-font-family: 'Arial Black'; -fx-text-fill: white; -fx-cursor: hand;" text="STORE" />
+
+                    <!-- Giỏ hàng Button - Thêm styleClass để áp dụng hover -->
+                    <Button fx:id="cartButton" layoutX="799.0" layoutY="18.0" onAction="#goToCart" prefHeight="38" prefWidth="134.0" styleClass="login-gradient-btn, hover-button">
+                        <graphic>
+                            <HBox alignment="CENTER" spacing="5">
+                                <ImageView fitHeight="20" fitWidth="20">
+                                    <image>
+                                        <Image url="@../images/layout/Cart.png" />
+                                    </image>
+                                </ImageView>
+                                <Label fx:id="cartLabel" styleClass="header-btn-label" text="Giỏ hàng" />
+                            </HBox>
+                        </graphic>
+                    </Button>
+
+                    <!-- User Icon - Cập nhật để giống Home.fxml -->
+                    <MenuButton fx:id="userMenuButton" layoutX="949.0" layoutY="22.0" popupSide="BOTTOM" style="-fx-padding: 0; -fx-background-color: transparent; -fx-mark-color: transparent;" styleClass="icon-feature-btn, user-menu-btn, hover-button">
+                        <items>
+                            <MenuItem fx:id="accountInfoMenuItem" text="Thông tin tài khoản">
+                                <graphic>
+                                    <ImageView fitHeight="16.0" fitWidth="16.0">
+                                        <image>
+                                            <Image url="@../images/layout/user_icon.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
+                            </MenuItem>
+                            <MenuItem fx:id="languageSwitchMenuItem" onAction="#switchLanguage" text="Chuyển đổi ngôn ngữ">
+                                <graphic>
+                                    <ImageView fx:id="languageIcon" fitHeight="16.0" fitWidth="16.0">
+                                        <image>
+                                            <Image url="@../images/layout/flag_en.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
+                            </MenuItem>
+                            <MenuItem fx:id="orderHistoryMenuItem" text="Lịch sử mua hàng">
+                                <graphic>
+                                    <ImageView fitHeight="16.0" fitWidth="16.0">
+                                        <image>
+                                            <Image url="@../images/layout/history_icon.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
+                            </MenuItem>
+                            <SeparatorMenuItem />
+                            <MenuItem fx:id="logoutMenuItem" onAction="#handleLogout" text="Đăng xuất">
+                                <graphic>
+                                    <ImageView fitHeight="16.0" fitWidth="16.0">
+                                        <image>
+                                            <Image url="@../images/layout/logout_icon.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
+                            </MenuItem>
+                        </items>
+                    </MenuButton>
+
+                    <!-- Logo hình tròn -->
+                    <ImageView fx:id="logoIcon" fitHeight="45.0" fitWidth="45.0" layoutX="14.0" layoutY="13.0" onMouseClicked="#goBackToHome" styleClass="hover-button">
+                        <image>
+                            <Image url="@../images/layout/Logo_Comp.png" />
+                        </image>
+                    </ImageView>
+                    <ImageView fitHeight="35.0" fitWidth="37.0" layoutX="947.0" layoutY="20.0">
+                        <image>
+                            <Image url="@../images/layout/RegisterUser_icon.png" />
+                        </image>
+                    </ImageView>
+                    <Label fx:id="titleLabel" layoutX="386.0" layoutY="20.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;" text="THIẾT KẾ  MÁY TÍNH" />
+                </AnchorPane>
+            </VBox>
+        </top>
+
+        <center>
+            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: white;">
+                <content>
+                    <VBox spacing="20" style="-fx-background-color: white; -fx-padding: 20 40 40 40;">
+                        <!-- Title replaced with info text only -->
+                        <HBox alignment="CENTER_RIGHT" spacing="20">
+                            <Label fx:id="totalCostLabel" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #e74c3c;" text="Chi phí dự tính: 0 đ" />
+                            <Button fx:id="resetButton" onAction="#resetSelection" styleClass="reset-button, hover-button" text="LÀM MỚI">
+                                <graphic>
+                                    <ImageView fitHeight="16" fitWidth="16">
+                                        <Image url="@../images/layout/Reload.png" />
+                                    </ImageView>
+                                </graphic>
+                            </Button>
+                        </HBox>
+
+                        <Label style="-fx-font-size: 14px;" text="Vui lòng chọn linh kiện bạn cần để xây dựng cấu hình máy tính riêng cho bạn" />
+
+                        <!-- Component Selection -->
+                        <VBox fx:id="componentsContainer" spacing="15">
+                            <!-- CPU Selection -->
+                            <HBox alignment="CENTER_LEFT" spacing="10" styleClass="component-row">
+                                <Label prefWidth="150" styleClass="component-label" text="1. CPU" />
+                                <VBox fx:id="cpuSelectionBox" HBox.hgrow="ALWAYS">
+                                    <Button onAction="#selectComponent" styleClass="component-select-button, hover-button" text="Chọn CPU" userData="CPU">
+                                        <graphic>
+                                            <ImageView fitHeight="16" fitWidth="16">
+                                                <Image url="@../images/layout/Add.png" />
+                                            </ImageView>
+                                        </graphic>
+                                    </Button>
+                                </VBox>
+                            </HBox>
+
+                            <!-- Mainboard Selection -->
+                            <HBox alignment="CENTER_LEFT" spacing="10" styleClass="component-row">
+                                <Label prefWidth="150" styleClass="component-label" text="2. Mainboard" />
+                                <VBox fx:id="mainboardSelectionBox" HBox.hgrow="ALWAYS">
+                                    <Button onAction="#selectComponent" styleClass="component-select-button, hover-button" text="Chọn Mainboard" userData="MainBoard">
+                                        <graphic>
+                                            <ImageView fitHeight="16" fitWidth="16">
+                                                <Image url="@../images/layout/Add.png" />
+                                            </ImageView>
+                                        </graphic>
+                                    </Button>
+                                </VBox>
+                            </HBox>
+
+                            <!-- Các phần tử khác giữ nguyên nhưng thêm hover-button class -->
+                            <!-- RAM Selection -->
+                            <HBox alignment="CENTER_LEFT" spacing="10" styleClass="component-row">
+                                <Label prefWidth="150" styleClass="component-label" text="3. RAM" />
+                                <VBox fx:id="ramSelectionBox" HBox.hgrow="ALWAYS">
+                                    <Button onAction="#selectComponent" styleClass="component-select-button, hover-button" text="Chọn RAM" userData="RAM">
+                                        <graphic>
+                                            <ImageView fitHeight="16" fitWidth="16">
+                                                <Image url="@../images/layout/Add.png" />
+                                            </ImageView>
+                                        </graphic>
+                                    </Button>
+                                </VBox>
+                            </HBox>
+
+                            <!-- HDD Selection -->
+                            <HBox alignment="CENTER_LEFT" spacing="10" styleClass="component-row">
+                                <Label prefWidth="150" styleClass="component-label" text="4. HDD" />
+                                <VBox fx:id="hddSelectionBox" HBox.hgrow="ALWAYS">
+                                    <Button onAction="#selectComponent" styleClass="component-select-button, hover-button" text="Chọn HDD" userData="HDD">
+                                        <graphic>
+                                            <ImageView fitHeight="16" fitWidth="16">
+                                                <Image url="@../images/layout/Add.png" />
+                                            </ImageView>
+                                        </graphic>
+                                    </Button>
+                                </VBox>
+                            </HBox>
+
+                            <!-- SSD Selection -->
+                            <HBox alignment="CENTER_LEFT" spacing="10" styleClass="component-row">
+                                <Label prefWidth="150" styleClass="component-label" text="5. SSD" />
+                                <VBox fx:id="ssdSelectionBox" HBox.hgrow="ALWAYS">
+                                    <Button onAction="#selectComponent" styleClass="component-select-button, hover-button" text="Chọn SSD" userData="SSD">
+                                        <graphic>
+                                            <ImageView fitHeight="16" fitWidth="16">
+                                                <Image url="@../images/layout/Add.png" />
+                                            </ImageView>
+                                        </graphic>
+                                    </Button>
+                                </VBox>
+                            </HBox>
+
+                            <!-- VGA Selection -->
+                            <HBox alignment="CENTER_LEFT" spacing="10" styleClass="component-row">
+                                <Label prefWidth="150" styleClass="component-label" text="6. VGA" />
+                                <VBox fx:id="vgaSelectionBox" HBox.hgrow="ALWAYS">
+                                    <Button onAction="#selectComponent" styleClass="component-select-button, hover-button" text="Chọn VGA" userData="VGA">
+                                        <graphic>
+                                            <ImageView fitHeight="16" fitWidth="16">
+                                                <Image url="@../images/layout/Add.png" />
+                                            </ImageView>
+                                        </graphic>
+                                    </Button>
+                                </VBox>
+                            </HBox>
+
+                            <!-- PSU Selection -->
+                            <HBox alignment="CENTER_LEFT" spacing="10" styleClass="component-row">
+                                <Label prefWidth="150" styleClass="component-label" text="7. Nguồn" />
+                                <VBox fx:id="psuSelectionBox" HBox.hgrow="ALWAYS">
+                                    <Button onAction="#selectComponent" styleClass="component-select-button, hover-button" text="Chọn Nguồn" userData="Nguồn">
+                                        <graphic>
+                                            <ImageView fitHeight="16" fitWidth="16">
+                                                <Image url="@../images/layout/Add.png" />
+                                            </ImageView>
+                                        </graphic>
+                                    </Button>
+                                </VBox>
+                            </HBox>
+
+                            <!-- Cooling Selection -->
+                            <HBox alignment="CENTER_LEFT" spacing="10" styleClass="component-row">
+                                <Label prefWidth="150" styleClass="component-label" text="8. Tản nhiệt" />
+                                <VBox fx:id="coolingSelectionBox" HBox.hgrow="ALWAYS">
+                                    <Button onAction="#selectComponent" styleClass="component-select-button, hover-button" text="Chọn Tản nhiệt" userData="Tản nhiệt">
+                                        <graphic>
+                                            <ImageView fitHeight="16" fitWidth="16">
+                                                <Image url="@../images/layout/Add.png" />
+                                            </ImageView>
+                                        </graphic>
+                                    </Button>
+                                </VBox>
+                            </HBox>
+
+                            <!-- Case Selection -->
+                            <HBox alignment="CENTER_LEFT" spacing="10" styleClass="component-row">
+                                <Label prefWidth="150" styleClass="component-label" text="9. Vỏ Case" />
+                                <VBox fx:id="caseSelectionBox" HBox.hgrow="ALWAYS">
+                                    <Button onAction="#selectComponent" styleClass="component-select-button, hover-button" text="Chọn Vỏ Case" userData="Case">
+                                        <graphic>
+                                            <ImageView fitHeight="16" fitWidth="16">
+                                                <Image url="@../images/layout/Add.png" />
+                                            </ImageView>
+                                        </graphic>
+                                    </Button>
+                                </VBox>
+                            </HBox>
+
+                            <!-- Monitor Selection -->
+                            <HBox alignment="CENTER_LEFT" spacing="10" styleClass="component-row">
+                                <Label prefWidth="150" styleClass="component-label" text="10. Màn Hình" />
+                                <VBox fx:id="monitorSelectionBox" HBox.hgrow="ALWAYS">
+                                    <Button onAction="#selectComponent" styleClass="component-select-button, hover-button" text="Chọn Màn Hình" userData="Màn hình">
+                                        <graphic>
+                                            <ImageView fitHeight="16" fitWidth="16">
+                                                <Image url="@../images/layout/Add.png" />
+                                            </ImageView>
+                                        </graphic>
+                                    </Button>
+                                </VBox>
+                            </HBox>
+
+                            <!-- Keyboard Selection -->
+                            <HBox alignment="CENTER_LEFT" spacing="10" styleClass="component-row">
+                                <Label prefWidth="150" styleClass="component-label" text="11. Bàn Phím" />
+                                <VBox fx:id="keyboardSelectionBox" HBox.hgrow="ALWAYS">
+                                    <Button onAction="#selectComponent" styleClass="component-select-button, hover-button" text="Chọn Bàn Phím" userData="Bàn phím">
+                                        <graphic>
+                                            <ImageView fitHeight="16" fitWidth="16">
+                                                <Image url="@../images/layout/Add.png" />
+                                            </ImageView>
+                                        </graphic>
+                                    </Button>
+                                </VBox>
+                            </HBox>
+
+                            <!-- Mouse Selection -->
+                            <HBox alignment="CENTER_LEFT" spacing="10" styleClass="component-row">
+                                <Label prefWidth="150" styleClass="component-label" text="12. Chuột" />
+                                <VBox fx:id="mouseSelectionBox" HBox.hgrow="ALWAYS">
+                                    <Button onAction="#selectComponent" styleClass="component-select-button, hover-button" text="Chọn Chuột" userData="Chuột">
+                                        <graphic>
+                                            <ImageView fitHeight="16" fitWidth="16">
+                                                <Image url="@../images/layout/Add.png" />
+                                            </ImageView>
+                                        </graphic>
+                                    </Button>
+                                </VBox>
+                            </HBox>
+
+                            <!-- Headphone Selection -->
+                            <HBox alignment="CENTER_LEFT" spacing="10" styleClass="component-row">
+                                <Label prefWidth="150" styleClass="component-label" text="13. Tai Nghe" />
+                                <VBox fx:id="headphoneSelectionBox" HBox.hgrow="ALWAYS">
+                                    <Button onAction="#selectComponent" styleClass="component-select-button, hover-button" text="Chọn Tai Nghe" userData="Tai nghe">
+                                        <graphic>
+                                            <ImageView fitHeight="16" fitWidth="16">
+                                                <Image url="@../images/layout/Add.png" />
+                                            </ImageView>
+                                        </graphic>
+                                    </Button>
+                                </VBox>
+                            </HBox>
+                        </VBox>
+
+                        <!-- Checkout Button -->
+                        <HBox alignment="CENTER" spacing="20" style="-fx-padding: 20 0 0 0;">
+                            <Button fx:id="checkoutButton" onAction="#proceedToCheckout" prefHeight="50" prefWidth="300" styleClass="checkout-button, hover-button" text="THANH TOÁN CẤU HÌNH">
+                                <font>
+                                    <Font name="System Bold" size="16.0" />
+                                </font>
+                                <graphic>
+                                    <ImageView fitHeight="24" fitWidth="24">
+                                        <Image url="@../images/layout/Cart.png" />
+                                    </ImageView>
+                                </graphic>
+                            </Button>
+                        </HBox>
+                    </VBox>
+                </content>
+            </ScrollPane>
+        </center>
+
+        <!-- Footer - similar to Home.fxml -->
+        <bottom>
+            <AnchorPane prefHeight="30" prefWidth="1000" style="-fx-background-color: #333333;">
+                <Label layoutX="400" layoutY="10" style="-fx-text-fill: white;" text="© 2025 CELLCOMP STORE. All rights reserved." />
+            </AnchorPane>
+        </bottom>
+    </BorderPane>
+</StackPane>

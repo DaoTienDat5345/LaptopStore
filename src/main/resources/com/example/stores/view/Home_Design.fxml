@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+
+<StackPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
+    <!-- BorderPane chính -->
+    <BorderPane prefHeight="650" prefWidth="1000" stylesheets="@../css/Home.css">
+        <!-- Header cố định phía trên -->
+        <top>
+            <AnchorPane fx:id="headerPane" prefHeight="70.0" prefWidth="1000" styleClass="top-header">
+                <!-- Nền header gradient -->
+                <Rectangle fill="linear-gradient(to right, #865DFF, #5CB8E4)" height="70" width="1000" />
+                
+                <!-- Logo hình tròn -->
+                <ImageView fx:id="logoIcon" fitHeight="45.0" fitWidth="45.0" layoutX="790.0" layoutY="14.0">
+                    <image>
+                        <Image url="@../images/layout/Logo_Comp.png" />
+                    </image>
+                </ImageView>
+                
+                <!-- Logo CELLCOMP -->
+                <Label fx:id="logoLabel" layoutX="70.0" layoutY="-2.0" prefHeight="44.0" prefWidth="194.0" style="-fx-font-size: 30px; -fx-font-family: 'Arial Black'; -fx-text-fill: white; -fx-effect: dropshadow(gaussian, #00000033, 1, 0.5, 0, 0);" text="CELLCOMP" />
+                
+                <!-- Seller Center -->
+                <Label fx:id="sellerCenterLabel" layoutX="72.0" layoutY="33.0" prefHeight="30.0" prefWidth="74.0" style="-fx-font-size: 12px; -fx-text-fill: white;" text="Seller center" />
+                
+                <!-- STORE -->
+                <Label fx:id="storeLabel" layoutX="146.0" layoutY="29.0" style="-fx-font-size: 24px; -fx-font-family: 'Arial Black'; -fx-text-fill: white;" text="STORE" />
+                
+                <!-- Danh mục Button - Thêm onAction để mở thanh danh mục -->
+                <Button fx:id="menuButton" layoutX="257.0" layoutY="16.0" onAction="#toggleCategory" prefHeight="38" prefWidth="143.0" styleClass="login-gradient-btn">
+                    <graphic>
+                        <HBox alignment="CENTER" spacing="5">
+                            <ImageView fitHeight="20" fitWidth="21.0">
+                                <image>
+                                    <Image url="@../images/layout/Menu.png" />
+                                </image>
+                            </ImageView>
+                            <Label prefHeight="22.0" prefWidth="78.0" styleClass="header-btn-label" text="Danh mục" />
+                        </HBox>
+                    </graphic>
+                </Button>
+                
+                <!-- Các phần tử khác trong header giữ nguyên -->
+            </AnchorPane>
+        </top>
+        
+        <center>
+            <ScrollPane fx:id="centerScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" pannable="true" style="-fx-background-color: white; -fx-background: white; -fx-border-color: transparent;">
+            <content>
+                
+                <!-- HIỂN THỊ TRONG SCENEBUILDER: Tất cả style cho categoryPane được áp dụng inline -->
+                <AnchorPane fx:id="categoryPane" maxWidth="226.0" minWidth="225" prefHeight="388.0" prefWidth="226.0" style="-fx-background-color: linear-gradient(to right, #4E54C8, #865DFF);                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 10, 0.5, 0.0, 0.0);               -fx-padding: 10px; -fx-background-radius: 0 15 15 0; -fx-border-radius: 0 15 15 0;" visible="true">
+                    
+                    <!-- Nút đóng X ở góc trên bên phải với style inline -->
+                    <Button fx:id="closeCategoryBtn" layoutX="190.0" layoutY="10.0" onAction="#toggleCategory" style="-fx-background-color: transparent; -fx-background-radius: 50%;                    -fx-min-width: 30px; -fx-min-height: 30px; -fx-max-width: 30px; -fx-max-height: 30px;">
+                        <graphic>
+                            <ImageView fitHeight="44.0" fitWidth="65.0">
+                                <image>
+                                    <Image url="@../images/layout/x.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    
+                    <!-- ScrollPane với màu nền rõ ràng và style inline -->
+                    <ScrollPane fx:id="categoryScrollPane" fitToWidth="true" hbarPolicy="NEVER" layoutY="40.0" prefHeight="350" prefWidth="205" style="-fx-background-color: rgba(0,0,0,0.3); -fx-background: rgba(0,0,0,0.3);                   -fx-border-color: rgba(255,255,255,0.2); -fx-padding: 0;" styleClass="category-scroll-pane" vbarPolicy="AS_NEEDED">
+                        <content>
+                            <!-- Danh sách các mục sản phẩm với ID và style inline -->
+                            <VBox alignment="TOP_CENTER" prefHeight="550.0" prefWidth="190" spacing="8" style="-fx-padding: 5;">
+                                <Button id="category-laptop" onAction="#filterByCategory" style="-fx-background-color: white; -fx-text-fill: #333333; -fx-font-size: 14px;                                 -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 10 15;                                -fx-min-width: 180; -fx-alignment: center-left;" styleClass="category-btn" text="Laptop" />
+                                <Button id="category-pc" onAction="#filterByCategory" style="-fx-background-color: white; -fx-text-fill: #333333; -fx-font-size: 14px;                                 -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 10 15;                                -fx-min-width: 180; -fx-alignment: center-left;" styleClass="category-btn" text="PC" />
+                                <Button id="category-main" onAction="#filterByCategory" style="-fx-background-color: white; -fx-text-fill: #333333; -fx-font-size: 14px;                                 -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 10 15;                                -fx-min-width: 180; -fx-alignment: center-left;" styleClass="category-btn" text="Main" />
+                                <Button id="category-cpu" onAction="#filterByCategory" style="-fx-background-color: white; -fx-text-fill: #333333; -fx-font-size: 14px;                                 -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 10 15;                                -fx-min-width: 180; -fx-alignment: center-left;" styleClass="category-btn" text="CPU" />
+                                <Button id="category-ram" onAction="#filterByCategory" style="-fx-background-color: white; -fx-text-fill: #333333; -fx-font-size: 14px;                                 -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 10 15;                                -fx-min-width: 180; -fx-alignment: center-left;" styleClass="category-btn" text="RAM" />
+                                <Button id="category-rom" onAction="#filterByCategory" style="-fx-background-color: white; -fx-text-fill: #333333; -fx-font-size: 14px;                                 -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 10 15;                                -fx-min-width: 180; -fx-alignment: center-left;" styleClass="category-btn" text="ROM" />
+                                <Button id="category-keyboard" onAction="#filterByCategory" style="-fx-background-color: white; -fx-text-fill: #333333; -fx-font-size: 14px;                                 -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 10 15;                                -fx-min-width: 180; -fx-alignment: center-left;" styleClass="category-btn" text="Bàn phím" />
+                                <Button id="category-mouse" onAction="#filterByCategory" style="-fx-background-color: white; -fx-text-fill: #333333; -fx-font-size: 14px;                                 -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 10 15;                                -fx-min-width: 180; -fx-alignment: center-left;" styleClass="category-btn" text="Chuột" />
+                                <Button id="category-monitor" onAction="#filterByCategory" style="-fx-background-color: white; -fx-text-fill: #333333; -fx-font-size: 14px;                                 -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 10 15;                                -fx-min-width: 180; -fx-alignment: center-left;" styleClass="category-btn" text="Màn hình" />
+                                <Button id="category-cooling" onAction="#filterByCategory" style="-fx-background-color: white; -fx-text-fill: #333333; -fx-font-size: 14px;                                 -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 10 15;                                -fx-min-width: 180; -fx-alignment: center-left;" styleClass="category-btn" text="Tản nhiệt" />
+                                <Button id="category-case" onAction="#filterByCategory" style="-fx-background-color: white; -fx-text-fill: #333333; -fx-font-size: 14px;                                 -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 10 15;                                -fx-min-width: 180; -fx-alignment: center-left;" styleClass="category-btn" text="Case" />
+                                <Button id="category-psu" onAction="#filterByCategory" style="-fx-background-color: white; -fx-text-fill: #333333; -fx-font-size: 14px;                                 -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 10 15;                                -fx-min-width: 180; -fx-alignment: center-left;" styleClass="category-btn" text="Nguồn" />
+                                <Button id="category-headphone" onAction="#filterByCategory" style="-fx-background-color: white; -fx-text-fill: #333333; -fx-font-size: 14px;                                 -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 10 15;                                -fx-min-width: 180; -fx-alignment: center-left;" styleClass="category-btn" text="Tai nghe" />
+                            </VBox>
+                        </content>
+                    </ScrollPane>
+                </AnchorPane>
+            </content></ScrollPane>
+        </center>
+        
+        <bottom>
+            <AnchorPane prefHeight="30" prefWidth="1000" style="-fx-background-color: #333333;">
+                <Label layoutX="400" layoutY="10" style="-fx-text-fill: white;" text="© 2025 CELLCOMP STORE. All rights reserved." />
+            </AnchorPane>
+        </bottom>
+    </BorderPane>
+</StackPane>

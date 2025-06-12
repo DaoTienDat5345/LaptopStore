@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" prefHeight="600" prefWidth="1000" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stores.controller.CustomerLoginController">
+    <children>
+        <!-- Background Gradient -->
+        <Rectangle fx:id="backgroundRect" height="600" width="1000">
+            <fill>
+                <LinearGradient endX="1.0" endY="1.0" startX="0.0" startY="0.0">
+                    <stops>
+                        <Stop color="#865DFF" offset="0.0" />
+                        <Stop color="#5CB8E4" offset="0.8" />
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
+        
+        <!-- Logo + Language với đường viền -->
+        <AnchorPane fx:id="headerPane" layoutX="20" layoutY="10" prefHeight="86.0" prefWidth="967.0">
+            <!-- Khung viền gradient với nền trắng -->
+            <Rectangle fx:id="headerRect" arcHeight="20.0" arcWidth="20.0" fill="white" height="60.0" layoutX="-15.0" layoutY="10.0" stroke="#865DFF" strokeType="INSIDE" strokeWidth="2.0" width="993.0">
+                <effect>
+                    <javafx.scene.effect.DropShadow color="#0000001a" height="10" radius="4.5" width="10" />
+                </effect>
+                <stroke>
+                    <LinearGradient endX="1.0" endY="1.0" startX="0.0" startY="0.0">
+                        <stops>
+                            <Stop color="#865DFF" offset="0.0" />
+                            <Stop color="#5CB8E4" offset="0.8" />
+                        </stops>
+                    </LinearGradient>
+                </stroke>
+            </Rectangle>
+            
+            <!-- Logo CELLCOMP nằm trên đường viền -->
+            <Label fx:id="logoLabel" layoutX="40.0" layoutY="-16.0" style="-fx-font-size: 40px; -fx-font-family: 'Arial Black'; -fx-text-fill: #865DFF; -fx-effect: dropshadow(gaussian, #ffffff, 2, 1, 0, 0);" text="CELLCOMP" />
+            
+            <!-- Logo Comp sau chữ CELLCOMP -->
+            <ImageView fx:id="logoIcon" fitHeight="45.0" fitWidth="45.0" layoutX="-8.0" layoutY="18.0">
+                <image>
+                    <Image url="@../images/layout/Logo_Comp.png" />
+                </image>
+                <effect>
+                    <DropShadow color="#0000001a" height="5.0" radius="2.0" width="5.0" />
+                </effect>
+            </ImageView>
+            
+            <!-- Chữ STORE lớn hơn -->
+            <Label fx:id="storeLabel" layoutX="274.0" layoutY="22.0" style="-fx-font-size: 28px; -fx-font-family: 'Arial Black'; -fx-text-fill: #865DFF;" text="STORE">
+            <font>
+               <Font size="28.0" />
+            </font></Label>
+            
+            <Label fx:id="sellerCenterLabel" layoutX="48.0" layoutY="33.0" style="-fx-font-size: 14px; -fx-text-fill: #865DFF;" text="Seller center" />
+            
+            <!-- Flag + Language button -->
+            <HBox fx:id="languageBox" alignment="CENTER_RIGHT" layoutX="750" layoutY="22" spacing="10" />
+              <Button fx:id="langButton" layoutX="835.0" layoutY="29.0" onAction="#handleLanguageButtonAction" style="-fx-background-radius: 20; -fx-border-color: #865DFF; -fx-border-radius: 20; -fx-background-color: transparent; -fx-text-fill: #865DFF;" text="Tiếng Việt" />
+              <ImageView fx:id="languageFlag" fitHeight="27.0" fitWidth="27.0" layoutX="799.0" layoutY="27.0">
+                  <image>
+                      <Image url="@../images/layout/flag_vn.png" />
+                  </image>
+              </ImageView>
+        </AnchorPane>
+        
+        <!-- Left illustration -->
+        <ImageView fx:id="illustrationImage" fitHeight="454.0" fitWidth="450.0" layoutX="25.0" layoutY="116.0">
+            <image>
+                <Image url="@../images/layout/computer_illustration.jpg" />
+            </image>
+        </ImageView>
+        
+        <!-- Right login form -->
+        <AnchorPane fx:id="loginFormPane" layoutX="500.0" layoutY="113.0" prefHeight="460" prefWidth="450" style="-fx-background-color: white; -fx-background-radius: 40;">
+            <children>
+                <Label fx:id="welcomeLabel" layoutX="123.0" layoutY="35.0" style="-fx-font-size: 36px; -fx-font-family: 'Arial'; -fx-text-fill: #BEA4F2;" text="WELCOME" />
+                
+                <Label fx:id="userLoginLabel" layoutX="170.0" layoutY="90.0" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #3498DB;" text="User Login" />
+                
+                <!-- Username Field with Icon -->
+                <HBox fx:id="usernameBox" alignment="CENTER_LEFT" layoutX="65" layoutY="134.0" spacing="10">
+                    <ImageView fx:id="userIconView" fitHeight="24" fitWidth="24">
+                        <image>
+                            <Image url="@../images/layout/user_icon.png" />
+                        </image>
+                    </ImageView>
+                    <TextField fx:id="usernameField" prefHeight="32.0" prefWidth="296" promptText="Username" style="-fx-background-radius: 15; -fx-background-color: #f8f8f8;" />
+                </HBox>
+
+                <HBox fx:id="passwordBox" alignment="CENTER_LEFT" layoutX="65" layoutY="200" spacing="10">
+                    <ImageView fx:id="lockIconView" fitHeight="24" fitWidth="24">
+                        <image>
+                            <Image url="@../images/layout/lock_icon.png" />
+                        </image>
+                    </ImageView>
+                    <PasswordField fx:id="passwordField" prefHeight="32.0" prefWidth="296" promptText="Password" style="-fx-background-radius: 15; -fx-background-color: #f8f8f8;" />
+                    <TextField fx:id="visiblePasswordField" managed="false" prefHeight="32.0" prefWidth="296" promptText="Password" style="-fx-background-radius: 15; -fx-background-color: #f8f8f8;" visible="false" />
+                    <Button fx:id="eyeButton" onAction="#handleEyeButtonAction" style="-fx-background-color: transparent;">
+                        <graphic>
+                            <ImageView fx:id="eyeIconView" fitHeight="20" fitWidth="20">
+                                <image>
+                                    <Image url="@../images/layout/eye_icon.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </HBox>
+                
+                <!-- Forgot Password -->
+                <Hyperlink fx:id="forgotPasswordLink" layoutX="65" layoutY="250" onAction="#handleForgotPassword" style="-fx-text-fill: #8e44ad;" text="Forgot password?" />
+
+                <!-- Login Button -->
+                <Button fx:id="loginButton" layoutX="65.0" layoutY="300" onAction="#handleLoginButtonAction" prefWidth="320.0" style="-fx-background-radius: 20; -fx-font-size: 20px; -fx-background-color: linear-gradient(to right, #865DFF, #5CB8E4); -fx-text-fill: white;" text="Log In" />
+
+                <!-- Register Button -->
+                <Button fx:id="registerButton" layoutX="334.0" layoutY="419.0" onAction="#handleRegisterButtonAction" prefHeight="32.0" prefWidth="102.0" style="-fx-background-radius: 12 0 12 0; -fx-background-color: linear-gradient(to right, #5CB8E4, #865DFF); -fx-text-fill: white;" text="Register" />
+                
+                <!-- Status message -->
+                <Label fx:id="statusMessage" layoutX="65" layoutY="360" style="-fx-text-fill: red;" />
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="rootPane" prefHeight="650" prefWidth="1000" stylesheets="@../css/ProductDetail.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stores.controller.ProductDetailController">
+    <!-- Header cố định phía trên -->
+    <top>
+        <AnchorPane fx:id="headerPane" prefHeight="70.0" prefWidth="1000" styleClass="top-header">
+            <!-- Nền header gradient -->
+            <Rectangle fill="linear-gradient(to right, #865DFF, #5CB8E4)" height="70" width="1000" />
+
+            <!-- Logo CELLCOMP -->
+            <Label fx:id="logoLabel" layoutX="70.0" layoutY="-2.0" onMouseClicked="#goBackToHome" prefHeight="44.0" prefWidth="194.0" style="-fx-font-size: 30px; -fx-font-family: 'Arial Black'; -fx-text-fill: white; -fx-effect: dropshadow(gaussian, #00000033, 1, 0.5, 0, 0);" text="CELLCOMP" />
+
+            <!-- Seller Center -->
+            <Label fx:id="sellerCenterLabel" layoutX="72.0" layoutY="33.0" onMouseClicked="#goBackToHome" prefHeight="30.0" prefWidth="74.0" style="-fx-font-size: 12px; -fx-text-fill: white;" text="Seller center" />
+
+            <!-- STORE -->
+            <Label fx:id="storeLabel" layoutX="146.0" layoutY="29.0" onMouseClicked="#goBackToHome" style="-fx-font-size: 24px; -fx-font-family: 'Arial Black'; -fx-text-fill: white;" text="STORE" />
+
+            <!-- Danh mục Button - Thêm onAction để mở thanh danh mục -->
+            <Button fx:id="menuButton" layoutX="257.0" layoutY="16.0" onAction="#toggleCategory" prefHeight="38" prefWidth="143.0" styleClass="login-gradient-btn">
+                <graphic>
+                    <HBox alignment="CENTER" spacing="5">
+                        <ImageView fitHeight="20" fitWidth="21.0">
+                            <image>
+                                <Image url="@../images/layout/Menu.png" />
+                            </image>
+                        </ImageView>
+                        <Label prefHeight="22.0" prefWidth="78.0" styleClass="header-btn-label" text="Danh mục" />
+                    </HBox>
+                </graphic>
+            </Button>
+
+            <!-- Thanh tìm kiếm -->
+            <HBox alignment="CENTER_LEFT" layoutX="410.0" layoutY="17.0" prefHeight="38.0" prefWidth="250.0" spacing="0" styleClass="header-search-bar">
+                <TextField fx:id="searchField" onAction="#handleSearch" prefHeight="35" prefWidth="200.0" promptText="Tìm kiếm..." styleClass="search-field" />
+                <Button fx:id="searchButton" onAction="#handleSearch" prefWidth="50.0" styleClass="search-button">
+                    <graphic>
+                        <ImageView fitHeight="20" fitWidth="20">
+                            <image>
+                                <Image url="@../images/layout/glass.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </HBox>
+
+            <!-- Nút Giá - Ẩn ở ProductDetail nhưng giữ cùng layout -->
+            <MenuButton fx:id="priceButton" layoutX="666.0" layoutY="19.0" minWidth="119.0" prefHeight="41.0" prefWidth="119.0" styleClass="header-price-btn" visible="false">
+                <graphic>
+                    <Label style="-fx-font-weight: bold;" text="Giá" textFill="WHITE" />
+                </graphic>
+            </MenuButton>
+
+            <!-- Giỏ hàng Button -->
+            <Button fx:id="cartButton" layoutX="799.0" layoutY="18.0" onAction="#goToCart" prefHeight="38" prefWidth="134.0" styleClass="login-gradient-btn">
+                <graphic>
+                    <HBox alignment="CENTER" spacing="5">
+                        <ImageView fitHeight="20" fitWidth="20">
+                            <image>
+                                <Image url="@../images/layout/Cart.png" />
+                            </image>
+                        </ImageView>
+                        <Label styleClass="header-btn-label" text="Giỏ hàng" />
+                    </HBox>
+                </graphic>
+            </Button>
+
+            <!-- User Icon -->
+            <MenuButton fx:id="userMenuButton" layoutX="949.0" layoutY="17.0" minWidth="20.0" popupSide="BOTTOM" prefWidth="20.0" style="-fx-padding: 0; -fx-background-color: transparent; -fx-mark-color: transparent;" styleClass="icon-feature-btn, user-menu-btn">
+                <items>
+                    <MenuItem fx:id="accountInfoMenuItem" onAction="#openAccountInfo" text="Thông tin tài khoản">
+                        <graphic>
+                            <ImageView fitHeight="16.0" fitWidth="16.0">
+                                <image>
+                                    <Image url="@../images/layout/user_icon.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </MenuItem>
+                    <MenuItem fx:id="languageSwitchMenuItem" onAction="#switchLanguage" text="Chuyển đổi ngôn ngữ">
+                        <graphic>
+                            <ImageView fitHeight="16.0" fitWidth="16.0">
+                                <image>
+                                    <Image url="@../images/layout/flag_en.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </MenuItem>
+                    <MenuItem fx:id="customDesignMenuItem" onAction="#openPCDesign" text="Thiết kế máy tính theo ý bạn">
+                        <graphic>
+                            <ImageView fitHeight="16.0" fitWidth="16.0">
+                                <image>
+                                    <Image url="@../images/layout/pc_design_icon.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </MenuItem>
+                    <MenuItem fx:id="orderHistoryMenuItem" onAction="#openOrderHistory" text="Lịch sử mua hàng">
+                        <graphic>
+                            <ImageView fitHeight="16.0" fitWidth="16.0">
+                                <image>
+                                    <Image url="@../images/layout/history_icon.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </MenuItem>
+                    <MenuItem fx:id="logoutMenuItem" onAction="#handleLogout" text="Đăng xuất">
+                        <graphic>
+                            <ImageView fitHeight="16.0" fitWidth="16.0">
+                                <image>
+                                    <Image url="@../images/layout/logout_icon.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </MenuItem>
+                    <SeparatorMenuItem />
+                </items>
+            </MenuButton>
+
+            <!-- Logo hình tròn -->
+            <ImageView fx:id="logoIcon" fitHeight="45.0" fitWidth="45.0" layoutX="14.0" layoutY="13.0" onMouseClicked="#goBackToHome">
+                <image>
+                    <Image url="@../images/layout/Logo_Comp.png" />
+                </image>
+            </ImageView>
+              <ImageView fitHeight="35.0" fitWidth="37.0" layoutX="949.0" layoutY="19.0">
+                  <image>
+                      <Image url="@../images/layout/RegisterUser_icon.png" />
+                  </image>
+              </ImageView>
+        </AnchorPane>
+    </top>
+
+    <!-- Phần nội dung có thể cuộn - Không thay đổi -->
+    <center>
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="product-detail-scroll">
+            <content>
+                <VBox spacing="20">
+                    <!-- Tiêu đề được thay đổi thành trung tâm với độ rộng nhỏ hơn -->
+                    <HBox alignment="CENTER">
+                        <AnchorPane styleClass="product-title-container">
+                            <Label fx:id="pageTitle" alignment="CENTER" layoutY="0.8" prefWidth="415.0" styleClass="product-title" text="Thông tin chi tiết sản phẩm" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0" />
+                        </AnchorPane>
+                    </HBox>
+
+                    <!-- Container chính -->
+                    <HBox alignment="CENTER" spacing="20">
+                        <padding>
+                            <Insets bottom="10" left="40" right="40" top="10" />
+                        </padding>
+
+                        <!-- Phần trái - Hình ảnh sản phẩm -->
+                        <VBox alignment="CENTER" spacing="10" styleClass="product-image-container">
+                            <ImageView fx:id="productImageView" fitHeight="300.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../images/layout/Add.png" />
+                                </image>
+                            </ImageView>
+                        </VBox>
+
+                        <!-- Phần phải - Thông tin sản phẩm -->
+                        <VBox spacing="15" styleClass="product-info-container">
+                            <!-- Tên sản phẩm -->
+                            <Label fx:id="productNameLabel" styleClass="product-name" text="Tên sản phẩm" wrapText="true">
+                                <font>
+                                    <Font name="System Bold" size="20.0" />
+                                </font>
+                            </Label>
+
+                            <!-- Đánh giá ngay dưới tên sản phẩm -->
+                            <HBox alignment="CENTER_LEFT" spacing="5">
+                                <Label fx:id="ratingLabel" text="5">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                                <HBox fx:id="ratingStarsBox" spacing="2">
+                                    <ImageView fitHeight="20" fitWidth="20">
+                                        <image>
+                                            <Image url="@../images/layout/star.png" />
+                                        </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="20" fitWidth="20">
+                                        <image>
+                                            <Image url="@../images/layout/star.png" />
+                                        </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="20" fitWidth="20">
+                                        <image>
+                                            <Image url="@../images/layout/star.png" />
+                                        </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="20" fitWidth="20">
+                                        <image>
+                                            <Image url="@../images/layout/star.png" />
+                                        </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="20" fitWidth="20">
+                                        <image>
+                                            <Image url="@../images/layout/star.png" />
+                                        </image>
+                                    </ImageView>
+                                </HBox>
+                                <Label fx:id="reviewCountLabel" text="(0 đánh giá)" />
+                            </HBox>
+
+                            <!-- Giá sản phẩm -->
+                            <Label fx:id="productPriceLabel" styleClass="product-price" text="45,990,000₫">
+                                <font>
+                                    <Font name="System Bold" size="24.0" />
+                                </font>
+                            </Label>
+
+                            <!-- Danh mục sản phẩm -->
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <Label text="Danh mục:" />
+                                <Label fx:id="productCategoryLabel" text="Laptop" />
+                            </HBox>
+
+                            <!-- Mô tả sản phẩm -->
+                            <Label text="Mô tả:" />
+                            <Label fx:id="productDescriptionArea" styleClass="product-description" text="Thông tin chi tiết về sản phẩm..." wrapText="true" />
+
+                            <!-- Các nút chức năng -->
+                            <HBox alignment="CENTER" spacing="20" styleClass="action-buttons">
+                                <Button fx:id="addToCartButton" minWidth="180" prefHeight="40" styleClass="add-to-cart-btn" text="Thêm vào giỏ hàng">
+                                    <graphic>
+                                        <ImageView fitHeight="20" fitWidth="20">
+                                            <image>
+                                                <Image url="@../images/layout/Cart.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <Button fx:id="checkoutButton" minWidth="180" prefHeight="40" styleClass="checkout-btn" text="Đi đến thanh toán">
+                                    <graphic>
+                                        <ImageView fitHeight="20" fitWidth="20">
+                                            <image>
+                                                <Image url="@../images/layout/Add.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </HBox>
+                        </VBox>
+                    </HBox>
+
+                    <!-- Phần đánh giá sản phẩm -->
+                    <VBox spacing="15" styleClass="reviews-container">
+                        <padding>
+                            <Insets bottom="20" left="40" right="40" top="20" />
+                        </padding>
+
+                        <!-- Tiêu đề đánh giá -->
+                        <Label styleClass="section-title" text="Đánh giá &amp; Nhận xét">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+
+                        <!-- Tổng hợp đánh giá -->
+                        <HBox alignment="CENTER_LEFT" spacing="10" styleClass="rating-summary">
+                            <Label fx:id="summaryRatingLabel" text="5">
+                                <font>
+                                    <Font name="System Bold" size="36.0" />
+                                </font>
+                            </Label>
+                            <VBox>
+                                <HBox fx:id="summaryStarsBox" spacing="2">
+                                    <ImageView fitHeight="20" fitWidth="20">
+                                        <image>
+                                            <Image url="@../images/layout/star.png" />
+                                        </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="20" fitWidth="20">
+                                        <image>
+                                            <Image url="@../images/layout/star.png" />
+                                        </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="20" fitWidth="20">
+                                        <image>
+                                            <Image url="@../images/layout/star.png" />
+                                        </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="20" fitWidth="20">
+                                        <image>
+                                            <Image url="@../images/layout/star.png" />
+                                        </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="20" fitWidth="20">
+                                        <image>
+                                            <Image url="@../images/layout/star.png" />
+                                        </image>
+                                    </ImageView>
+                                </HBox>
+                                <!-- Thay đổi để tạo biến reviewSummaryCountLabel -->
+                                <Label fx:id="reviewSummaryCountLabel" text="(0 đánh giá)" />
+                            </VBox>
+                        </HBox>
+
+                        <!-- Danh sách đánh giá -->
+                        <VBox fx:id="reviewsContainer" spacing="15">
+                            <!-- Đánh giá sẽ được thêm tự động từ database -->
+                        </VBox>
+                    </VBox>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+
+    <!-- Footer -->
+    <bottom>
+        <AnchorPane prefHeight="30" prefWidth="1000" style="-fx-background-color: #333333;">
+            <Label layoutX="400" layoutY="10" style="-fx-text-fill: white;" text="© 2025 CELLCOMP STORE. All rights reserved." />
+        </AnchorPane>
+    </bottom>
+</BorderPane>
