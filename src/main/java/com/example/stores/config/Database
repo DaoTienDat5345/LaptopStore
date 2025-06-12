@@ -1,0 +1,282 @@
+CREATE DATABASE Computer_Storest COLLATE Vietnamese_CI_AS;
+GO
+USE Computer_Storest;
+GO
+
+-- BẢNG QUẢN LÝ
+CREATE TABLE Manager (
+    managerID INT IDENTITY(1,1) PRIMARY KEY,
+    username NVARCHAR(50) NOT NULL UNIQUE,
+    password NVARCHAR(100) NOT NULL,
+    fullName NVARCHAR(100) NOT NULL,
+    email NVARCHAR(100) NOT NULL UNIQUE CHECK (email LIKE '%@%.%'),
+    phone VARCHAR(10) NOT NULL UNIQUE CHECK (
+        LEN(phone) = 10 AND (
+            phone LIKE '03%' OR phone LIKE '07%' OR phone LIKE '08%' OR phone LIKE '09%'
+        )
+    ),
+    gender NVARCHAR(10) CHECK (gender IN (N'Nam', N'Nữ', N'Khác')),
+    birthDate DATE,
+    address NVARCHAR(255),
+    imageUrl NVARCHAR(255),
+    createdAt DATETIME DEFAULT GETDATE()
+);
+
+-- BẢNG NHÂN VIÊN
+CREATE TABLE Employee (
+    employeeID INT IDENTITY(1,1) PRIMARY KEY,
+    username NVARCHAR(50) NOT NULL UNIQUE,
+    password NVARCHAR(100) NOT NULL,
+    fullName NVARCHAR(100) NOT NULL,
+    email NVARCHAR(100) NOT NULL UNIQUE CHECK (email LIKE '%@%.%'),
+    phone VARCHAR(10) NOT NULL UNIQUE CHECK (
+        LEN(phone) = 10 AND (
+            phone LIKE '03%' OR phone LIKE '07%' OR phone LIKE '08%' OR phone LIKE '09%'
+        )
+    ),
+    gender NVARCHAR(10) CHECK (gender IN (N'Nam', N'Nữ', N'Khác')),
+    birthDate DATE,
+    address NVARCHAR(255),
+    imageUrl NVARCHAR(255),
+    position NVARCHAR(50) NOT NULL,
+    salary DECIMAL(15,2) CHECK (salary >= 0),
+    status NVARCHAR(20) DEFAULT N'Đang làm' CHECK (status IN (N'Đang làm', N'Nghỉ việc')),
+    createdAt DATETIME DEFAULT GETDATE(),
+    managerID INT,
+    FOREIGN KEY (managerID) REFERENCES Manager(managerID)
+);
+
+-- BẢNG KHÁCH HÀNG
+CREATE TABLE Customer (
+    customerID INT IDENTITY(1,1) PRIMARY KEY,
+    username NVARCHAR(50) NOT NULL UNIQUE,
+    password NVARCHAR(100) NOT NULL,
+    fullName NVARCHAR(100) NOT NULL,
+    email NVARCHAR(100) NOT NULL UNIQUE CHECK (email LIKE '%@%.%'),
+    phone VARCHAR(10) NOT NULL UNIQUE CHECK (
+        LEN(phone) = 10 AND (
+            phone LIKE '03%' OR phone LIKE '07%' OR phone LIKE '08%' OR phone LIKE '09%'
+        )
+    ),
+    gender NVARCHAR(10) CHECK (gender IN (N'Nam', N'Nữ', N'Khác')),
+    birthDate DATE,
+    address NVARCHAR(255),
+    registeredAt DATETIME DEFAULT GETDATE(),
+    isActive BIT DEFAULT 1
+);
+
+-- BẢNG KHO HÀNG
+CREATE TABLE Warehouse (
+    warehouseID INT IDENTITY(1,1) PRIMARY KEY,
+    warehouseName NVARCHAR(100) NOT NULL,
+    address NVARCHAR(255) NOT NULL,
+    phone VARCHAR(10) CHECK (
+        LEN(phone) = 10 AND (
+            phone LIKE '03%' OR phone LIKE '07%' OR phone LIKE '08%' OR phone LIKE '09%'
+        )
+    ),
+    managerID INT,
+    FOREIGN KEY (managerID) REFERENCES Manager(managerID)
+);
+
+-- BẢNG DANH MỤC SẢN PHẨM
+CREATE TABLE Categories (
+    categoryID VARCHAR(20) PRIMARY KEY,
+    categoryCode VARCHAR(2) NOT NULL UNIQUE,
+    categoryName NVARCHAR(100) NOT NULL,
+    description NVARCHAR(255)
+);
+
+-- BẢNG SẢN PHẨM (productID tự sinh bằng trigger)
+CREATE TABLE Products (
+    productID VARCHAR(20) PRIMARY KEY,
+    productName NVARCHAR(100) NOT NULL,
+    categoryID VARCHAR(20) NOT NULL,
+    description NVARCHAR(255),
+    price DECIMAL(15,2) NOT NULL CHECK (price >= 0),
+    priceCost DECIMAL(15,2) NOT NULL CHECK (priceCost >= 0),
+    imagePath NVARCHAR(255),
+    quantity INT NOT NULL CHECK (quantity >= 0),
+    status AS (CASE WHEN quantity > 0 THEN N'Còn hàng' ELSE N'Hết hàng' END),
+    warrantyMonths INT DEFAULT 12 CHECK (warrantyMonths > 0),
+    createdAt DATETIME DEFAULT GETDATE(),
+    FOREIGN KEY (categoryID) REFERENCES Categories(categoryID)
+);
+
+-- BẢNG NHÀ CUNG CẤP
+CREATE TABLE Supplier (
+    supplierID INT IDENTITY(1,1) PRIMARY KEY,
+    supplierName NVARCHAR(100) NOT NULL,
+    email NVARCHAR(100) NOT NULL CHECK (email LIKE '%@%.%'),
+    phone VARCHAR(10) NOT NULL CHECK (
+        LEN(phone) = 10 AND (
+            phone LIKE '03%' OR phone LIKE '07%' OR phone LIKE '08%' OR phone LIKE '09%'
+        )
+    ),
+    address NVARCHAR(200),
+    taxCode VARCHAR(20)
+);
+
+-- BẢNG SẢN PHẨM – NHÀ CUNG CẤP (nhiều-nhiều)
+CREATE TABLE ProductSupplier (
+    productID VARCHAR(20) NOT NULL,
+    supplierID INT NOT NULL,
+    PRIMARY KEY (productID, supplierID),
+    FOREIGN KEY (productID) REFERENCES Products(productID),
+    FOREIGN KEY (supplierID) REFERENCES Supplier(supplierID)
+);
+
+-- BẢNG TỒN KHO
+CREATE TABLE Inventory (
+    inventoryID INT IDENTITY(1,1) PRIMARY KEY,
+    warehouseID INT NOT NULL,
+    productID VARCHAR(20) NOT NULL,
+    quantity INT NOT NULL CHECK (quantity >= 0),
+    lastUpdate DATETIME DEFAULT GETDATE(),
+    FOREIGN KEY (warehouseID) REFERENCES Warehouse(warehouseID),
+    FOREIGN KEY (productID) REFERENCES Products(productID),
+    CONSTRAINT UQ_Inv_Unique UNIQUE (warehouseID, productID)
+);
+
+-- PHIẾU NHẬP HÀNG
+CREATE TABLE ImportReceipt (
+    receiptID INT IDENTITY(1,1) PRIMARY KEY,
+    supplierID INT NOT NULL,
+    employeeID INT NOT NULL,
+    warehouseID INT NOT NULL,
+    importDate DATETIME DEFAULT GETDATE(),
+    totalAmount DECIMAL(15,2) NOT NULL CHECK (totalAmount >= 0),
+    note NVARCHAR(255),
+    FOREIGN KEY (supplierID) REFERENCES Supplier(supplierID),
+    FOREIGN KEY (employeeID) REFERENCES Employee(employeeID),
+    FOREIGN KEY (warehouseID) REFERENCES Warehouse(warehouseID)
+);
+
+CREATE TABLE ImportReceiptDetail (
+    receiptDetailID INT IDENTITY(1,1) PRIMARY KEY,
+    receiptID INT NOT NULL,
+    productID VARCHAR(20) NOT NULL,
+    quantity INT NOT NULL CHECK (quantity > 0),
+    unitCost DECIMAL(15,2) NOT NULL CHECK (unitCost >= 0),
+    FOREIGN KEY (receiptID) REFERENCES ImportReceipt(receiptID),
+    FOREIGN KEY (productID) REFERENCES Products(productID)
+);
+
+-- GIỎ HÀNG
+CREATE TABLE Cart (
+    cartID INT IDENTITY(1,1) PRIMARY KEY,
+    customerID INT NOT NULL,
+    createdAt DATETIME DEFAULT GETDATE(),
+    status NVARCHAR(20) DEFAULT N'Chờ đặt' CHECK (status IN (N'Chờ đặt', N'Đã đặt', N'Hủy')),
+    FOREIGN KEY (customerID) REFERENCES Customer(customerID)
+);
+
+CREATE TABLE CartItem (
+    cartItemID INT IDENTITY(1,1) PRIMARY KEY,
+    cartID INT NOT NULL,
+    productID VARCHAR(20) NOT NULL,
+    quantity INT NOT NULL CHECK (quantity > 0),
+    FOREIGN KEY (cartID) REFERENCES Cart(cartID),
+    FOREIGN KEY (productID) REFERENCES Products(productID)
+);
+
+-- HÓA ĐƠN (Orders dùng orderID VARCHAR cho trigger)
+CREATE TABLE Orders (
+    orderID VARCHAR(20) PRIMARY KEY,
+    orderDate DATETIME DEFAULT GETDATE(),
+    totalAmount DECIMAL(15,2) NOT NULL CHECK (totalAmount >= 0),
+    customerID INT NOT NULL,
+    employeeID INT,
+    shippingAddress NVARCHAR(255),
+    status NVARCHAR(20) DEFAULT N'Chờ xác nhận' CHECK (status IN (N'Chờ xác nhận', N'Đang giao', N'Hoàn thành', N'Đã hủy')),
+    FOREIGN KEY (customerID) REFERENCES Customer(customerID),
+    FOREIGN KEY (employeeID) REFERENCES Employee(employeeID)
+);
+
+CREATE TABLE OrderDetails (
+    orderDetailsID VARCHAR(20) PRIMARY KEY,
+    orderID VARCHAR(20) NOT NULL,
+    productID VARCHAR(20) NOT NULL,
+    quantity INT NOT NULL CHECK (quantity > 0),
+    subtotal DECIMAL(15,2) NOT NULL CHECK (subtotal >= 0),
+    warrantyType NVARCHAR(20) NOT NULL DEFAULT N'Thường' CHECK (warrantyType IN (N'Thường', N'Vàng')),
+    warrantyPrice DECIMAL(15,2) NOT NULL DEFAULT 0 CHECK (warrantyPrice >= 0),
+    warrantyStartDate DATE,
+    warrantyEndDate DATE,
+    note NVARCHAR(255),
+    FOREIGN KEY (orderID) REFERENCES Orders(orderID),
+    FOREIGN KEY (productID) REFERENCES Products(productID)
+);
+
+-- TRIGGER TỰ ĐỘNG SINH MÃ CHO ORDER
+GO
+CREATE OR ALTER TRIGGER trg_AutoGenerateOrderID
+ON Orders
+INSTEAD OF INSERT
+AS
+BEGIN
+    DECLARE @newID VARCHAR(20), @maxID INT;
+    SELECT @maxID = COALESCE(MAX(CAST(SUBSTRING(orderID, 4, 3) AS INT)), 0) + 1
+    FROM Orders WITH (UPDLOCK, SERIALIZABLE);
+    SET @newID = 'ORD' + RIGHT('000' + CAST(@maxID AS VARCHAR(3)), 3);
+    INSERT INTO Orders (orderID, orderDate, totalAmount, customerID, employeeID, shippingAddress, status)
+    SELECT @newID, orderDate, totalAmount, customerID, employeeID, shippingAddress, status FROM inserted;
+END;
+GO
+
+-- TRIGGER TỰ ĐỘNG SINH MÃ CHO ORDERDETAILS
+GO
+CREATE OR ALTER TRIGGER trg_AutoGenerateOrderDetailsID
+ON OrderDetails
+INSTEAD OF INSERT
+AS
+BEGIN
+    DECLARE @newDetailID VARCHAR(20), @count INT;
+    SELECT @count = COUNT(*) + 1 FROM OrderDetails;
+    SET @newDetailID = 'ORDD' + RIGHT('000' + CAST(@count AS VARCHAR(3)), 3);
+    INSERT INTO OrderDetails (orderDetailsID, orderID, productID, quantity, subtotal, warrantyType, warrantyPrice, warrantyStartDate, warrantyEndDate, note)
+    SELECT @newDetailID, orderID, productID, quantity, subtotal, warrantyType, warrantyPrice, warrantyStartDate, warrantyEndDate, note FROM inserted;
+END;
+GO
+
+-- TRIGGER TỰ ĐỘNG SINH MÃ CHO PRODUCT
+GO
+CREATE OR ALTER TRIGGER before_insert_product
+ON Products
+INSTEAD OF INSERT
+AS
+BEGIN
+    INSERT INTO Products (productID, productName, categoryID, description, price, priceCost, imagePath, quantity, warrantyMonths, createdAt)
+    SELECT
+        c.categoryCode + RIGHT('000' + CAST(
+            COALESCE(
+                MAX(CAST(SUBSTRING(p.productID, LEN(c.categoryCode) + 1, LEN(p.productID)) AS INT)),
+                100
+            ) + ROW_NUMBER() OVER (PARTITION BY i.categoryID ORDER BY (SELECT NULL)) AS VARCHAR), 3),
+        i.productName,
+        i.categoryID,
+        i.description,
+        i.price,
+        i.priceCost,
+        i.imagePath,
+        i.quantity,
+        i.warrantyMonths,
+        i.createdAt
+    FROM inserted i
+    JOIN Categories c ON i.categoryID = c.categoryID
+    LEFT JOIN Products p ON p.categoryID = i.categoryID AND p.productID LIKE c.categoryCode + '%'
+    GROUP BY
+        i.productName, i.categoryID, i.description, i.price, i.priceCost, i.imagePath, i.quantity, i.warrantyMonths, i.createdAt, c.categoryCode;
+END;
+GO
+
+-- BẢNG BẢO HÀNH SẢN PHẨM
+CREATE TABLE Warranty (
+    warrantyID INT IDENTITY(1,1) PRIMARY KEY,
+    orderDetailsID VARCHAR(20) NOT NULL,
+    warrantyType NVARCHAR(20) NOT NULL CHECK (warrantyType IN (N'Thường', N'Vàng')),
+    startDate DATE NOT NULL,
+    endDate DATE NOT NULL,
+    status NVARCHAR(20) DEFAULT N'Còn hạn' CHECK (status IN (N'Còn hạn', N'Hết hạn')),
+    FOREIGN KEY (orderDetailsID) REFERENCES OrderDetails(orderDetailsID)
+);

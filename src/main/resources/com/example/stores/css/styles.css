@@ -1,0 +1,71 @@
+/* styles.css */
+
+.root {
+    /* -fx-font-family: "Segoe UI", Arial, sans-serif; */
+}
+
+/* Sidebar Buttons */
+.sidebar-button {
+    -fx-background-color: transparent; /* Nền trong suốt ban đầu */
+    -fx-text-fill: #A0AEC0; /* Màu chữ xám nhạt (TailwindCSS gray-500) */
+    -fx-font-size: 14px;
+    -fx-padding: 10px 15px;
+    -fx-background-radius: 6px; /* Bo góc */
+    -fx-border-radius: 6px;
+    -fx-alignment: center-left; /* Căn chữ và icon sang trái */
+    -fx-pref-width: 200px; /* Đảm bảo nút chiếm đủ chiều rộng sidebar */
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #4A5568; /* Màu nền khi hover (TailwindCSS gray-700) */
+    -fx-text-fill: white;
+}
+
+.sidebar-button-active {
+    -fx-background-color: #4299E1; /* Màu nền khi active (TailwindCSS blue-500) */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.sidebar-button .ikonli-font-icon { /* Nếu dùng Ikonli cho icon */
+    -fx-icon-color: #A0AEC0;
+    -fx-icon-size: 18;
+}
+.sidebar-button:hover .ikonli-font-icon {
+    -fx-icon-color: white;
+}
+.sidebar-button-active .ikonli-font-icon {
+    -fx-icon-color: white;
+}
+
+
+/* Logout button - có thể khác một chút */
+.sidebar-button-logout {
+    -fx-background-color: transparent;
+    -fx-text-fill: #E53E3E; /* Màu đỏ cho logout (TailwindCSS red-600) */
+    -fx-font-size: 14px;
+    -fx-padding: 10px 15px;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-alignment: center-left;
+    -fx-pref-width: 200px;
+}
+.sidebar-button-logout:hover {
+    -fx-background-color: #C53030; /* Đỏ đậm hơn khi hover (TailwindCSS red-700) */
+    -fx-text-fill: white;
+}
+.sidebar-button-logout .ikonli-font-icon {
+    -fx-icon-color: #E53E3E;
+}
+.sidebar-button-logout:hover .ikonli-font-icon {
+    -fx-icon-color: white;
+}
+
+
+/* Tùy chỉnh màu sắc dựa trên tông màu bạn chọn (tím/xanh) */
+/* Ví dụ:
+.sidebar-button-active {
+    -fx-background-color: #6B46C1; // Màu tím
+    -fx-text-fill: white;
+}
+*/
