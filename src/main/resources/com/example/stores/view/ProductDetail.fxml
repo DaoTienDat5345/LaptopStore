@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="rootPane" prefHeight="650" prefWidth="1000" stylesheets="@../css/ProductDetail.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stores.controller.ProductDetailController">
+<BorderPane fx:id="rootPane" prefHeight="650" prefWidth="1000" stylesheets="@../css/ProductDetail.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stores.controller.ProductDetailControllerE">
     <!-- Header cố định phía trên -->
     <top>
         <AnchorPane fx:id="headerPane" prefHeight="70.0" prefWidth="1000" styleClass="top-header">
@@ -83,7 +83,7 @@
             </Button>
 
             <!-- User Icon -->
-            <MenuButton fx:id="userMenuButton" layoutX="949.0" layoutY="17.0" minWidth="20.0" popupSide="BOTTOM" prefWidth="20.0" style="-fx-padding: 0; -fx-background-color: transparent; -fx-mark-color: transparent;" styleClass="icon-feature-btn, user-menu-btn">
+            <MenuButton fx:id="userMenuButton" layoutX="949.0" layoutY="19.0" popupSide="LEFT" style="-fx-padding: 0;            -fx-background-color: transparent;            -fx-mark-color: transparent;" styleClass="icon-feature-btn, user-menu-btn">
                 <items>
                     <MenuItem fx:id="accountInfoMenuItem" onAction="#openAccountInfo" text="Thông tin tài khoản">
                         <graphic>
@@ -140,7 +140,7 @@
                     <Image url="@../images/layout/Logo_Comp.png" />
                 </image>
             </ImageView>
-              <ImageView fitHeight="35.0" fitWidth="37.0" layoutX="949.0" layoutY="19.0">
+              <ImageView fitHeight="35.0" fitWidth="37.0" layoutX="949.0" layoutY="18.0">
                   <image>
                       <Image url="@../images/layout/RegisterUser_icon.png" />
                   </image>

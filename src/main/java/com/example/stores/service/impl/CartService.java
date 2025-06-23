@@ -1,12 +1,5 @@
 package com.example.stores.service.impl;
 
-import com.example.stores.model.Cart;
-import com.example.stores.model.CartItem;
-import com.example.stores.model.Customer;
-import com.example.stores.model.Product;
-import com.example.stores.repository.impl.CartRepository;
-import com.example.stores.repository.impl.ProductRepository;
-
 import java.util.List;
 
 public class CartService {

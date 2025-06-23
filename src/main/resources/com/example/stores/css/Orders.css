@@ -475,3 +475,42 @@
     -fx-border-width: 1px 0 0 0;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 0, 4, 0, -2);
 }
+.back-button {
+    -fx-background-color: #7b1fa2;
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.back-button:hover {
+    -fx-background-color: #9c27b0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 0);
+}
+
+.header-btn-label {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+/* Thay đổi CSS cho nút quay lại */
+.back-button {
+    -fx-background-color: rgba(123, 31, 162, 0.7); /* Màu tím với độ trong suốt */
+    -fx-background-radius: 50%; /* Bo tròn hoàn toàn */
+    -fx-border-radius: 50%; /* Bo tròn viền */
+    -fx-border-width: 0; /* Bỏ viền */
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-width: 40px;
+    -fx-max-height: 40px;
+    -fx-padding: 0; /* Bỏ padding */
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 0); /* Thêm đổ bóng nhẹ */
+}
+
+.back-button:hover {
+    -fx-background-color: rgba(156, 39, 176, 0.8); /* Màu tím đậm hơn khi hover */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 8, 0, 0, 0); /* Đổ bóng rõ hơn khi hover */
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}

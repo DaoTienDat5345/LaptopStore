@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?> <!-- Giả sử bạn có thể có TextField tìm kiếm đơn hàng sau này -->
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.ScrollPane?>
+
+
+<?import javafx.scene.layout.GridPane?>
+<AnchorPane fx:id="orderManagementPane" prefHeight="750.0" prefWidth="1050.0" style="-fx-background-color: #EBF8FF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stores.controller.OrderManagementController">
+    <children>
+        <VBox spacing="15.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <children>
+                <Label text="%order.management.title" textFill="#2C5282"> <!-- KEY -->
+                    <font><Font name="System Bold" size="24.0" /></font>
+                </Label>
+
+                <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-padding: 0 0 10 0;">
+                    <Label text="%label.filterFromDate" /> <!-- KEY -->
+                    <DatePicker fx:id="dpOrderFilterStartDate" prefWidth="130.0" />
+                    <Label text="%label.filterToDate" /> <!-- KEY -->
+                    <DatePicker fx:id="dpOrderFilterEndDate" prefWidth="130.0" />
+                    <Label text="%label.customer" /> <!-- KEY -->
+                    <ComboBox fx:id="cmbOrderFilterCustomer" prefWidth="200.0" promptText="%prompt.allCustomers" /> <!-- KEY -->
+                    <Label text="%label.orderStatus" /> <!-- KEY -->
+                    <ComboBox fx:id="cmbOrderFilterStatus" prefWidth="150.0" promptText="%prompt.allStatuses" /> <!-- KEY -->
+                    <Button fx:id="btnFilterOrders" mnemonicParsing="false" onAction="#handleFilterOrdersAction" text="%button.filterOrders" /> <!-- KEY -->
+                    <Button fx:id="btnRefreshOrderTable" mnemonicParsing="false" onAction="#handleRefreshOrderTableAction" text="%button.refreshTable" /> <!-- KEY -->
+                </HBox>
+
+                <SplitPane dividerPositions="0.60" VBox.vgrow="ALWAYS">
+                    <items>
+                        <TableView fx:id="orderTableView" prefHeight="200.0" prefWidth="200.0">
+                            <columns>
+                                <TableColumn fx:id="colOrderID" prefWidth="100.0" text="%table.col.orderId" /> <!-- KEY -->
+                                <TableColumn fx:id="colOrderDate" prefWidth="150.0" text="%table.col.orderDate" /> <!-- KEY -->
+                                <TableColumn fx:id="colOrderCustomerName" prefWidth="200.0" text="%table.col.customerName" /> <!-- KEY -->
+                                <TableColumn fx:id="colOrderTotalAmount" prefWidth="120.0" text="%table.col.totalAmount" /> <!-- KEY -->
+                                <TableColumn fx:id="colOrderRating" prefWidth="100.0" text="%table.col.rating" /> <!-- KEY -->
+                                <TableColumn fx:id="colOrderStatus" prefWidth="130.0" text="%table.col.orderStatus" /> <!-- KEY -->
+                            </columns>
+                            <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY" /></columnResizePolicy>
+                            <placeholder><Label text="%table.placeholder.noOrders" /></placeholder> <!-- KEY -->
+                        </TableView>
+
+                        <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" prefWidth="400.0">
+                            <content>
+                                <VBox fx:id="orderDetailPanel" spacing="10.0" style="-fx-border-color: #CBD5E0; -fx-border-width: 0 0 0 1; -fx-padding: 10;" visible="false" managed="false">
+                                    <Label fx:id="lblOrderDetailTitle" text="%order.detail.title" style="-fx-font-size: 16px; -fx-font-weight: bold;" /> <!-- KEY -->
+                                    <GridPane hgap="8.0" vgap="5.0">
+                                        <!-- ... columnConstraints, rowConstraints ... -->
+                                        <children>
+                                            <Label text="%label.orderIdShorthand" /> <!-- KEY -->
+                                            <Label fx:id="lblDetailOrderID" text="-" GridPane.columnIndex="1" />
+                                            <Label text="%label.customer" GridPane.rowIndex="1" /> <!-- KEY -->
+                                            <Label fx:id="lblDetailCustomerName" text="-" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                            <Label text="%label.orderDate" GridPane.rowIndex="2" /> <!-- KEY -->
+                                            <Label fx:id="lblDetailOrderDate" text="-" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                            <Label text="%label.employee" GridPane.rowIndex="3" /> <!-- KEY -->
+                                            <Label fx:id="lblDetailEmployeeName" text="-" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                            <Label text="%label.totalAmount" GridPane.rowIndex="4" /> <!-- KEY -->
+                                            <Label fx:id="lblDetailTotalAmount" text="- đ" style="-fx-font-weight: bold;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                            <Label text="%label.shippingAddress" GridPane.rowIndex="5" /> <!-- KEY -->
+                                            <Label fx:id="lblDetailShippingAddress" text="-" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                            <Label text="%label.orderStatus" GridPane.rowIndex="6" /> <!-- KEY -->
+                                            <ComboBox fx:id="cmbDetailOrderStatus" prefWidth="200.0" promptText="%prompt.selectStatus" GridPane.columnIndex="1" GridPane.rowIndex="6" /> <!-- KEY -->
+                                            <Button fx:id="btnUpdateOrderStatus" text="%button.updateStatus" onAction="#handleUpdateOrderStatusAction" GridPane.columnIndex="1" GridPane.rowIndex="7" /> <!-- KEY -->
+                                        </children>
+                                    </GridPane>
+                                    <Label text="%label.productsInOrder" style="-fx-font-weight: bold;"> <!-- KEY -->
+                                        <VBox.margin><Insets top="10.0" bottom="5.0" /></VBox.margin>
+                                    </Label>
+                                    <TableView fx:id="orderDetailTableView" VBox.vgrow="ALWAYS">
+                                        <columns>
+                                            <TableColumn fx:id="colDetailProductName" prefWidth="150.0" text="%table.col.productName" /> <!-- KEY -->
+                                            <TableColumn fx:id="colDetailQuantity" prefWidth="70.0" text="%table.col.quantity" /> <!-- KEY -->
+                                            <TableColumn fx:id="colDetailUnitPrice" prefWidth="100.0" text="%table.col.unitPrice" /> <!-- KEY -->
+                                            <TableColumn fx:id="colDetailSubtotal" prefWidth="100.0" text="%table.col.subtotal" /> <!-- KEY -->
+                                        </columns>
+                                        <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY" /></columnResizePolicy>
+                                        <placeholder><Label text="%table.placeholder.noOrderDetails" /></placeholder> <!-- KEY -->
+                                    </TableView>
+                                </VBox>
+                            </content>
+                        </ScrollPane>
+                    </items>
+                </SplitPane>
+
+                <TitledPane text="%order.ratingChart.title" collapsible="true" expanded="false" VBox.vgrow="NEVER"> <!-- KEY -->
+                    <VBox.margin><Insets top="15.0"/></VBox.margin>
+                    <content>
+                        <AnchorPane minHeight="250.0" prefHeight="250.0">
+                            <PieChart fx:id="orderRatingPieChart" title="%order.ratingChart.pieTitle" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" legendSide="RIGHT" /> <!-- KEY -->
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

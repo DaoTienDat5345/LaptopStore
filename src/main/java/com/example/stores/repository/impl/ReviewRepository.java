@@ -1,8 +1,5 @@
 package com.example.stores.repository.impl;
 
-import com.example.stores.config.DatabaseConnection;
-import com.example.stores.model.ProductReview;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,33 +13,33 @@ import java.util.List;
  */
 public class ReviewRepository {
 
-    /**
-     * Lấy danh sách đánh giá sản phẩm theo ID sản phẩm
-     */
-    public List<ProductReview> findByProductId(String productId) {
-        List<ProductReview> reviews = new ArrayList<>();
-        String query = "SELECT PR.*, C.fullName FROM ProductReview PR " +
-                "JOIN Customer C ON PR.customerID = C.customerID " +
-                "WHERE PR.productID = ?" +
-                "ORDER BY PR.reviewDate DESC";
+   /**
+ * Lấy danh sách đánh giá sản phẩm theo ID sản phẩm
+ */
+public List<ProductReview> findByProductId(String productId) {
+    List<ProductReview> reviews = new ArrayList<>();
+    String query = "SELECT PR.*, C.fullName FROM ProductReview PR " +
+            "JOIN Customer C ON PR.customerID = C.customerID " +
+            "WHERE PR.productID = ?" +  // Thêm điều kiện chỉ lấy đánh giá đã được phê duyệt
+            "ORDER BY PR.reviewDate DESC";
 
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(query)) {
+    try (Connection conn = DatabaseConnection.getConnection();
+         PreparedStatement pstmt = conn.prepareStatement(query)) {
 
-            pstmt.setString(1, productId);
-            ResultSet rs = pstmt.executeQuery();
+        pstmt.setString(1, productId);
+        ResultSet rs = pstmt.executeQuery();
 
-            while (rs.next()) {
-                ProductReview review = mapResultSetToReview(rs);
-                reviews.add(review);
-            }
-        } catch (SQLException e) {
-            System.err.println("Error getting reviews: " + e.getMessage());
-            e.printStackTrace();
+        while (rs.next()) {
+            ProductReview review = mapResultSetToReview(rs);
+            reviews.add(review);
         }
-
-        return reviews;
+    } catch (SQLException e) {
+        System.err.println("Error getting reviews: " + e.getMessage());
+        e.printStackTrace();
     }
+
+    return reviews;
+}
 
     /**
      * Thêm một đánh giá mới cho sản phẩm

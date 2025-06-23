@@ -137,9 +137,33 @@ public class CustomerLoginController implements Initializable {
 
         // Tải lại các tài nguyên hình ảnh để đảm bảo hiển thị đúng
         Platform.runLater(this::reloadResources);
+
+        if (logoutButton != null && logoutIcon != null) {
+            logoutButton.setCursor(Cursor.HAND);
+
+            logoutButton.setOnMouseEntered(e -> {
+                // Phóng to icon khi hover
+                logoutIcon.setScaleX(1.2);
+                logoutIcon.setScaleY(1.2);
+
+                // Thêm hiệu ứng đổ bóng
+                logoutButton.setStyle("-fx-background-radius: 30; -fx-background-color: #f0f0f0; " +
+                        "-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 0);");
+            });
+
+            logoutButton.setOnMouseExited(e -> {
+                // Khôi phục kích thước
+                logoutIcon.setScaleX(1.0);
+                logoutIcon.setScaleY(1.0);
+
+                // Khôi phục style ban đầu
+                logoutButton.setStyle("-fx-background-radius: 30; -fx-background-color: white; " +
+                        "-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 3, 0, 0, 0);");
+            });
+        }
     }
 
-    private void reloadResources() {
+    public void reloadResources() {
         try {
             // Reload icons
             if (userIconView != null) {
@@ -192,17 +216,6 @@ public class CustomerLoginController implements Initializable {
                     logoIcon.setImage(logo);
                 } else {
                     System.err.println("Không tìm thấy file Logo_Comp.png");
-                }
-            }
-
-            // Reload illustration
-            if (illustrationImage != null) {
-                InputStream illustrationStream = getClass().getResourceAsStream("/com/example/stores/images/ComputerSetup.jpg");
-                if (illustrationStream != null) {
-                    Image illustration = new Image(illustrationStream);
-                    illustrationImage.setImage(illustration);
-                } else {
-                    System.err.println("Không tìm thấy file ComputerSetup.jpg");
                 }
             }
 
@@ -799,4 +812,53 @@ public class CustomerLoginController implements Initializable {
             updateLanguageToEnglish();
         }
     }
+    // Thêm vào phần khai báo các thành phần @FXML:
+@FXML private Button logoutButton;
+@FXML private ImageView logoutIcon;
+
+// Thêm phương thức xử lý sự kiện logout sau các phương thức xử lý sự kiện khác:
+@FXML
+private void handleLogoutButtonAction(ActionEvent event) {
+    try {
+        // Lấy kích thước và vị trí hiện tại
+        Stage currentStage = (Stage) logoutButton.getScene().getWindow();
+        double width = currentStage.getWidth();
+        double height = currentStage.getHeight();
+        double x = currentStage.getX();
+        double y = currentStage.getY();
+        
+        // Tải giao diện RoleSelection
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/stores/view/RoleSelection.fxml"));
+        Parent root = loader.load();
+        
+        // Thiết lập scene mới
+        Scene scene = new Scene(root);
+        currentStage.setScene(scene);
+        currentStage.setTitle(isVietnamese ? "CELLCOMP STORE - Chọn vai trò" : "CELLCOMP STORE - Role Selection");
+        
+        // Giữ nguyên kích thước và vị trí
+        currentStage.setWidth(width);
+        currentStage.setHeight(height);
+        currentStage.setX(x);
+        currentStage.setY(y);
+        
+        // Cập nhật controller để tải lại tài nguyên nếu cần
+        RoleSelectionController controller = loader.getController();
+        if (controller != null) {
+            Platform.runLater(() -> {
+                // Đảm bảo giao diện được cập nhật sau khi đổi màn hình
+                // Cập nhật ngôn ngữ từ LanguageManager
+            });
+        }
+    } catch (IOException e) {
+        System.err.println("Không thể chuyển về trang chọn vai trò: " + e.getMessage());
+        e.printStackTrace();
+        String title = isVietnamese ? "Lỗi" : "Error";
+        String message = isVietnamese ? 
+            "Không thể quay lại màn hình chọn vai trò: " : 
+            "Cannot return to role selection screen: ";
+        showStatus(message + e.getMessage(), true);
+    }
+}
+
 }

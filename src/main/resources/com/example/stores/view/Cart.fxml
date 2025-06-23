@@ -21,7 +21,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@../css/Cart.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stores.controller.CartController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@../css/Cart.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stores.controller.CartControllerE">
     <children>
         <!-- Header -->
         <AnchorPane layoutX="-1.0" prefHeight="70.0" prefWidth="1000.0" styleClass="cart-header">
@@ -75,7 +75,7 @@
             </HBox>
 
             <!-- User Icon - Đã sửa để đưa ImageView vào trong graphic -->
-            <MenuButton fx:id="userMenuButton" layoutX="918.0" layoutY="12.0" popupSide="BOTTOM" prefHeight="40.0" prefWidth="39.0" style="-fx-padding: 0; -fx-background-color: transparent; -fx-mark-color: transparent;" styleClass="icon-feature-btn, user-menu-btn">
+            <MenuButton fx:id="userMenuButton" layoutX="929.0" layoutY="24.0" popupSide="LEFT" style="-fx-padding: 0;            -fx-background-color: transparent;            -fx-mark-color: transparent;" styleClass="icon-feature-btn, user-menu-btn">
                 <items>
                     <MenuItem fx:id="accountInfoMenuItem" text="Thông tin tài khoản">
                         <graphic>
@@ -173,9 +173,9 @@
                         <!-- Cart Table -->
                         <TableView fx:id="cartItemTableView" prefHeight="380.0" styleClass="cart-table">
                             <columns>
-                                <TableColumn fx:id="selectColumn" prefWidth="50.0" resizable="false" text="Chọn" />
-                                <TableColumn fx:id="cartItemIdColumn" prefWidth="80.0" resizable="false" text="Mã item" />
-                                <TableColumn fx:id="productNameColumn" prefWidth="300.0" resizable="false" text="Tên sản phẩm" />
+                                <TableColumn fx:id="selectColumn" prefWidth="60.79998445510864" resizable="false" text="Chọn" />
+                                <TableColumn fx:id="cartItemIdColumn" prefWidth="87.20002746582031" resizable="false" text="Mã item" />
+                                <TableColumn fx:id="productNameColumn" prefWidth="283.20001220703125" resizable="false" text="Tên sản phẩm" />
                                 <TableColumn fx:id="priceColumn" prefWidth="120.0" resizable="false" text="Đơn giá" />
                                 <TableColumn fx:id="quantityColumn" prefWidth="90.0" resizable="false" text="Số lượng" />
                                 <TableColumn fx:id="subtotalColumn" prefWidth="120.0" resizable="false" text="Thành tiền" />

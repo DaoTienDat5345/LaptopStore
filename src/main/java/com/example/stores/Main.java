@@ -1,6 +1,5 @@
 package com.example.stores;
 
-import com.example.stores.config.DatabaseConnection;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -17,24 +16,30 @@ import java.sql.Connection;
  * JavaFX Main class updated to work without module-info.java
  */
 public class Main extends Application {
-    
+
     @Override
     public void start(Stage primaryStage) {
         // Set up the user interface
         try {
             // Load login interface from FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/stores/view/CustomerLogin.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/stores/view/RoleSelection.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
-            
+
             // Set up the window
             primaryStage.setTitle("CELLCOMP STORE - Đăng nhập");
             primaryStage.setScene(scene);
-            primaryStage.setMinWidth(800);
-            primaryStage.setMinHeight(600);
+
+            // Đặt kích thước cố định thay vì kích thước tối thiểu
+            primaryStage.setWidth(1010);
+            primaryStage.setHeight(700);
+
+            // Vô hiệu hóa khả năng thay đổi kích thước
+            primaryStage.setResizable(false);
+
             primaryStage.show();
             primaryStage.centerOnScreen();
-            
+
         } catch (IOException e) {
             System.err.println("Error loading login interface: \n");
             e.printStackTrace();
@@ -47,7 +52,7 @@ public class Main extends Application {
             Platform.exit();
         }
     }
-    
+
     /**
      * Display error alert dialog
      */
@@ -63,7 +68,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-    
+
     /**
      * Standard main() method to run the application both in IDE and from jar
      */
@@ -73,7 +78,7 @@ public class Main extends Application {
         if (conn != null) {
             System.out.println("Database connection successful!");
         }
-        
+
         // Launch JavaFX application
         launch(args);
     }

@@ -1,7 +1,5 @@
 package com.example.stores.controller;
 
-import com.example.stores.config.DatabaseConnection;
-import com.example.stores.model.Customer;
 import com.example.stores.service.impl.AuthService;
 import com.example.stores.util.AlertUtils;
 import com.example.stores.util.LanguageManager;

@@ -1,6 +1,5 @@
 package com.example.stores.repository;
 
-import com.example.stores.model.ProductReview;
 import java.util.List;
 
 public interface IReviewRepository {

@@ -1,8 +1,5 @@
 package com.example.stores.service.impl;
 
-import com.example.stores.model.Product;
-import com.example.stores.repository.impl.ProductRepository;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,6 +1,5 @@
 package com.example.stores.service;
 
-import com.example.stores.model.Warranty;
 import java.util.List;
 
 public interface IWarrantyService {

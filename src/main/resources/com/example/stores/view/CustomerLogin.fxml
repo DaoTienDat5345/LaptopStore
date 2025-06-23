@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -83,7 +84,18 @@
                 <Image url="@../images/layout/computer_illustration.jpg" />
             </image>
         </ImageView>
-        
+        <Button fx:id="logoutButton" layoutX="14.0" layoutY="80.0" onAction="#handleLogoutButtonAction" style="-fx-background-radius: 30; -fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 3, 0, 0, 0);">
+            <graphic>
+                <ImageView fx:id="logoutIcon" fitHeight="24.0" fitWidth="24.0">
+                    <image>
+                        <Image url="@../images/layout/logout_icon.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <tooltip>
+                <Tooltip text="Quay lại trang chọn vai trò" />
+            </tooltip>
+        </Button>
         <!-- Right login form -->
         <AnchorPane fx:id="loginFormPane" layoutX="500.0" layoutY="113.0" prefHeight="460" prefWidth="450" style="-fx-background-color: white; -fx-background-radius: 40;">
             <children>

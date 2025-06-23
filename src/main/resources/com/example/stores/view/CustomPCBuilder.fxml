@@ -49,7 +49,7 @@
                     </Button>
 
                     <!-- User Icon - Cập nhật để giống Home.fxml -->
-                    <MenuButton fx:id="userMenuButton" layoutX="949.0" layoutY="22.0" popupSide="BOTTOM" style="-fx-padding: 0; -fx-background-color: transparent; -fx-mark-color: transparent;" styleClass="icon-feature-btn, user-menu-btn, hover-button">
+                    <MenuButton fx:id="userMenuButton" layoutX="949.0" layoutY="20.0" popupSide="LEFT" style="-fx-padding: 0;            -fx-background-color: transparent;            -fx-mark-color: transparent;" styleClass="icon-feature-btn, user-menu-btn">
                         <items>
                             <MenuItem fx:id="accountInfoMenuItem" text="Thông tin tài khoản">
                                 <graphic>
@@ -97,7 +97,7 @@
                             <Image url="@../images/layout/Logo_Comp.png" />
                         </image>
                     </ImageView>
-                    <ImageView fitHeight="35.0" fitWidth="37.0" layoutX="947.0" layoutY="20.0">
+                    <ImageView fitHeight="35.0" fitWidth="37.0" layoutX="949.0" layoutY="20.0">
                         <image>
                             <Image url="@../images/layout/RegisterUser_icon.png" />
                         </image>
