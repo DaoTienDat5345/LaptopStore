@@ -1,8 +1,5 @@
 package com.example.stores.repository.impl;
 
-import com.example.stores.config.DatabaseConnection;
-import com.example.stores.model.ProductReview;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

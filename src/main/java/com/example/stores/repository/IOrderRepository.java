@@ -1,7 +1,5 @@
 package com.example.stores.repository;
 
-import com.example.stores.model.Order;
-import com.example.stores.model.OrderDetail;
 import java.util.List;
 
 public interface IOrderRepository {

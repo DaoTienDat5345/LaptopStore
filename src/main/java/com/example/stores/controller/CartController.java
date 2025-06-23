@@ -1,10 +1,5 @@
 package com.example.stores.controller;
 
-import com.example.stores.model.CartItem;
-import com.example.stores.model.Cart;
-import com.example.stores.model.Customer;
-import com.example.stores.model.Product;
-import com.example.stores.repository.impl.ProductRepository;
 import com.example.stores.service.impl.AuthService;
 import com.example.stores.service.impl.CartService;
 import com.example.stores.util.AlertUtils;

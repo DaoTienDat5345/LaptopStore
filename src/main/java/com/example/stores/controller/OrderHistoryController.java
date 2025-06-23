@@ -1,6 +1,5 @@
 package com.example.stores.controller;
 
-import com.example.stores.model.Order;
 import com.example.stores.service.impl.AuthService;
 import com.example.stores.service.impl.OrderService;
 import com.example.stores.util.AlertUtils;

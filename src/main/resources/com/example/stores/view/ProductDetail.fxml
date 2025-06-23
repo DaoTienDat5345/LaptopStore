@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="rootPane" prefHeight="650" prefWidth="1000" stylesheets="@../css/ProductDetail.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stores.controller.ProductDetailController">
+<BorderPane fx:id="rootPane" prefHeight="650" prefWidth="1000" stylesheets="@../css/ProductDetail.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stores.controller.ProductDetailControllerE">
     <!-- Header cố định phía trên -->
     <top>
         <AnchorPane fx:id="headerPane" prefHeight="70.0" prefWidth="1000" styleClass="top-header">

@@ -1,7 +1,5 @@
 package com.example.stores.repository;
 
-import com.example.stores.model.Cart;
-import com.example.stores.model.CartItem;
 import java.util.List;
 
 public interface ICartRepository {

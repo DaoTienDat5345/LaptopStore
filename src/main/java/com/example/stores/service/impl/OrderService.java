@@ -1,9 +1,6 @@
 package com.example.stores.service.impl;
 
-import com.example.stores.config.DatabaseConnection;
 import com.example.stores.model.*;
-import com.example.stores.repository.impl.OrderRepository;
-import com.example.stores.repository.impl.ProductRepository;
 
 import java.lang.reflect.Field;
 import java.sql.*;
