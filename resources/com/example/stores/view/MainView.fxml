@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.SplitPane?>
+
+<?import javafx.scene.control.ToggleButton?>
+<BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stores.controller.MainViewController">
+    <left>
+        <VBox fx:id="sidebar" prefWidth="220.0" spacing="5.0" style="-fx-background-color: #2D3748; -fx-padding: 10;" BorderPane.alignment="CENTER">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-padding: 10 0 20 0;">
+                    <children>
+                        <!-- Bạn có thể thay bằng ImageView cho logo -->
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <!-- Thay bằng đường dẫn đến logo của bạn trong resources/images -->
+                                <Image url="@../images/pngtree-modern-abstract-computer-logo-png-image_6511917-removebg-preview.png" />
+                            </image>
+                        </ImageView>
+                        <Label text="CELLCOMP" textFill="white">
+                            <font>
+                                <Font name="System Bold" size="20.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <Button fx:id="btnManagerProfile" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleShowManagerProfile" prefHeight="40.0" prefWidth="200.0" styleClass="sidebar-button" text="Thông tin cá nhân">
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image><Image url="@../images/pngtree-modern-abstract-computer-logo-png-image_6511917-removebg-preview.png" /></image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="btnEmployeeManagement" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleShowEmployeeManagement" prefHeight="40.0" prefWidth="200.0" styleClass="sidebar-button" text="Quản lý Nhân viên">
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image><Image url="@../images/pngtree-modern-abstract-computer-logo-png-image_6511917-removebg-preview.png" /></image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="btnShiftManagement" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleShowShiftManagement" prefHeight="40.0" prefWidth="200.0" styleClass="sidebar-button" text="Quản lý Ca làm">
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image><Image url="@../images/pngtree-modern-abstract-computer-logo-png-image_6511917-removebg-preview.png" /></image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="btnProductManagement" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleShowProductManagement" prefHeight="40.0" prefWidth="200.0" styleClass="sidebar-button" text="Quản lý Sản phẩm">
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image><Image url="@../images/pngtree-modern-abstract-computer-logo-png-image_6511917-removebg-preview.png" /></image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="btnWarehouseManagement" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleShowWarehouseManagement" prefHeight="40.0" prefWidth="210.0" styleClass="sidebar-button" text="Quản lý Kho hàng">
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image><Image url="@../images/pngtree-modern-abstract-computer-logo-png-image_6511917-removebg-preview.png" /></image> <!-- Icon mẫu -->
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="btnSupplierImportManagement" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleShowSupplierImportManagement" prefHeight="40.0" prefWidth="210.0" styleClass="sidebar-button" text="NCC và Nhập Hàng">
+                <graphic>
+                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../images/pngtree-modern-abstract-computer-logo-png-image_6511917-removebg-preview.png" /> <!-- Tạo icon này -->
+                        </image>
+                    </ImageView>
+                </graphic>
+                </Button>
+                <Button fx:id="btnShowOrderManagement" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleShowOrderManagement" prefHeight="40.0" prefWidth="210.0" styleClass="sidebar-button" text="Quản lý đơn hàng">
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/pngtree-modern-abstract-computer-logo-png-image_6511917-removebg-preview.png" /> <!-- Tạo icon này -->
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="btnCustomerManagement" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleShowCustomerManagement" prefHeight="40.0" prefWidth="210.0" styleClass="sidebar-button" text="Quản lý khách hàng">
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/pngtree-modern-abstract-computer-logo-png-image_6511917-removebg-preview.png" /> <!-- Tạo icon này -->
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="btnSalesReport" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleShowSalesReport" prefHeight="40.0" prefWidth="210.0" styleClass="sidebar-button" text="thống kê doanh thu">\
+
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/pngtree-modern-abstract-computer-logo-png-image_6511917-removebg-preview.png" /> <!-- Tạo icon này -->
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <!-- Thêm các nút khác cho Quản lý Kho, Nhập hàng, Lịch sửa máy, Báo cáo... -->
+                <VBox VBox.vgrow="ALWAYS" /> <!-- Để đẩy nút Đăng xuất xuống dưới -->
+                <Button fx:id="btnLogout" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="40.0" prefWidth="200.0" styleClass="sidebar-button-logout" text="Đăng xuất">
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image><Image url="@../images/pngtree-modern-abstract-computer-logo-png-image_6511917-removebg-preview.png" /></image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+
+            </children>
+        </VBox>
+    </left>
+    <center>
+        <!-- Vùng này sẽ được dùng để hiển thị các view con (ManagerProfileView, EmployeeManagementView, etc.) -->
+        <!-- Ban đầu có thể để trống hoặc hiển thị một AnchorPane/VBox mặc định -->
+        <AnchorPane fx:id="contentArea" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #F7FAFC;" BorderPane.alignment="CENTER" />
+    </center>
+    <top>
+        <HBox fx:id="header" alignment="CENTER_RIGHT" prefHeight="50.0" spacing="15.0" style="-fx-background-color: #4A5568; -fx-padding: 0 20 0 20;" BorderPane.alignment="CENTER">
+            <children>
+                <!-- NÚT CHUYỂN NGÔN NGỮ MỚI -->
+                <ToggleButton fx:id="btnToggleLanguageMain" onAction="#handleToggleLanguageMainAction" prefWidth="100.0" text="English" style="-fx-background-color: #718096; -fx-text-fill: white; -fx-background-radius: 5;">
+                    <HBox.margin>
+                        <Insets right="20.0" /> <!-- Tạo khoảng cách với ngày giờ -->
+                    </HBox.margin>
+                </ToggleButton>
+
+                <Label fx:id="lblCurrentDateTime" text="Ngày giờ" textFill="white">
+                    <font><Font size="13.0" /></font>
+                </Label>
+                <Label fx:id="lblManagerName" text="Tên Manager" textFill="white">
+                    <font><Font name="System Bold" size="14.0" /></font>
+                </Label>
+            </children>
+        </HBox>
+    </top>
+</BorderPane>
