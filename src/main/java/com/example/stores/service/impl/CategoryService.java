@@ -1,6 +1,5 @@
 package com.example.stores.service.impl;
 
-import com.example.stores.model.Category;
 import com.example.stores.repository.impl.CategoryRepository;
 
 import java.util.List;

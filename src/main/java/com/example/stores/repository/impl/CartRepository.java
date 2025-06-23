@@ -1,10 +1,5 @@
 package com.example.stores.repository.impl;
 
-import com.example.stores.config.DatabaseConnection;
-import com.example.stores.model.Cart;
-import com.example.stores.model.CartItem;
-import com.example.stores.model.Product;
-
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;

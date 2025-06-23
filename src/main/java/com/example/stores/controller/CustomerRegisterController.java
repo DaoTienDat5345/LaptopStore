@@ -17,7 +17,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import com.example.stores.model.Customer;
 import com.example.stores.service.impl.AuthService;
 import com.example.stores.util.AlertUtils;
 import com.example.stores.util.LanguageManager;

@@ -1,7 +1,5 @@
 package com.example.stores.controller;
 
-import com.example.stores.model.Category;
-import com.example.stores.model.Product;
 import com.example.stores.repository.impl.ProductRepository;
 import com.example.stores.service.impl.CategoryService;
 import com.example.stores.service.impl.ProductService;
@@ -39,7 +37,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
-import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import javafx.scene.Node;

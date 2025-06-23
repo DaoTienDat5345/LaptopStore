@@ -1,7 +1,5 @@
 package com.example.stores.repository.impl;
 
-import com.example.stores.config.DatabaseConnection;
-import com.example.stores.model.Customer;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.*;

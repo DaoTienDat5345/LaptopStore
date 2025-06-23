@@ -1,7 +1,5 @@
 package com.example.stores.service.impl;
 
-import com.example.stores.config.DatabaseConnection;
-import com.example.stores.model.ProductReview;
 import com.example.stores.repository.impl.ReviewRepository;
 
 import java.sql.Connection;

@@ -1,6 +1,5 @@
 package com.example.stores.service.impl;
 
-import com.example.stores.config.DatabaseConnection;
 import com.example.stores.model.*;
 import com.example.stores.repository.impl.OrderRepository;
 import com.example.stores.repository.impl.ProductRepository;

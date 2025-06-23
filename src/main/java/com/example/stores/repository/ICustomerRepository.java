@@ -1,6 +1,5 @@
 package com.example.stores.repository;
 
-import com.example.stores.model.Customer;
 import java.util.List;
 
 public interface ICustomerRepository {

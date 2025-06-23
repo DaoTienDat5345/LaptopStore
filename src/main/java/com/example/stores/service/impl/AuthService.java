@@ -1,6 +1,5 @@
 package com.example.stores.service.impl;
 
-import com.example.stores.model.Customer;
 import com.example.stores.repository.impl.CustomerRepository;
 
 public class AuthService {

@@ -1,9 +1,5 @@
 package com.example.stores.controller;
 
-import com.example.stores.model.Order;
-import com.example.stores.model.OrderDetail;
-import com.example.stores.model.ProductReview;
-import com.example.stores.model.Warranty;
 import com.example.stores.service.impl.OrderService;
 import com.example.stores.service.impl.AuthService;
 import com.example.stores.service.impl.ReviewService;
@@ -37,9 +33,6 @@ import com.itextpdf.text.pdf.*;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.time.format.DateTimeFormatter;
-import javafx.application.Platform;
-import java.time.LocalDateTime;
 
 import java.io.IOException;
 import java.net.URL;

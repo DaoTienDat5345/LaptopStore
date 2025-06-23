@@ -1,7 +1,5 @@
 package com.example.stores.service;
 
-import com.example.stores.model.Customer;
-
 public interface IAuthService {
     boolean login(String username, String password);
     boolean register(Customer customer);

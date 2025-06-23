@@ -1,10 +1,5 @@
 package com.example.stores.repository.impl;
 
-import com.example.stores.config.DatabaseConnection;
-import com.example.stores.model.Order;
-import com.example.stores.model.OrderDetail;
-import com.example.stores.model.Product;
-
 import java.lang.reflect.Field;
 import java.sql.*;
 import java.util.ArrayList;
