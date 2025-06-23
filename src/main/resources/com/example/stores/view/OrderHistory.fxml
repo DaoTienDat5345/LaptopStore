@@ -38,7 +38,7 @@
                 </Label>
 
                 <!-- User Menu Button -->
-                <MenuButton fx:id="userMenuButton" layoutX="929.0" layoutY="8.0" popupSide="BOTTOM" prefHeight="44.0" prefWidth="38.0" style="-fx-padding: 0; -fx-background-color: transparent; -fx-mark-color: transparent;" styleClass="user-menu-btn">
+                <MenuButton fx:id="userMenuButton" layoutX="943.0" layoutY="21.0" popupSide="LEFT" style="-fx-padding: 0;            -fx-background-color: transparent;            -fx-mark-color: transparent;" styleClass="icon-feature-btn, user-menu-btn">
                     <items>
                         <MenuItem fx:id="accountInfoMenuItem" onAction="#openCustomerChangeScreen" text="Thông tin tài khoản">
                             <graphic>
@@ -79,7 +79,7 @@
                         </MenuItem>
                     </items>
                 </MenuButton>
-                  <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="934.0" layoutY="14.0">
+                  <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="939.0" layoutY="17.0">
                       <image>
                           <Image url="@../images/layout/RegisterUser_icon.png" />
                       </image>

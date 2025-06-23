@@ -180,14 +180,8 @@ public class OrderHistoryController implements Initializable {
             }
         });
 
-        // Bấm đúp vào dòng để xem chi tiết
         ordersTable.setRowFactory(tv -> {
             TableRow<Order> row = new TableRow<>();
-            row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && !row.isEmpty()) {
-                    viewOrderDetails(row.getItem());
-                }
-            });
             return row;
         });
 
@@ -227,10 +221,15 @@ public class OrderHistoryController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/stores/view/OrderDetails.fxml"));
             Parent root = loader.load();
 
-            // Truyền thông tin đơn hàng
+            // Truyền thông tin đơn hàng và nguồn truy cập
             OrderDetailsController controller = loader.getController();
             controller.setIsVietnamese(isVietnamese);
             controller.setOrder(order);
+            controller.setAccessSource("history"); // Đánh dấu là từ lịch sử đơn hàng
+
+            // Thêm dòng này để đánh dấu màn hình trước đó là OrderHistory
+            controller.setPreviousScreen("orderhistory");
+
             controller.loadOrderDetails();
 
             // Hiển thị scene mới
@@ -248,6 +247,7 @@ public class OrderHistoryController implements Initializable {
             );
         }
     }
+
 
     private void cancelOrder(Order order) {
         // Hiện hộp thoại xác nhận
@@ -392,13 +392,34 @@ public class OrderHistoryController implements Initializable {
     }
 
     @FXML
-    private void openCustomDesignScreen() {
-        // Phương thức này sẽ được triển khai sau khi có màn hình thiết kế PC
-        AlertUtils.showInfo(
-                isVietnamese ? "Thông báo" : "Information",
-                isVietnamese ? "Tính năng đang được phát triển" : "This feature is under development"
+private void openCustomDesignScreen() {
+    try {
+        // Lưu trạng thái ngôn ngữ hiện tại
+        LanguageManager.setVietnamese(isVietnamese);
+
+        // Tải màn hình thiết kế PC
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/stores/view/CustomPCBuilder.fxml"));
+        Parent root = loader.load();
+
+        // Lấy controller và cập nhật ngôn ngữ nếu cần
+        CustomPCBuilderController controller = loader.getController();
+        // Không cần gọi phương thức riêng vì controller sẽ tự lấy ngôn ngữ từ LanguageManager
+
+        // Hiển thị scene mới
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ordersTable.getScene().getWindow();
+        stage.setTitle(isVietnamese ? "CELLCOMP STORE - Thiết kế máy tính" : "CELLCOMP STORE - PC Builder");
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+        AlertUtils.showError(
+                isVietnamese ? "Lỗi" : "Error",
+                isVietnamese ? "Không thể mở trang thiết kế máy tính: " + e.getMessage() :
+                        "Cannot open PC builder page: " + e.getMessage()
         );
     }
+}
 
     @FXML
     private void switchLanguage() {
@@ -414,7 +435,7 @@ public class OrderHistoryController implements Initializable {
         loadOrders();
     }
 
-    private void updateLanguage() {
+    public void updateLanguage() {
         // Cập nhật tiêu đề và nhãn
         historyTitle.setText(isVietnamese ? "LỊCH SỬ MUA HÀNG" : "ORDER HISTORY");
         historyTitleHeading.setText(isVietnamese ? "Lịch sử mua hàng" : "Order History");

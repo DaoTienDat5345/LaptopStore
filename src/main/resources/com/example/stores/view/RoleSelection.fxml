@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" prefHeight="600" prefWidth="990.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stores.controller.RoleSelectionController">
+    <children>
+        <!-- Background Gradient -->
+        <Rectangle fx:id="backgroundRect" height="600" width="994.0">
+            <fill>
+                <LinearGradient endX="1.0" endY="1.0" startX="0.0" startY="0.0">
+                    <stops>
+                        <Stop color="#865DFF" offset="0.0" />
+                        <Stop color="#5CB8E4" offset="0.8" />
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
+
+        <!-- Header -->
+        <AnchorPane fx:id="headerPane" layoutX="20" layoutY="10" prefHeight="86.0" prefWidth="967.0">
+            <!-- Header Background -->
+            <Rectangle fx:id="headerRect" arcHeight="20.0" arcWidth="20.0" fill="white" height="60.0" layoutX="-15.0" layoutY="10.0" stroke="#865DFF" strokeType="INSIDE" strokeWidth="2.0" width="987.0">
+                <effect>
+                    <DropShadow color="#0000001a" height="10" radius="4.5" width="10" />
+                </effect>
+                <stroke>
+                    <LinearGradient endX="1.0" endY="1.0" startX="0.0" startY="0.0">
+                        <stops>
+                            <Stop color="#865DFF" offset="0.0" />
+                            <Stop color="#5CB8E4" offset="0.8" />
+                        </stops>
+                    </LinearGradient>
+                </stroke>
+            </Rectangle>
+
+            <!-- Logo CELLCOMP -->
+            <Label fx:id="logoLabel" layoutX="40.0" layoutY="-16.0" style="-fx-font-size: 40px; -fx-font-family: 'Arial Black'; -fx-text-fill: #865DFF; -fx-effect: dropshadow(gaussian, #ffffff, 2, 1, 0, 0);" text="CELLCOMP" />
+
+            <ImageView fx:id="logoIcon" fitHeight="45.0" fitWidth="45.0" layoutX="-8.0" layoutY="18.0">
+                <image>
+                    <Image url="@../images/layout/Logo_Comp.png" />
+                </image>
+                <effect>
+                    <DropShadow color="#0000001a" height="5.0" radius="2.0" width="5.0" />
+                </effect>
+            </ImageView>
+
+            <Label fx:id="storeLabel" layoutX="274.0" layoutY="22.0" style="-fx-font-size: 28px; -fx-font-family: 'Arial Black'; -fx-text-fill: #865DFF;" text="STORE">
+                <font>
+                    <Font size="28.0" />
+                </font>
+            </Label>
+
+            <Label fx:id="welcomeLabel" layoutX="456.0" layoutY="22.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #865DFF;" text="Chọn Vai Trò" />
+            
+            <!-- Language Button -->
+            <Button fx:id="langButton" layoutX="881.0" layoutY="29.0" onAction="#handleLanguageButtonAction" style="-fx-background-radius: 20; -fx-border-color: #865DFF; -fx-border-radius: 20; -fx-background-color: transparent; -fx-text-fill: #865DFF;" text="Tiếng Việt" />
+            <ImageView fx:id="languageFlag" fitHeight="27.0" fitWidth="27.0" layoutX="837.0" layoutY="30.0">
+                <image>
+                    <Image url="@../images/layout/flag_vn.png" />
+                </image>
+            </ImageView>
+        </AnchorPane>
+
+        <!-- Main Content - Role Selection -->
+        <HBox alignment="CENTER" layoutX="50" layoutY="150" prefHeight="400" prefWidth="900" spacing="40">
+            <!-- Manager Role -->
+            <VBox alignment="CENTER" prefHeight="350" prefWidth="250" style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);">
+                <ImageView fitHeight="200" fitWidth="200" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/layout/Manager.jpg" />
+                    </image>
+                </ImageView>
+                <Button fx:id="managerButton" onAction="#handleManagerButtonAction" prefHeight="50" prefWidth="180"
+                        style="-fx-background-color: linear-gradient(to right, #865DFF, #5CB8E4); -fx-background-radius: 15; -fx-text-fill: white; -fx-font-size: 16px; -fx-cursor: hand;"
+                        text="Manager" />
+            </VBox>
+
+            <!-- Employee Role -->
+            <VBox alignment="CENTER" prefHeight="350" prefWidth="250" style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);">
+                <ImageView fitHeight="200" fitWidth="200" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/layout/Employee.png" />
+                    </image>
+                </ImageView>
+                <Button fx:id="employeeButton" onAction="#handleEmployeeButtonAction" prefHeight="50" prefWidth="180"
+                        style="-fx-background-color: linear-gradient(to right, #5CB8E4, #865DFF); -fx-background-radius: 15; -fx-text-fill: white; -fx-font-size: 16px; -fx-cursor: hand;"
+                        text="Employee" />
+            </VBox>
+
+            <!-- Customer Role -->
+            <VBox alignment="CENTER" prefHeight="350" prefWidth="250" style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);">
+                <ImageView fitHeight="200" fitWidth="200" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/layout/Customer.png" />
+                    </image>
+                </ImageView>
+                <Button fx:id="customerButton" onAction="#handleCustomerButtonAction" prefHeight="50" prefWidth="180"
+                        style="-fx-background-color: linear-gradient(to right, #865DFF, #5CB8E4); -fx-background-radius: 15; -fx-text-fill: white; -fx-font-size: 16px; -fx-cursor: hand;"
+                        text="Customer" />
+            </VBox>
+        </HBox>
+    </children>
+</AnchorPane>

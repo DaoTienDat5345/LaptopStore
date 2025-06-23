@@ -101,9 +101,20 @@
     -fx-background-color: #f9f9f9;
 }
 
+/* SỬA: Thay đổi hiệu ứng hover cho row */
 .orders-table .table-row-cell:hover {
-    -fx-background-color: rgba(134, 93, 255, 0.1);
-    -fx-cursor: hand;
+    -fx-background-color: #f5f5f5; /* Màu nền xám nhạt khi hover */
+    -fx-cursor: default; /* Không hiển thị con trỏ "hand" để tránh nhầm lẫn */
+}
+
+/* THÊM MỚI: Điều chỉnh style cho hàng được chọn */
+.orders-table .table-row-cell:selected {
+    -fx-background-color: #e8e8e8; /* Màu nền khi chọn - không quá nổi bật */
+}
+
+/* THÊM MỚI: Đảm bảo text trong selected row không đổi thành trắng */
+.orders-table .table-row-cell:selected .table-cell {
+    -fx-text-fill: black; /* Giữ màu chữ đen kể cả khi được chọn */
 }
 
 /* Status Styling */
@@ -126,9 +137,10 @@
     -fx-cursor: hand;
 }
 
+/* SỬA: Thay đổi hiệu ứng hover của nút xem */
 .view-button:hover {
     -fx-background-color: #734BE0;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 3, 0, 0, 1);
+    -fx-effect: dropshadow(gaussian, #7859ca, 3, 0, 0, 0);
 }
 
 .cancel-button {
@@ -139,9 +151,10 @@
     -fx-cursor: hand;
 }
 
+/* SỬA: Thay đổi hiệu ứng hover của nút hủy */
 .cancel-button:hover {
     -fx-background-color: #c82333;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 3, 0, 0, 1);
+    -fx-effect: dropshadow(gaussian, #ca5959, 3, 0, 0, 0);
 }
 
 /* Style cho menu item */

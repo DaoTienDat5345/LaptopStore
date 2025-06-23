@@ -1109,45 +1109,60 @@ public class OrderController implements Initializable {
             e.printStackTrace();
         }
     }
-    // Thay thế phương thức finishOrder() hiện tại bằng phiên bản mới này
+    private String savedOrderId;
     private void finishOrder() {
         try {
-            System.out.println("DEBUG: Finishing order and navigating to order details...");
+            // Lưu thông tin đơn hàng để sử dụng cho định danh in ấn nếu cần
+            savedOrderId = currentOrder.getOrderId();
 
-            // Đảm bảo lưu trạng thái ngôn ngữ hiện tại vào LanguageManager
-            LanguageManager.setVietnamese(isVietnamese);
+            // Hiển thị cảnh báo thành công với lựa chọn phù hợp hơn
+            Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            successAlert.setTitle(isVietnamese ? "Đặt hàng thành công" : "Order Successful");
+            successAlert.setHeaderText(isVietnamese ? "Đơn hàng đã thanh toán thành công!" : "Order has been paid successfully!");
+            successAlert.setContentText(isVietnamese ? "Bạn có muốn xem chi tiết hóa đơn không?" : "Would you like to view order details?");
 
-            if (currentOrder == null || currentOrder.getOrderId() == null) {
-                throw new Exception("Invalid order state");
+            // Tùy chỉnh nút
+            ButtonType yesButton = new ButtonType(isVietnamese ? "Có" : "Yes", ButtonBar.ButtonData.YES);
+            ButtonType noButton = new ButtonType(isVietnamese ? "Không" : "No", ButtonBar.ButtonData.NO);
+            successAlert.getButtonTypes().setAll(yesButton, noButton);
+
+            // Xử lý phản hồi với logic ngược lại so với trước đây
+            Optional<ButtonType> result = successAlert.showAndWait();
+            if (result.isPresent() && result.get() == yesButton) {
+                // Nếu chọn "Có": Chuyển đến trang chi tiết đơn hàng
+                showOrderDetails(currentOrder);
+            } else {
+                // Nếu chọn "Không": Chuyển về trang chủ
+                goToHome();
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            AlertUtils.showError(
+                    isVietnamese ? "Lỗi" : "Error",
+                    isVietnamese ? "Không thể hoàn tất đơn hàng: " + e.getMessage() :
+                            "Cannot complete order: " + e.getMessage()
+            );
+        }
+    }
 
-            // Điều hướng đến trang chi tiết đơn hàng
+    // Thêm phương thức để chuyển đến trang chi tiết đơn hàng
+    private void showOrderDetails(Order order) {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/stores/view/OrderDetails.fxml"));
-            Parent orderDetailsRoot = loader.load();
+            Parent root = loader.load();
 
-            // Truyền thông tin đơn hàng
+            // Truyền thông tin đơn hàng và nguồn truy cập
             OrderDetailsController controller = loader.getController();
-
-            // Thiết lập ngôn ngữ trước khi thiết lập order
-            controller.setIsVietnamese(isVietnamese);
-            System.out.println("DEBUG: Đã thiết lập ngôn ngữ cho OrderDetails: " +
-                    (isVietnamese ? "Tiếng Việt" : "English"));
-
-            // Thiết lập đơn hàng
-            controller.setOrder(currentOrder);
-
-            // Tải chi tiết đơn hàng
+            controller.setOrder(order);
+            controller.setAccessSource("new_order"); // Đánh dấu là từ đơn hàng mới
             controller.loadOrderDetails();
 
-            // Hiển thị scene mới
-            Scene scene = new Scene(orderDetailsRoot);
-            Stage stage = (Stage) paymentButton.getScene().getWindow();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) recipientNameField.getScene().getWindow();
+            stage.setTitle(isVietnamese ? "Chi tiết đơn hàng" : "Order Details");
             stage.setScene(scene);
             stage.show();
-
-            // Cập nhật lại ngôn ngữ một lần nữa để đảm bảo
-            Platform.runLater(controller::updateLanguage);
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

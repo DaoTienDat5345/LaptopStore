@@ -724,78 +724,99 @@ private void setupValidation() {
 
     // Validate phone number
     if (numberField != null) {
-        numberField.textProperty().addListener((obs, oldVal, newVal) -> {
-            // Allow only digits
-            if (!newVal.matches("\\d*")) {
-                numberField.setText(newVal.replaceAll("[^\\d]", ""));
+    numberField.textProperty().addListener((obs, oldVal, newVal) -> {
+        // Allow only digits
+        if (!newVal.matches("\\d*")) {
+            numberField.setText(newVal.replaceAll("[^\\d]", ""));
+            return;
+        }
+
+        // Nếu chuỗi rỗng, không hiển thị lỗi
+        if (newVal.isEmpty()) {
+            phoneErrorLabel.setText("");
+            isPhoneValid.set(false);
+            isPhoneDuplicate = false;
+            return;
+        }
+        
+        // Kiểm tra 2 chữ số đầu tiên
+        if (newVal.length() >= 1) {
+            // Với số đầu tiên, nếu không phải 0 thì báo lỗi ngay
+            if (newVal.length() == 1 && !newVal.startsWith("0")) {
+                phoneErrorLabel.setText(isVietnamese ? 
+                    "Số điện thoại phải bắt đầu bằng số 0" : 
+                    "Phone number must start with 0");
+                isPhoneValid.set(false);
+                isPhoneDuplicate = false;
                 return;
             }
-
-            // Check first two digits
+            
+            // Với 2 số đầu tiên, kiểm tra prefix
             if (newVal.length() >= 2) {
                 String prefix = newVal.substring(0, 2);
-                if (!prefix.equals("03") && !prefix.equals("07")  && !prefix.equals("09")) {
+                if (!prefix.equals("03") && !prefix.equals("07") && !prefix.equals("09")) {
                     phoneErrorLabel.setText(isVietnamese ?
                             "Số điện thoại phải bắt đầu bằng 03, 07 hoặc 09" :
                             "Phone must start with 03, 07 or 09");
                     isPhoneValid.set(false);
-                    isPhoneDuplicate = false; // Reset trạng thái trùng lặp
+                    isPhoneDuplicate = false;
+                    return;
+                }
+                
+                // Nếu prefix hợp lệ và độ dài < 10, mới thông báo về độ dài
+                if (newVal.length() < 10) {
+                    phoneErrorLabel.setText(isVietnamese ?
+                            "Vui lòng nhập đủ 10-12 số" :
+                            "Please enter 10-12 digits");
+                    isPhoneValid.set(false);
+                    isPhoneDuplicate = false;
                     return;
                 }
             }
+        }
 
-            // Check length: 10-12 digits
-            if (newVal.length() > 0 && newVal.length() < 10) {
-                phoneErrorLabel.setText(isVietnamese ?
-                        "Vui lòng nhập đủ 10-12 số" :
-                        "Please enter 10-12 digits");
-                isPhoneValid.set(false);
-                isPhoneDuplicate = false;
-            } else if (newVal.length() > 12) {
-                phoneErrorLabel.setText(isVietnamese ?
-                        "Số điện thoại không được vượt quá 12 số" :
-                        "Phone number should not exceed 12 digits");
-                isPhoneValid.set(false);
-                isPhoneDuplicate = false;
-            } else if (newVal.length() >= 10 && newVal.length() <= 12) {
-                // Full validation
-                boolean isValid = isValidPhoneNumber(newVal);
-                
-                if (isValid && !newVal.isEmpty()) {
-                    // Chỉ kiểm tra trong DB khi định dạng hợp lệ và không rỗng
-                    new Thread(() -> {
-                        boolean exists = authService.isPhoneExists(newVal);
-                        Platform.runLater(() -> {
-                            if (exists) {
-                                phoneErrorLabel.setText(isVietnamese ?
-                                        "Số điện thoại đã được sử dụng. Vui lòng dùng số khác." :
-                                        "Phone number already in use. Please use another one.");
-                                isPhoneValid.set(false);
-                                isPhoneDuplicate = true; // Đánh dấu là trùng lặp
-                            } else {
-                                phoneErrorLabel.setText("");
-                                isPhoneValid.set(true);
-                                isPhoneDuplicate = false;
-                            }
-                        });
-                    }).start();
-                } else {
-                    isPhoneValid.set(isValid);
-                    isPhoneDuplicate = false;
-                    if (!isValid) {
-                        phoneErrorLabel.setText(isVietnamese ?
-                                "Số điện thoại không hợp lệ" :
-                                "Invalid phone number format");
-                    } else {
-                        phoneErrorLabel.setText("");
-                    }
-                }
+        // Kiểm tra độ dài: 10-12 chữ số
+        if (newVal.length() > 12) {
+            phoneErrorLabel.setText(isVietnamese ?
+                    "Số điện thoại không được vượt quá 12 số" :
+                    "Phone number should not exceed 12 digits");
+            isPhoneValid.set(false);
+            isPhoneDuplicate = false;
+            return;
+        }
+
+        // Nếu qua tất cả các kiểm tra và độ dài từ 10-12, thì số điện thoại hợp lệ
+        if (newVal.length() >= 10 && newVal.length() <= 12) {
+            // Full validation
+            boolean isValid = isValidPhoneNumber(newVal);
+            
+            if (isValid) {
+                // Kiểm tra trong DB khi định dạng hợp lệ
+                new Thread(() -> {
+                    boolean exists = authService.isPhoneExists(newVal);
+                    Platform.runLater(() -> {
+                        if (exists) {
+                            phoneErrorLabel.setText(isVietnamese ?
+                                    "Số điện thoại đã được sử dụng. Vui lòng dùng số khác." :
+                                    "Phone number already in use. Please use another one.");
+                            isPhoneValid.set(false);
+                            isPhoneDuplicate = true;
+                        } else {
+                            phoneErrorLabel.setText("");
+                            isPhoneValid.set(true);
+                            isPhoneDuplicate = false;
+                        }
+                    });
+                }).start();
             } else {
-                phoneErrorLabel.setText("");
+                phoneErrorLabel.setText(isVietnamese ?
+                        "Số điện thoại không hợp lệ" :
+                        "Invalid phone number format");
                 isPhoneValid.set(false);
                 isPhoneDuplicate = false;
             }
-        });
+        }
+    });
         
         // Kiểm tra lần cuối khi field mất focus
         numberField.focusedProperty().addListener((obs, oldVal, newVal) -> {

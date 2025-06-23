@@ -166,6 +166,10 @@ public class OrderDetailsController implements Initializable {
             updateLanguage();
         });
         System.out.println("OrderDetailsController đã khởi tạo");
+
+        Platform.runLater(() -> {
+            updateReviewButtonVisibility();
+        });
     }
 
     private void setupTableColumns() {
@@ -359,6 +363,16 @@ public class OrderDetailsController implements Initializable {
         }
     }
 
+    private String accessSource = "history"; // Mặc định là từ lịch sử đơn hàng
+
+    /**
+     * Thiết lập nguồn truy cập vào chi tiết đơn hàng
+     * @param source "new_order" nếu từ đơn hàng mới, "history" nếu từ lịch sử
+     */
+    public void setAccessSource(String source) {
+        this.accessSource = source;
+    }
+
     private String translateWarrantyType(String warrantyType) {
         if (warrantyType == null) return "";
 
@@ -471,6 +485,9 @@ public class OrderDetailsController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Platform.runLater(() -> {
+            updateReviewButtonVisibility();
+        });
     }
 
     // Thêm các phương thức phụ trợ cần thiết
@@ -1117,6 +1134,55 @@ public class OrderDetailsController implements Initializable {
                             : "Cannot create invoice: " + e.getMessage()
             );
         }
+        // Sau khi in xong, hiển thị thông báo
+        Alert printAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        printAlert.setTitle(isVietnamese ? "In hóa đơn" : "Print Invoice");
+        printAlert.setHeaderText(isVietnamese ? "Đã in hóa đơn thành công!" : "Invoice printed successfully!");
+        printAlert.setContentText(isVietnamese ? "Bạn có muốn quay lại trang chủ không?" : "Would you like to return to home page?");
+
+        // Tùy chỉnh nút
+        ButtonType yesButton = new ButtonType(isVietnamese ? "Có" : "Yes", ButtonBar.ButtonData.YES);
+        ButtonType noButton = new ButtonType(isVietnamese ? "Không" : "No", ButtonBar.ButtonData.NO);
+        printAlert.getButtonTypes().setAll(yesButton, noButton);
+
+        // Xử lý phản hồi
+        Optional<ButtonType> result = printAlert.showAndWait();
+        if (result.isPresent() && result.get() == yesButton) {
+            // Chuyển về trang chủ
+            goToHome();
+        }
+    }
+
+    // Thêm phương thức goToHome() để tái sử dụng
+    private void goToHome() {
+        try {
+            // Lưu trạng thái ngôn ngữ hiện tại
+            LanguageManager.setVietnamese(isVietnamese);
+
+            // Tải FXML trang chủ
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/stores/view/Home.fxml"));
+            Parent root = loader.load();
+
+            // Lấy Stage hiện tại
+            Stage stage = (Stage) orderIdLabel.getScene().getWindow();
+
+            // Chuyển sang giao diện Home
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("CELLCOMP STORE");
+            stage.show();
+
+            // Đồng bộ ngôn ngữ
+            HomeController controller = loader.getController();
+            controller.refreshLanguageDisplay();
+        } catch (IOException e) {
+            e.printStackTrace();
+            AlertUtils.showError(
+                    isVietnamese ? "Lỗi" : "Error",
+                    isVietnamese ? "Không thể quay lại trang chủ: " + e.getMessage() :
+                            "Cannot return to home page: " + e.getMessage()
+            );
+        }
     }
 
     /**
@@ -1355,33 +1421,64 @@ public class OrderDetailsController implements Initializable {
         document.add(dateInfo);
     }
 
+    private String previousScreen = "home"; // Mặc định là home
+
+    /**
+     * Thiết lập màn hình trước đó
+     */
+    public void setPreviousScreen(String screen) {
+        this.previousScreen = screen;
+    }
+
     @FXML
     private void goBack() {
         try {
             // Lưu trạng thái ngôn ngữ hiện tại
             LanguageManager.setVietnamese(isVietnamese);
+            FXMLLoader loader;
 
-            // Tải FXML trang chủ
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/stores/view/Home.fxml"));
-            Parent root = loader.load();
+            // Kiểm tra màn hình trước đó và điều hướng phù hợp
+            if ("orderhistory".equalsIgnoreCase(previousScreen)) {
+                // Quay lại màn hình OrderHistory
+                loader = new FXMLLoader(getClass().getResource("/com/example/stores/view/OrderHistory.fxml"));
+                Parent root = loader.load();
 
-            // Lấy Stage hiện tại
-            Stage stage = (Stage) orderIdLabel.getScene().getWindow();
+                // Lấy Stage hiện tại
+                Stage stage = (Stage) orderIdLabel.getScene().getWindow();
 
-            // Chuyển sang giao diện Home
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+                // Chuyển sang giao diện OrderHistory
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.setTitle(isVietnamese ? "CELLCOMP STORE - Lịch sử mua hàng" : "CELLCOMP STORE - Order History");
+                stage.show();
 
-            // Đồng bộ ngôn ngữ
-            HomeController controller = loader.getController();
-            controller.refreshLanguageDisplay();
+                // Đồng bộ ngôn ngữ
+                OrderHistoryController controller = loader.getController();
+                controller.updateLanguage();
+            } else {
+                // Quay lại trang chủ (Home)
+                loader = new FXMLLoader(getClass().getResource("/com/example/stores/view/Home.fxml"));
+                Parent root = loader.load();
+
+                // Lấy Stage hiện tại
+                Stage stage = (Stage) orderIdLabel.getScene().getWindow();
+
+                // Chuyển sang giao diện Home
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.setTitle("CELLCOMP STORE");
+                stage.show();
+
+                // Đồng bộ ngôn ngữ
+                HomeController controller = loader.getController();
+                controller.refreshLanguageDisplay();
+            }
         } catch (IOException e) {
             e.printStackTrace();
             AlertUtils.showError(
                     isVietnamese ? "Lỗi" : "Error",
-                    isVietnamese ? "Không thể quay lại trang chủ: " + e.getMessage() :
-                            "Cannot return to home page: " + e.getMessage()
+                    isVietnamese ? "Không thể quay lại màn hình trước: " + e.getMessage() :
+                            "Cannot return to previous screen: " + e.getMessage()
             );
         }
     }
@@ -1614,8 +1711,8 @@ public class OrderDetailsController implements Initializable {
                         if (success) {
                             AlertUtils.showInfo(
                                     isVietnamese ? "Thành công" : "Success",
-                                    isVietnamese ? "Đánh giá của bạn đã được gửi thành công và đang chờ duyệt."
-                                            : "Your review has been submitted successfully and is pending approval."
+                                    isVietnamese ? "Đánh giá của bạn đã được gửi thành công"
+                                            : "Your review has been submitted successfully"
                             );
                             reviewStage.close();
                         } else {
@@ -1733,6 +1830,19 @@ public class OrderDetailsController implements Initializable {
                     isVietnamese ? "Không thể mở trang lịch sử đơn hàng: " + e.getMessage() :
                             "Cannot open order history page: " + e.getMessage()
             );
+        }
+    }
+    // Thêm khai báo biến này vào phần đầu của lớp
+    @FXML private Button reviewButton;
+    /**
+     * Cập nhật hiển thị của nút đánh giá dựa trên nguồn truy cập
+     */
+    private void updateReviewButtonVisibility() {
+        if (reviewButton != null) {
+            // Chỉ hiển thị nút đánh giá khi truy cập từ lịch sử đơn hàng
+            boolean shouldShowReviewButton = "history".equals(accessSource) && orderService.canReviewOrder(currentOrder.getOrderId());
+            reviewButton.setVisible(shouldShowReviewButton);
+            reviewButton.setManaged(shouldShowReviewButton); // Để layout tự điều chỉnh khi ẩn nút
         }
     }
 

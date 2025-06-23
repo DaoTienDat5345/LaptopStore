@@ -182,7 +182,6 @@ CREATE TABLE CartItem (
 );
 
 -- HÓA ĐƠN (Orders dùng orderID VARCHAR cho trigger)
--- SỬA: Đã loại bỏ ràng buộc UNIQUE trên trường recipientPhone
 CREATE TABLE Orders (
     orderID VARCHAR(20) PRIMARY KEY,
     orderDate DATETIME DEFAULT GETDATE(),
