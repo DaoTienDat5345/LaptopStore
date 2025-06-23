@@ -17398,7 +17398,10 @@
 //         VBox imageContainer = new VBox(imageView);
 //         imageContainer.setAlignment(Pos.CENTER);
 
-//         box.getChildren().addAll(
+//         box.getChildren().addAll(hugbiuvgiuygv
+
+
+//sfsfsfwf
 //                 imageContainer,
 //                 nameLabel,
 //                 priceLabel,
