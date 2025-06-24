@@ -1,7 +1,6 @@
 package com.example.stores.controller; // Đảm bảo package đúng
 
 // Các import cần thiết
-import com.example.stores.model.Employee;
 import com.example.stores.repository.EmployeeRepository;
 import com.example.stores.repository.ShiftRepository;
 import com.example.stores.repository.impl.EmployeeRepositoryImpl;

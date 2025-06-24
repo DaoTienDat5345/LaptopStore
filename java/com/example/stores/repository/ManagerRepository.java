@@ -1,6 +1,5 @@
 package com.example.stores.repository; // Đảm bảo package đúng
 
-import com.example.stores.model.Manager;
 import java.util.Optional;
 
 public interface ManagerRepository {

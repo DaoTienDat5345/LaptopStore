@@ -1,6 +1,5 @@
 package com.example.stores.service.impl; // Bỏ .computerstore
 
-import com.example.stores.model.Manager;
 import com.example.stores.repository.ManagerRepository;
 // import com.example.stores.repository.impl.ManagerRepositoryImpl; // Không cần import trực tiếp impl ở đây nếu dùng DI
 import com.example.stores.service.ManagerService;

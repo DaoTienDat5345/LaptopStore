@@ -1,8 +1,5 @@
 package com.example.stores.controller;
 
-import com.example.stores.model.Customer;
-import com.example.stores.model.Order;
-import com.example.stores.model.OrderDetail;
 import com.example.stores.repository.*; // Import các interface repository
 import com.example.stores.repository.impl.*; // Import các lớp impl repository
 import com.example.stores.service.*; // Import các interface service

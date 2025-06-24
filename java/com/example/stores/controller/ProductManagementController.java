@@ -1,7 +1,5 @@
 package com.example.stores.controller;
 
-import com.example.stores.model.Category;
-import com.example.stores.model.Product;
 import com.example.stores.repository.CategoryRepository;
 import com.example.stores.repository.ProductRepository;
 import com.example.stores.repository.impl.CategoryRepositoryImpl;

@@ -1,7 +1,6 @@
 package com.example.stores.repository.impl;
 
 import com.example.stores.config.DatabaseConnection;
-import com.example.stores.model.Supplier;
 import com.example.stores.repository.SupplierRepository;
 
 import java.sql.*;

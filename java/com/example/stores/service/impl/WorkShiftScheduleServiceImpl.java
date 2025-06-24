@@ -1,9 +1,6 @@
 package com.example.stores.service.impl;
 
 // ... imports ...
-import com.example.stores.model.Employee;
-import com.example.stores.model.Shift;
-import com.example.stores.model.WorkShiftSchedule;
 import com.example.stores.repository.EmployeeRepository;
 import com.example.stores.repository.ShiftRepository;
 import com.example.stores.repository.WorkShiftScheduleRepository;

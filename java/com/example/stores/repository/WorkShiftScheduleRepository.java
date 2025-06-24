@@ -1,6 +1,5 @@
 package com.example.stores.repository;
 
-import com.example.stores.model.WorkShiftSchedule;
 import java.time.LocalDate; // Vẫn cần cho việc lọc hiển thị theo khoảng ngày nếu bạn muốn
 import java.util.List;
 import java.util.Optional;

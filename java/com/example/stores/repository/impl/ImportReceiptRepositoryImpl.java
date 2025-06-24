@@ -1,8 +1,6 @@
 package com.example.stores.repository.impl;
 
 import com.example.stores.config.DatabaseConnection;
-import com.example.stores.model.ImportReceipt;
-import com.example.stores.model.ImportReceiptDetail;
 import com.example.stores.repository.ImportReceiptRepository;
 
 import java.sql.*;

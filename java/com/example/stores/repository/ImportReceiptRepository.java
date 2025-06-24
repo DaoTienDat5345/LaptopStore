@@ -1,8 +1,5 @@
 package com.example.stores.repository;
 
-import com.example.stores.model.ImportReceipt;
-import com.example.stores.model.ImportReceiptDetail;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;

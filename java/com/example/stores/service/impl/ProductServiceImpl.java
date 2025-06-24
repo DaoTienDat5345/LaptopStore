@@ -1,6 +1,5 @@
 package com.example.stores.service.impl;
 
-import com.example.stores.model.Product;
 import com.example.stores.repository.CategoryRepository; // Cần để kiểm tra categoryID tồn tại
 import com.example.stores.repository.ProductRepository;
 import com.example.stores.service.ProductService;

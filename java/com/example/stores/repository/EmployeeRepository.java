@@ -1,6 +1,5 @@
 package com.example.stores.repository; // Đảm bảo package đúng
 
-import com.example.stores.model.Employee;
 import java.util.List;
 import java.util.Optional;
 

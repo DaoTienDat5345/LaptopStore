@@ -1,6 +1,5 @@
 package com.example.stores.service; // Bỏ .computerstore
 
-import com.example.stores.model.Manager;
 import java.util.Optional;
 
 public interface ManagerService {

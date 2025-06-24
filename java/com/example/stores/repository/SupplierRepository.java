@@ -1,6 +1,5 @@
 package com.example.stores.repository;
 
-import com.example.stores.model.Supplier;
 import java.util.List;
 import java.util.Optional;
 

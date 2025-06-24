@@ -1,6 +1,5 @@
 package com.example.stores.controller;
 
-import com.example.stores.model.Customer;
 import com.example.stores.repository.CustomerRepository; // Cần để khởi tạo service
 import com.example.stores.repository.impl.CustomerRepositoryImpl; // Cần để khởi tạo service
 import com.example.stores.service.CustomerService;

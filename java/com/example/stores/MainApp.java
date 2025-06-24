@@ -2,7 +2,6 @@ package com.example.stores; // Package của MainApp
 
 import com.example.stores.config.DatabaseConnection; // Đảm bảo import đúng lớp kết nối
 import com.example.stores.controller.MainViewController;
-import com.example.stores.model.Manager;
 import com.example.stores.repository.ManagerRepository;
 import com.example.stores.repository.impl.ManagerRepositoryImpl;
 import com.example.stores.service.ManagerService;

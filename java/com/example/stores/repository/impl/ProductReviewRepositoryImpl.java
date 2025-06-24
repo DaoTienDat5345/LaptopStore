@@ -1,7 +1,6 @@
 package com.example.stores.repository.impl;
 
 import com.example.stores.config.DatabaseConnection;
-import com.example.stores.model.ProductReview; // Bạn cần tạo model này nếu chưa có
 import com.example.stores.repository.ProductReviewRepository;
 
 import java.sql.*;

@@ -1,6 +1,5 @@
 package com.example.stores.service.impl;
 
-import com.example.stores.model.Category;
 import com.example.stores.repository.CategoryRepository;
 import com.example.stores.repository.ProductRepository; // Sẽ cần để kiểm tra ràng buộc khi xóa
 // import com.example.stores.repository.impl.ProductRepositoryImpl; // Để khởi tạo nếu không dùng DI

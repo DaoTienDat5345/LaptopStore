@@ -1,6 +1,5 @@
 package com.example.stores.controller; // Bỏ .computerstore
 
-import com.example.stores.model.Manager;
 import com.example.stores.repository.ManagerRepository; // Cần để khởi tạo service
 import com.example.stores.repository.impl.ManagerRepositoryImpl; // Cần để khởi tạo service
 import com.example.stores.service.ManagerService;

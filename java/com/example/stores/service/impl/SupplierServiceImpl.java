@@ -1,6 +1,5 @@
 package com.example.stores.service.impl;
 
-import com.example.stores.model.Supplier;
 import com.example.stores.repository.SupplierRepository;
 import com.example.stores.service.SupplierService;
 

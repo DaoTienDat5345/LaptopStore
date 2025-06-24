@@ -1,6 +1,5 @@
 package com.example.stores.service.impl;
 
-import com.example.stores.model.Shift;
 import com.example.stores.repository.ShiftRepository;
 import com.example.stores.repository.WorkShiftScheduleRepository;
 import com.example.stores.service.ShiftService;

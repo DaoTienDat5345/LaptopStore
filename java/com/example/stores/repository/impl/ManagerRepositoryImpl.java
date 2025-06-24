@@ -1,7 +1,6 @@
 package com.example.stores.repository.impl; // Đảm bảo package đúng
 
 import com.example.stores.config.DatabaseConnection;
-import com.example.stores.model.Manager;
 import com.example.stores.repository.ManagerRepository;
 
 import java.sql.*;

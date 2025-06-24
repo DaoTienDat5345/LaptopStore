@@ -1,7 +1,6 @@
 package com.example.stores.repository.impl;
 
 import com.example.stores.config.DatabaseConnection;
-import com.example.stores.model.WorkShiftSchedule;
 import com.example.stores.repository.WorkShiftScheduleRepository;
 
 import java.sql.*;

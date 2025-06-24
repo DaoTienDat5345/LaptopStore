@@ -1,6 +1,5 @@
 package com.example.stores.service;
 
-import com.example.stores.model.ImportReceipt;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;

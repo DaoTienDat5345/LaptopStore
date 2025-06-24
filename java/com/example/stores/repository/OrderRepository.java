@@ -1,6 +1,5 @@
 package com.example.stores.repository;
 
-import com.example.stores.model.Order;
 import com.example.stores.dto.EmployeeSalesReportItem;
 
 import java.math.BigDecimal;

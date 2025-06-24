@@ -1,7 +1,5 @@
 package com.example.stores.service.impl;
 
-import com.example.stores.model.Manager; // Cần để kiểm tra ManagerID nếu có
-import com.example.stores.model.Warehouse;
 import com.example.stores.repository.ManagerRepository; // Cần để kiểm tra ManagerID
 import com.example.stores.repository.WarehouseRepository;
 // import com.example.stores.repository.impl.ManagerRepositoryImpl; // Để khởi tạo nếu không dùng DI

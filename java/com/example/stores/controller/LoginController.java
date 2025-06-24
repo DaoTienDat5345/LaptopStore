@@ -1,6 +1,5 @@
 package com.example.stores.controller;
 
-import com.example.stores.model.Manager;
 import com.example.stores.repository.ManagerRepository;
 import com.example.stores.repository.impl.ManagerRepositoryImpl;
 import com.example.stores.service.ManagerService;

@@ -1,8 +1,5 @@
 package com.example.stores.service.impl;
 
-import com.example.stores.model.Inventory;
-import com.example.stores.model.Product; // Cần để kiểm tra sản phẩm
-import com.example.stores.model.Warehouse; // Cần để kiểm tra kho
 import com.example.stores.repository.InventoryRepository;
 import com.example.stores.repository.ProductRepository;   // Inject để kiểm tra sản phẩm
 import com.example.stores.repository.WarehouseRepository; // Inject để kiểm tra kho

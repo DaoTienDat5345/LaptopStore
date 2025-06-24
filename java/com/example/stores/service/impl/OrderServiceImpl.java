@@ -1,7 +1,5 @@
 package com.example.stores.service.impl;
 
-import com.example.stores.model.Order;
-import com.example.stores.model.OrderDetail; // Cần cho việc lấy chi tiết
 import com.example.stores.repository.CustomerRepository; // Cần để kiểm tra Customer nếu lọc
 import com.example.stores.repository.OrderRepository;
 import com.example.stores.service.OrderDetailService; // Cần để lấy chi tiết
